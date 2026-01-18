@@ -1,6 +1,4 @@
 import { Mail, Phone, MapPin } from 'lucide-react'
-import { FaWeixin, FaWeibo } from 'react-icons/fa'
-import { SiXiaohongshu, SiTiktok } from 'react-icons/si'
 
 const footerLinks = {
   product: [
@@ -147,33 +145,14 @@ export default function Footer() {
               ))}
             </ul>
 
-            {/* Social Icons */}
-            <h4 className="font-semibold text-white mb-3">关注我们</h4>
-            <div className="flex gap-3">
-              <a
-                href="#"
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
-              >
-                <FaWeixin className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
-              >
-                <FaWeibo className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
-              >
-                <SiXiaohongshu className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
-              >
-                <SiTiktok className="w-4 h-4" />
-              </a>
+            {/* QR Code */}
+            <h4 className="font-semibold text-white mb-3">加入家长体验群（微信扫码）</h4>
+            <div className="bg-white p-2 rounded-lg inline-block">
+              <img 
+                src="/images/qrcode.png" 
+                alt="微信扫码加入家长体验群" 
+                className="w-28 h-28 object-contain"
+              />
             </div>
           </div>
         </div>

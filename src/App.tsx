@@ -6,7 +6,6 @@ import Scenarios from './components/sections/Scenarios'
 import Workflow from './components/sections/Workflow'
 import Values from './components/sections/Values'
 import Testimonials from './components/sections/Testimonials'
-import Pricing from './components/sections/Pricing'
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
         <Workflow />
         <Values />
         <Testimonials />
-        <Pricing />
       </main>
       <Footer />
     </div>

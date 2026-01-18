@@ -1,4 +1,4 @@
-import { Play, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   return (
@@ -65,10 +65,6 @@ export default function Hero() {
                 <span>立即免费试用Demo</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
-              <button className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-700 font-semibold rounded-full border-2 border-gray-200 hover:border-navy hover:text-navy transition-all duration-300">
-                <Play className="w-5 h-5" />
-                <span>观看2分钟产品视频</span>
-              </button>
             </div>
 
             {/* Micro text */}

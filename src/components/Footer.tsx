@@ -4,20 +4,17 @@ const footerLinks = {
   product: [
     { label: '产品特点', href: '#features' },
     { label: '如何工作', href: '#workflow' },
-    { label: '定价方案', href: '#pricing' },
     { label: '常见问题', href: '#faq' },
   ],
   support: [
     { label: '帮助中心', href: '#' },
     { label: '联系客服', href: '#' },
     { label: '使用教程', href: '#' },
-    { label: '更新日志', href: '#' },
   ],
   company: [
     { label: '关于我们', href: '#' },
     { label: '加入团队', href: '#' },
     { label: '合作伙伴', href: '#' },
-    { label: '媒体报道', href: '#' },
   ],
   legal: [
     { label: '隐私政策', href: '#' },
@@ -38,21 +35,21 @@ export default function Footer() {
         >
           <path
             d="M0,40 C240,100 480,0 720,50 C960,100 1200,20 1440,60 L1440,100 L0,100 Z"
-            fill="#1E3A5F"
+            fill="#1E3B4D"
           />
         </svg>
       </div>
 
-      <div className="container-custom mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-purple flex items-center justify-center">
                 <span className="text-white font-bold text-lg">M</span>
               </div>
               <span className="text-xl font-bold">
-                Meet<span className="text-primary-300">Mind</span>
+                Meet<span className="text-purple-light">Mind</span>
               </span>
             </a>
             <p className="text-gray-300 text-sm mb-6 leading-relaxed">
@@ -63,7 +60,7 @@ export default function Footer() {
             
             {/* Contact Info */}
             <div className="space-y-3">
-              <a href="mailto:hello@meetmind.ai" className="flex items-center gap-2 text-gray-300 hover:text-white text-sm transition-colors">
+              <a href="mailto:hello@meetmind.ai" className="flex items-center gap-2 text-gray-300 hover:text-sunny text-sm transition-colors">
                 <Mail className="w-4 h-4" />
                 <span>hello@meetmind.ai</span>
               </a>
@@ -86,7 +83,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-white text-sm transition-colors"
+                    className="text-gray-300 hover:text-sunny text-sm transition-colors"
                   >
                     {link.label}
                   </a>
@@ -103,7 +100,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-white text-sm transition-colors"
+                    className="text-gray-300 hover:text-sunny text-sm transition-colors"
                   >
                     {link.label}
                   </a>
@@ -120,7 +117,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-white text-sm transition-colors"
+                    className="text-gray-300 hover:text-sunny text-sm transition-colors"
                   >
                     {link.label}
                   </a>
@@ -129,25 +126,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal & Social */}
+          {/* QR Code */}
           <div>
-            <h4 className="font-semibold text-white mb-4">法律</h4>
-            <ul className="space-y-2 mb-6">
-              {footerLinks.legal.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-gray-300 hover:text-white text-sm transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            {/* QR Code */}
-            <h4 className="font-semibold text-white mb-3">加入家长体验群（微信扫码）</h4>
-            <div className="bg-white p-2 rounded-lg inline-block">
+            <h4 className="font-semibold text-white mb-4">加入家长体验群</h4>
+            <p className="text-gray-400 text-sm mb-3">微信扫码加入</p>
+            <div className="bg-white p-2 rounded-xl inline-block shadow-soft">
               <img 
                 src="/images/qrcode.png" 
                 alt="微信扫码加入家长体验群" 

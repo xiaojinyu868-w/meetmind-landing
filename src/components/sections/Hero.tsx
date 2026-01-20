@@ -30,15 +30,16 @@ export default function Hero() {
 
             {/* 副标题 */}
             <p className="text-xl sm:text-2xl text-navy/80 mb-4 leading-relaxed font-medium">
-              不是监控，是<span className="text-orange">神助攻</span>。
+              真正<span className="text-orange">听</span>过这堂课的专属家教。
             </p>
 
             {/* 描述 */}
-            <p className="text-gray-600 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 text-lg">
-              MeetMind AI 学习胶囊，帮他在课堂上<span className="font-semibold text-navy">"记笔记"</span>，
-              回家后<span className="font-semibold text-navy">"划重点"</span>。
+            <p className="text-gray-500 leading-relaxed mb-6 max-w-xl">
+              MeetMind 为每个孩子配备一位永远记得老师每句话、每笔板书的AI同桌。
               <br />
-              <span className="text-orange font-medium">别人刷100道题，我们只做3道必考题。</span>
+              白天，它安静坐在教室里忠实记录，晚上，它用老师当天的原话，帮助孩子精准复习，补齐漏洞。
+              <br />
+              家长第一次真正知道"孩子今天学了什么"，辅导终于有据可依。
             </p>
 
             {/* CTA按钮 */}
@@ -90,7 +91,7 @@ export default function Hero() {
                   <div className="rounded-xl overflow-hidden">
                     <img 
                       src="/product-parent.png"
-                      alt="MeetMind 家长端学习情况"
+                      alt="MeetMind 家长端界面"
                       className="w-full h-auto"
                     />
                   </div>

@@ -24,10 +24,10 @@ const painPoints = [
   {
     icon: RefreshCw,
     number: '03',
-    title: '题海战术"无效卷"？',
-    oldProblem: '刷题到深夜，成绩还在原地打转',
-    description: '每天熬夜刷50道题，90%都是无效重复。你的AI同桌只挑最有用的题让他做，精准命中薄弱点。',
-    solution: '别人刷100道题，我们只做3道必考题',
+    title: '反馈断层',
+    subtitle: '刷题到深夜，错的还是那几类',
+    description: '缺的不是努力，是即时、精准的高质量反馈。AI同桌让家长、老师、孩子都能第一时间了解学习情况，获得针对性反馈。',
+    solution: '家校孩三方同步，学情透明可追踪',
     color: 'bg-mint',
     iconBg: 'bg-mint/20',
   }

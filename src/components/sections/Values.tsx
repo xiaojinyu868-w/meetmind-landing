@@ -70,22 +70,22 @@ export default function Values() {
         </div>
 
         {/* Result Promise */}
-        <div className="bg-gradient-to-r from-orange to-sunny rounded-3xl p-8 lg:p-12 text-white overflow-hidden relative">
+        <div className="bg-gradient-to-r from-navy to-navy/90 rounded-3xl p-8 lg:p-12 text-white overflow-hidden relative">
           {/* 装饰 */}
-          <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-40 h-40 bg-sunny/20 rounded-full -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-orange/20 rounded-full translate-y-1/2 -translate-x-1/2" />
           
           <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">
             {/* Icon */}
-            <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
-              <Trophy className="w-10 h-10 text-orange" />
+            <div className="w-20 h-20 bg-sunny rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+              <Trophy className="w-10 h-10 text-navy" />
             </div>
 
             {/* Content */}
             <div className="flex-1 text-center lg:text-left">
               <h3 className="text-2xl font-bold mb-3">我们的承诺</h3>
               <p className="text-white/90 text-lg leading-relaxed">
-                不是让孩子"更卷"，而是让他<span className="font-bold underline decoration-2">用更少的时间，拿更好的分数</span>。
+                不是让孩子"更卷"，而是让他<span className="font-bold text-sunny">用更少的时间，拿更好的分数</span>。
                 <br />
                 学习本该如此轻松。
               </p>
@@ -93,17 +93,17 @@ export default function Values() {
 
             {/* Stats */}
             <div className="flex gap-8 flex-shrink-0">
-              <div className="text-center bg-white/20 rounded-2xl px-6 py-4">
+              <div className="text-center bg-sunny/20 rounded-2xl px-6 py-4 border border-sunny/30">
                 <div className="flex items-center justify-center gap-1 mb-1">
-                  <Clock className="w-5 h-5" />
-                  <p className="text-3xl font-bold">-30%</p>
+                  <Clock className="w-5 h-5 text-sunny" />
+                  <p className="text-3xl font-bold text-sunny">-30%</p>
                 </div>
                 <p className="text-sm text-white/80">作业时间</p>
               </div>
-              <div className="text-center bg-white/20 rounded-2xl px-6 py-4">
+              <div className="text-center bg-mint/20 rounded-2xl px-6 py-4 border border-mint/30">
                 <div className="flex items-center justify-center gap-1 mb-1">
-                  <TrendingUp className="w-5 h-5" />
-                  <p className="text-3xl font-bold">+20</p>
+                  <TrendingUp className="w-5 h-5 text-mint" />
+                  <p className="text-3xl font-bold text-mint">+20</p>
                 </div>
                 <p className="text-sm text-white/80">平均提分</p>
               </div>

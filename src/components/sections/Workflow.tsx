@@ -54,7 +54,7 @@ export default function Workflow() {
             <span className="text-orange">私人学习管家</span>
           </h2>
           <p className="text-lg text-gray-600">
-            不是监控，是帮孩子"存住"每一堂课的精华
+            帮孩子"记住"每一堂课的精华
           </p>
         </div>
 

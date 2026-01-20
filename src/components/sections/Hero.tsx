@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Sparkles } from 'lucide-react'
 
 export default function Hero() {
   return (
@@ -16,28 +16,29 @@ export default function Hero() {
           <div className="relative z-10 text-center lg:text-left">
             {/* 徽章标签 */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-sunny/20 border border-sunny/30 rounded-full mb-6">
-              <span className="w-2 h-2 bg-orange rounded-full" />
-              <span className="text-sm font-medium text-navy">首个"家校同频"智能助教系统</span>
+              <Sparkles className="w-4 h-4 text-orange" />
+              <span className="text-sm font-medium text-navy">限量100名「优先体验官」招募中</span>
             </div>
 
             {/* 主标题 */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
-              Everybody can achieve
+              给孩子找个
               <br />
-              <span className="text-orange">the best result now</span>
+              <span className="text-orange">"清华学霸"</span>
+              <span className="text-navy">做同桌</span>
             </h1>
 
             {/* 副标题 */}
-            <p className="text-lg sm:text-xl text-gray-600 mb-4 leading-relaxed">
-              真正听过今天这节课的专属家教，
-              <br className="hidden sm:block" />
-              让复习终于跟得上课堂
+            <p className="text-xl sm:text-2xl text-navy/80 mb-4 leading-relaxed font-medium">
+              不是监控，是<span className="text-orange">神助攻</span>。
             </p>
 
             {/* 描述 */}
-            <p className="text-gray-500 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-              MeetMind 为每个孩子配备一位永远记得老师每句话、每笔板书的AI同桌。
-              白天，它安静记录；晚上，用老师当天的原话帮助孩子精准复习。
+            <p className="text-gray-600 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 text-lg">
+              MeetMind AI 学习胶囊，帮他在课堂上<span className="font-semibold text-navy">"记笔记"</span>，
+              回家后<span className="font-semibold text-navy">"划重点"</span>。
+              <br />
+              <span className="text-orange font-medium">别人刷100道题，我们只做3道必考题。</span>
             </p>
 
             {/* CTA按钮 */}
@@ -46,16 +47,16 @@ export default function Hero() {
                 href="https://meetmind.online" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-sunny hover:bg-sunny-dark text-navy font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange hover:bg-orange/90 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               >
-                <span>立即免费试用</span>
+                <span>申请「优先体验官」资格</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
             {/* 小提示 */}
-            <p className="mt-4 text-sm text-gray-400">
-              上传录音，30秒体验AI同桌 · 无需注册即可体验
+            <p className="mt-4 text-sm text-gray-500">
+              🎁 限量100名 · 免费体验全部功能 · 30秒即可开始
             </p>
           </div>
 
@@ -97,9 +98,9 @@ export default function Hero() {
               </div>
 
               {/* AI对话气泡 */}
-              <div className="absolute top-1/4 -left-4 sm:-left-8 bg-sunny rounded-2xl rounded-bl-sm p-4 shadow-lg max-w-[180px] sm:max-w-[200px]">
+              <div className="absolute top-1/4 -left-4 sm:-left-8 bg-sunny rounded-2xl rounded-bl-sm p-4 shadow-lg max-w-[180px] sm:max-w-[220px]">
                 <p className="text-sm text-navy font-medium">
-                  "这个困惑点我来帮你解答..."
+                  💡 "这道题老师白天讲过，我帮你回忆一下..."
                 </p>
               </div>
             </div>

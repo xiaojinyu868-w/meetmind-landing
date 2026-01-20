@@ -6,6 +6,7 @@ import Workflow from './components/sections/Workflow'
 import ProductShowcase from './components/sections/ProductShowcase'
 import Values from './components/sections/Values'
 import Testimonials from './components/sections/Testimonials'
+import TeamCredibility from './components/sections/TeamCredibility'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Workflow />
         <ProductShowcase />
         <Values />
+        <TeamCredibility />
         <Testimonials />
       </main>
       <Footer />

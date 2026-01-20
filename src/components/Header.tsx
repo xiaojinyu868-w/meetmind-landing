@@ -1,99 +1,106 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { href: '#home', label: '首页' },
-  { href: '#painpoints', label: '家长痛点' },
-  { href: '#workflow', label: '如何工作' },
-  { href: '#values', label: '产品价值' },
-  { href: '#testimonials', label: '用户故事' },
+  { name: '首页', href: '#home' },
+  { name: '痛点', href: '#pain-points' },
+  { name: '如何工作', href: '#workflow' },
+  { name: '价值', href: '#values' },
+  { name: '用户故事', href: '#testimonials' },
 ]
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-soft' : 'bg-transparent'
+      }`}
+    >
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-purple flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-              <span className="text-white font-bold text-lg">M</span>
+          <a href="#home" className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-sunny rounded-xl flex items-center justify-center">
+              <span className="text-navy font-bold text-lg">M</span>
             </div>
-            <span className="text-xl font-bold text-navy">
-              Meet<span className="text-purple">Mind</span>
-            </span>
+            <span className="text-xl font-bold text-navy">MeetMind</span>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
-                key={link.href}
+                key={link.name}
                 href={link.href}
-                className="px-4 py-2 text-gray-600 hover:text-purple font-medium text-sm rounded-lg hover:bg-purple-50 transition-all duration-200"
+                className="text-gray-600 hover:text-navy font-medium transition-colors"
               >
-                {link.label}
+                {link.name}
               </a>
             ))}
-          </nav>
+          </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center gap-3">
-            <a 
-              href="https://meetmind.online" 
-              target="_blank" 
+          <div className="hidden md:block">
+            <a
+              href="https://meetmind.online"
+              target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2.5 bg-purple hover:bg-purple-dark text-white font-semibold rounded-full shadow-card hover:shadow-card-hover transition-all duration-200 transform hover:-translate-y-0.5"
+              className="px-6 py-2.5 bg-sunny hover:bg-sunny-dark text-navy font-semibold rounded-full transition-all duration-300 shadow-sm hover:shadow-md"
             >
-              Join now
+              免费试用
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMenuOpen ? (
-              <X className="w-6 h-6 text-gray-700" />
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-navy" />
             ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
+              <Menu className="w-6 h-6 text-navy" />
             )}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        <div
-          className={cn(
-            'lg:hidden overflow-hidden transition-all duration-300 ease-in-out',
-            isMenuOpen ? 'max-h-96 pb-4' : 'max-h-0'
-          )}
-        >
-          <nav className="flex flex-col gap-1 pt-2">
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-100 py-4">
             {navLinks.map((link) => (
               <a
-                key={link.href}
+                key={link.name}
                 href={link.href}
-                className="px-4 py-3 text-gray-600 hover:text-purple font-medium rounded-lg hover:bg-purple-50 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+                className="block px-4 py-3 text-gray-600 hover:text-navy hover:bg-gray-50 font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                {link.label}
+                {link.name}
               </a>
             ))}
-            <a 
-              href="https://meetmind.online" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="mt-2 px-6 py-3 bg-purple text-white font-semibold rounded-full shadow-md block text-center"
-            >
-              Join now
-            </a>
-          </nav>
-        </div>
-      </div>
+            <div className="px-4 pt-4">
+              <a
+                href="https://meetmind.online"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center px-6 py-3 bg-sunny text-navy font-semibold rounded-full"
+              >
+                免费试用
+              </a>
+            </div>
+          </div>
+        )}
+      </nav>
     </header>
   )
 }

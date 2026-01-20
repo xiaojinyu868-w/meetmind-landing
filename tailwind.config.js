@@ -16,16 +16,7 @@ export default {
           50: '#E8F4F8',
           100: '#D1E9F1',
         },
-        // 主色-紫色（CTA按钮、强调）
-        purple: {
-          DEFAULT: '#6C5CE7',
-          light: '#A29BFE',
-          dark: '#5849C2',
-          50: '#F3F2FF',
-          100: '#E8E6FF',
-          200: '#DCD6F7',
-        },
-        // 强调色-明黄（高亮、气泡、装饰）
+        // 主强调色-明黄（CTA按钮、高亮、气泡）
         sunny: {
           DEFAULT: '#FFD93D',
           light: '#FFE66D',
@@ -34,13 +25,13 @@ export default {
           100: '#FFF8E1',
           200: '#FFECB3',
         },
-        // 强调色-暖橙（渐变、装饰）
+        // 强调色-暖橙（渐变、hover状态）
         orange: {
-          DEFAULT: '#FFAB5E',
-          light: '#FFCC80',
-          dark: '#FF9800',
+          DEFAULT: '#FF9F43',
+          light: '#FFBE76',
+          dark: '#E17D21',
         },
-        // 辅助色-天空蓝（装饰、图标）
+        // 辅助色-天空蓝（装饰、图标、卡片）
         sky: {
           DEFAULT: '#74C0FC',
           light: '#A5D8FF',
@@ -50,10 +41,10 @@ export default {
         },
         // 辅助色-薄荷绿（成功、装饰）
         mint: {
-          DEFAULT: '#A8E6CF',
-          light: '#C3F0D8',
-          dark: '#69D2A0',
-          50: '#F0FFF4',
+          DEFAULT: '#69D2A0',
+          light: '#A8E6CF',
+          dark: '#38C87A',
+          50: '#E8FFF3',
         },
         // 辅助色-珊瑚粉（装饰、点缀）
         coral: {
@@ -61,6 +52,12 @@ export default {
           light: '#FFCDD2',
           dark: '#FF5252',
           50: '#FFF0F0',
+        },
+        // 辅助色-淡紫（轻装饰）
+        lavender: {
+          DEFAULT: '#B8A9FF',
+          light: '#DCD6F7',
+          50: '#F5F3FF',
         },
         // 背景色
         cream: {
@@ -82,8 +79,8 @@ export default {
       boxShadow: {
         'soft': '0 4px 20px rgba(0, 0, 0, 0.06)',
         'medium': '0 8px 30px rgba(0, 0, 0, 0.10)',
-        'card': '0 2px 12px rgba(108, 92, 231, 0.1)',
-        'card-hover': '0 12px 32px rgba(108, 92, 231, 0.15)',
+        'card': '0 2px 12px rgba(255, 159, 67, 0.15)',
+        'card-hover': '0 12px 32px rgba(255, 159, 67, 0.20)',
         'bubble': '0 4px 16px rgba(255, 217, 61, 0.3)',
       },
       animation: {
@@ -91,12 +88,11 @@ export default {
         'float-slow': 'float 8s ease-in-out infinite',
         'float-delay': 'float 6s ease-in-out 2s infinite',
         'bounce-slow': 'bounce 3s ease-in-out infinite',
-        'spin-slow': 'spin 12s linear infinite',
       },
       keyframes: {
         float: {
-          '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
-          '50%': { transform: 'translateY(-20px) rotate(5deg)' },
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
         },
       },
     },

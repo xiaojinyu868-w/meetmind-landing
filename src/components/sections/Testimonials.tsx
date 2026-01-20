@@ -1,106 +1,232 @@
-import { Shield, Lock, UserCheck, CheckCircle, Users, TrendingUp, DollarSign } from 'lucide-react'
+import { useState } from 'react'
+import { Shield, Lock, UserCheck, CheckCircle, Users, TrendingUp, DollarSign, ChevronLeft, ChevronRight, GraduationCap, User, Heart, Lightbulb, Clock, BarChart3, AlertCircle, BookOpen, Frown, Smile, Brain, MessageCircle } from 'lucide-react'
 
-const testimonials = [
+// 三个角色的数据
+const roles = [
   {
-    id: 1,
-    content: '终于有个真正听过课的"家教"了！以前每天辅导作业都要先问老师今天讲了什么，现在AI同桌直接告诉我重点在哪里。',
-    author: '匿名用户',
-    role: '小学家长',
-    initials: '匿',
-    bubbleColor: 'bg-sunny/30',
-    avatarColor: 'bg-orange',
+    id: 'student',
+    name: '学生',
+    nameEn: 'Student',
+    Icon: User,
+    color: 'bg-sky',
+    lightColor: 'bg-sky/10',
+    textColor: 'text-sky',
+    title: 'MeetMind 帮孩子解决什么问题？',
+    subtitle: '每个孩子都有听不懂、不敢问的时刻',
+    problems: [
+      { problem: '上课听不懂，不敢问', solution: '一键标记困惑点，课后AI帮你搞懂', icon: AlertCircle, solutionIcon: Lightbulb },
+      { problem: '回家忘了老师讲什么', solution: 'AI记住每一句课堂内容，随时回放', icon: Frown, solutionIcon: Brain },
+      { problem: '复习不知道从哪开始', solution: 'AI精准定位薄弱点，针对性辅导', icon: BookOpen, solutionIcon: MessageCircle },
+    ],
+    testimonial: {
+      content: '以前上课走神了就完了，现在有AI同桌帮我记着，回家还能问它不懂的地方！',
+      author: '匿名学生',
+      role: '初二学生',
+    },
+    stats: [
+      { value: '85%', label: '知识点掌握提升' },
+      { value: '2x', label: '复习效率翻倍' },
+    ],
   },
   {
-    id: 2,
-    content: '孩子说AI同桌比我讲得还清楚……虽然有点伤自尊，但确实效果好。关键是它用的就是老师的原话和思路！',
-    author: '匿名用户',
-    role: '初中家长',
-    initials: '匿',
-    bubbleColor: 'bg-sky/20',
-    avatarColor: 'bg-sky',
+    id: 'parent',
+    name: '家长',
+    nameEn: 'Parent',
+    Icon: Heart,
+    color: 'bg-sunny',
+    lightColor: 'bg-sunny/10',
+    textColor: 'text-sunny',
+    title: '为什么家长选择 MeetMind？',
+    subtitle: '终于不用每天问"今天老师讲了什么"',
+    problems: [
+      { problem: '不知道孩子今天学了什么', solution: '每日学习报告，一目了然', icon: AlertCircle, solutionIcon: BarChart3 },
+      { problem: '辅导作业容易起冲突', solution: 'AI用老师原话辅导，专业又耐心', icon: Frown, solutionIcon: MessageCircle },
+      { problem: '不知道孩子哪里薄弱', solution: '困惑点清单，精准定位问题', icon: BookOpen, solutionIcon: Lightbulb },
+    ],
+    testimonial: {
+      content: '终于有个真正听过课的"家教"了！现在AI同桌直接告诉我重点在哪里，辅导作业再也不用吼了。',
+      author: '匿名用户',
+      role: '小学家长',
+    },
+    stats: [
+      { value: '91.2%', label: '家长曾陪孩子作业' },
+      { value: '78%', label: '陪伴时易引发矛盾' },
+    ],
   },
   {
-    id: 3,
-    content: '复习效率翻倍，晚9点不再是战场。以前每天辅导到11点，现在孩子自己跟着AI复习，我只需要看报告就行。',
-    author: '匿名用户',
-    role: '高中家长',
-    initials: '匿',
-    bubbleColor: 'bg-mint/30',
-    avatarColor: 'bg-mint',
+    id: 'teacher',
+    name: '教师',
+    nameEn: 'Teacher',
+    Icon: GraduationCap,
+    color: 'bg-mint',
+    lightColor: 'bg-mint/10',
+    textColor: 'text-mint',
+    title: '为什么老师选择 MeetMind？',
+    subtitle: '不增加工作量，获得更好的教学效果',
+    problems: [
+      { problem: '不知道学生哪里没听懂', solution: '困惑热点TOP3，实时反馈', icon: AlertCircle, solutionIcon: BarChart3 },
+      { problem: '课后答疑占用大量时间', solution: 'AI辅助学生自主复习，减负50%', icon: Clock, solutionIcon: Lightbulb },
+      { problem: '教学反思缺少数据支撑', solution: '一键生成课后反思报告', icon: BookOpen, solutionIcon: Brain },
+    ],
+    testimonial: {
+      content: '终于知道学生哪里没听懂了，备课更有针对性。学生自己能复习，我的答疑工作量少了一半。',
+      author: '匿名教师',
+      role: '重点中学英语教师',
+    },
+    stats: [
+      { value: '50%', label: '课后答疑减少' },
+      { value: '3x', label: '反馈效率提升' },
+    ],
   },
-]
-
-const stats = [
-  { value: '91.2%', label: '中国家长曾陪孩子作业', Icon: Users },
-  { value: '78%', label: '陪伴时易引发矛盾', Icon: TrendingUp },
-  { value: '万亿+', label: 'K12课外辅导市场规模', Icon: DollarSign },
 ]
 
 export default function Testimonials() {
+  const [activeIndex, setActiveIndex] = useState(1) // 默认显示家长
+  const activeRole = roles[activeIndex]
+
+  const nextRole = () => setActiveIndex((prev) => (prev + 1) % roles.length)
+  const prevRole = () => setActiveIndex((prev) => (prev - 1 + roles.length) % roles.length)
+
   return (
     <section id="testimonials" className="py-20 lg:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-10">
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-sunny/20 text-navy font-medium rounded-full text-sm mb-6">
             <span className="w-1.5 h-1.5 bg-sunny rounded-full" />
-            信任与证明
+            为什么选择 MeetMind
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6 leading-tight">
-            为什么家长选择
-            <span className="text-orange"> MeetMind</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-4 leading-tight">
+            学生、家长、教师
+            <span className="text-orange"> 都受益</span>
           </h2>
         </div>
 
-        {/* Stats Row */}
-        <div className="grid grid-cols-3 gap-4 mb-16">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center p-6 bg-white rounded-2xl border border-gray-100 shadow-soft">
-              <div className="w-12 h-12 bg-sunny/20 rounded-xl flex items-center justify-center mx-auto mb-3">
-                <stat.Icon className="w-6 h-6 text-orange" />
-              </div>
-              <p className="text-2xl sm:text-3xl font-bold text-navy mb-1">{stat.value}</p>
-              <p className="text-sm text-gray-600">{stat.label}</p>
-            </div>
-          ))}
+        {/* Role Tabs */}
+        <div className="flex justify-center gap-3 mb-10">
+          {roles.map((role, index) => {
+            const Icon = role.Icon
+            return (
+              <button
+                key={role.id}
+                onClick={() => setActiveIndex(index)}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  index === activeIndex
+                    ? `${role.color} text-white shadow-lg scale-105`
+                    : 'bg-white text-gray-600 hover:bg-gray-50 shadow-soft'
+                }`}
+              >
+                <Icon className="w-5 h-5" />
+                <span>{role.name}</span>
+              </button>
+            )
+          })}
         </div>
 
-        {/* Testimonials */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {testimonials.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className={`${testimonial.bubbleColor} rounded-3xl p-6 shadow-soft`}
-            >
-              {/* Rating Stars */}
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-orange text-lg">★</span>
+        {/* Content Area */}
+        <div className={`rounded-3xl p-6 lg:p-10 ${activeRole.lightColor} border border-gray-100 transition-all duration-500`}>
+          {/* Title */}
+          <div className="text-center mb-10">
+            <h3 className="text-2xl lg:text-3xl font-bold text-navy mb-2">{activeRole.title}</h3>
+            <p className="text-gray-600">{activeRole.subtitle}</p>
+          </div>
+
+          {/* Problems & Solutions */}
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {activeRole.problems.map((item, index) => (
+              <div key={index} className="bg-white rounded-2xl p-5 shadow-soft">
+                {/* 痛点 */}
+                <div className="flex items-start gap-3 mb-4 pb-4 border-b border-gray-100">
+                  <div className="w-9 h-9 bg-coral/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <item.icon className="w-4 h-4 text-coral" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-coral font-medium mb-0.5">😥 痛点</p>
+                    <p className="text-gray-700 text-sm font-medium">{item.problem}</p>
+                  </div>
+                </div>
+                
+                {/* 解决方案 */}
+                <div className="flex items-start gap-3">
+                  <div className={`w-9 h-9 ${activeRole.lightColor} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                    <item.solutionIcon className={`w-4 h-4 ${activeRole.textColor}`} />
+                  </div>
+                  <div>
+                    <p className={`text-xs ${activeRole.textColor} font-medium mb-0.5`}>✨ 解决</p>
+                    <p className="text-navy text-sm font-semibold">{item.solution}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Stats + Testimonial Row */}
+          <div className="grid lg:grid-cols-2 gap-6">
+            {/* Stats */}
+            <div className="bg-white rounded-2xl p-6 shadow-soft">
+              <p className="text-sm text-gray-500 mb-4 font-medium">📊 数据说话</p>
+              <div className="flex gap-8">
+                {activeRole.stats.map((stat, idx) => (
+                  <div key={idx}>
+                    <p className={`text-3xl font-bold ${activeRole.textColor}`}>{stat.value}</p>
+                    <p className="text-gray-600 text-sm">{stat.label}</p>
+                  </div>
                 ))}
               </div>
-              
-              {/* Content */}
-              <p className="text-navy leading-relaxed mb-6">
-                "{testimonial.content}"
-              </p>
+            </div>
 
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 ${testimonial.avatarColor} rounded-full flex items-center justify-center text-white font-bold`}>
-                  {testimonial.initials}
+            {/* Testimonial */}
+            <div className={`${activeRole.color}/20 rounded-2xl p-6`}>
+              <div className="flex gap-1 mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-orange text-sm">★</span>
+                ))}
+              </div>
+              <p className="text-navy leading-relaxed mb-4 text-sm">
+                "{activeRole.testimonial.content}"
+              </p>
+              <div className="flex items-center gap-2">
+                <div className={`w-8 h-8 ${activeRole.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
+                  匿
                 </div>
                 <div>
-                  <p className="font-semibold text-navy">{testimonial.author}</p>
-                  <p className="text-sm text-gray-500">{testimonial.role}</p>
+                  <p className="font-semibold text-navy text-sm">{activeRole.testimonial.author}</p>
+                  <p className="text-xs text-gray-500">{activeRole.testimonial.role}</p>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          <div className="flex justify-center items-center gap-4 mt-8">
+            <button
+              onClick={prevRole}
+              className="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
+            <div className="flex gap-2">
+              {roles.map((role, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveIndex(idx)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    idx === activeIndex ? `w-6 ${role.color}` : 'w-2 bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={nextRole}
+              className="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+            >
+              <ChevronRight className="w-5 h-5 text-gray-600" />
+            </button>
+          </div>
         </div>
 
         {/* Trust Badges */}
-        <div className="bg-navy rounded-3xl p-8 lg:p-12 overflow-hidden relative">
-          {/* 装饰 */}
+        <div className="bg-navy rounded-3xl p-8 lg:p-12 overflow-hidden relative mt-12">
           <div className="absolute top-0 right-0 w-32 h-32 bg-sunny/20 rounded-full -translate-y-1/2 translate-x-1/2" />
           
           <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">

@@ -1,9 +1,5 @@
 import { useState } from 'react'
-import { 
-  GraduationCap, Mic, Brain, Bot, ChevronLeft, ChevronRight, 
-  Cpu, BookOpen, Clock, User, Link2, Target, Scale,
-  Sparkles, CheckCircle2
-} from 'lucide-react'
+import { GraduationCap, Mic, Brain, Bot, ChevronLeft, ChevronRight, Cpu, BookOpen, Clock, User, Link2, Target, Scale } from 'lucide-react'
 
 // 三层技术架构
 const techLayers = [
@@ -15,6 +11,7 @@ const techLayers = [
     tagline: '从"听得到"开始',
     color: 'from-sky to-sky/80',
     iconBg: 'bg-sky',
+    borderColor: 'border-sky/30',
     features: [
       { label: '远场语音识别', desc: 'Far-field ASR' },
       { label: '声纹分离', desc: 'Speaker Diarization' },
@@ -30,7 +27,8 @@ const techLayers = [
     tagline: '到"听得懂"',
     color: 'from-orange to-sunny',
     iconBg: 'bg-orange',
-    isCore: true, // 核心模块标记
+    borderColor: 'border-orange/30',
+    features: [], // 单独展示
   },
   {
     id: 3,
@@ -40,6 +38,7 @@ const techLayers = [
     tagline: '再到"说得对"',
     color: 'from-mint to-mint/80',
     iconBg: 'bg-mint',
+    borderColor: 'border-mint/30',
     features: [
       { label: '分层诊断报告', desc: 'Layered Diagnostic' },
       { label: '拟人化交互', desc: 'Voice/Video Output' },
@@ -49,106 +48,75 @@ const techLayers = [
   },
 ]
 
-// 记忆大模型的6个核心能力
-const memoryCapabilities = [
+// 记忆模型的6大核心能力
+const memoryFeatures = [
   {
     icon: BookOpen,
     title: '课堂原生记忆',
     tagline: '真正听过这堂课的AI',
-    points: [
-      '100%还原老师的讲解、强调、比喻',
-      '秒级精准回溯："03:24 老师这样解释..."',
-      '不是从题库检索，是从今天的课堂检索',
-    ],
+    points: ['100%还原老师讲解、强调、比喻', '秒级精准回溯：03:24 老师这样解释...', '不是题库检索，是今天课堂的检索'],
     highlight: '别人给"标准答案"，我们给"老师怎么教的"',
-    color: 'bg-sky',
-    lightColor: 'bg-sky/10',
-    textColor: 'text-sky',
+    color: 'sky',
+    gradient: 'from-sky/10 to-sky/5',
   },
   {
     icon: Clock,
     title: '科学复习引擎',
-    tagline: '在最佳时机，推送最需要的内容',
-    points: [
-      '基于艾宾浩斯曲线，精准预测复习窗口',
-      '在知识"即将模糊"时主动唤醒',
-      '让每一次复习都踩在效率最高点',
-    ],
+    tagline: '在最佳时机推送最需要的内容',
+    points: ['基于艾宾浩斯曲线精准预测复习窗口', '在知识"即将模糊"时主动唤醒', '让每次复习都踩在效率最高点'],
     highlight: '不是"忘了再学"，是"快忘时提醒"',
-    color: 'bg-orange',
-    lightColor: 'bg-orange/10',
-    textColor: 'text-orange',
+    color: 'orange',
+    gradient: 'from-orange/10 to-sunny/5',
   },
   {
     icon: User,
     title: '个性化学生画像',
     tagline: '千人千面的认知档案',
-    points: [
-      '精准定位每个孩子的薄弱知识点',
-      '追踪认知发展阶段与学习风格',
-      '记录每次困惑、每次突破、每次进步',
-    ],
+    points: ['精准定位每个孩子的薄弱知识点', '追踪认知发展阶段与学习风格', '记录每次困惑、突破、进步'],
     highlight: '不是"这题怎么做"，是"你为什么不会这题"',
-    color: 'bg-mint',
-    lightColor: 'bg-mint/10',
-    textColor: 'text-mint',
+    color: 'mint',
+    gradient: 'from-mint/10 to-mint/5',
   },
   {
     icon: Link2,
     title: '知识生命周期 & 证据链',
-    tagline: '每个知识点都有档案，每个答案都有据可查',
-    points: [
-      '生命周期：首次学习 → 复习记录 → 掌握程度',
-      '证据链：AI回答 → 老师原话 → 课堂时间点',
-      '家长可验证，学习过程100%透明',
-    ],
+    tagline: '每个答案都有据可查',
+    points: ['生命周期：首次学习→复习记录→掌握程度', '证据链：AI回答→老师原话→课堂时间点', '家长可验证，学习过程100%透明'],
     highlight: '不是"黑箱输出"，是"全程可追溯"',
-    color: 'bg-coral',
-    lightColor: 'bg-coral/10',
-    textColor: 'text-coral',
+    color: 'purple',
+    gradient: 'from-purple-500/10 to-purple-400/5',
   },
   {
     icon: Target,
     title: '考纲精准对齐',
-    tagline: '学的每一分钟，都指向考试',
-    points: [
-      '每个知识点锚定课程标准',
-      '区分"了解/理解/掌握/应用"层级',
-      '聚焦高频考点，过滤无效信息',
-    ],
+    tagline: '学的每一分钟都指向考试',
+    points: ['每个知识点锚定课程标准', '区分了解/理解/掌握/应用层级', '聚焦高频考点，过滤无效信息'],
     highlight: '不是"学得全"，是"学得准"',
-    color: 'bg-sunny',
-    lightColor: 'bg-sunny/10',
-    textColor: 'text-yellow-600',
+    color: 'coral',
+    gradient: 'from-coral/10 to-coral/5',
   },
   {
     icon: Scale,
     title: '认知动态平衡',
     tagline: '精准做加法，果断做减法',
-    points: [
-      '精准加法：新知识入库 + 关联知识图谱',
-      '认知纠偏：发现错误理解，精准替换',
-      '认知升级：小学认知 → 初中认知平滑过渡',
-    ],
+    points: ['精准加法：新知识入库+关联知识图谱', '认知纠偏：发现错误理解精准替换', '认知升级：小学→初中认知平滑过渡'],
     highlight: '不是"记得越多越好"，是"记得越准越好"',
-    color: 'bg-navy',
-    lightColor: 'bg-navy/10',
-    textColor: 'text-navy',
+    color: 'navy',
+    gradient: 'from-navy/10 to-navy/5',
   },
 ]
 
 export default function TeamCredibility() {
-  const [activeLayer, setActiveLayer] = useState(1) // 默认显示记忆大模型
-  const [activeMemory, setActiveMemory] = useState(0)
+  const [activeLayer, setActiveLayer] = useState(1) // 默认显示记忆模型
+  const [activeMemoryCard, setActiveMemoryCard] = useState(0)
 
   const nextLayer = () => setActiveLayer((prev) => (prev + 1) % techLayers.length)
   const prevLayer = () => setActiveLayer((prev) => (prev - 1 + techLayers.length) % techLayers.length)
 
   const current = techLayers[activeLayer]
-  const currentMemory = memoryCapabilities[activeMemory]
 
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-b from-white to-cream">
+    <section className="py-20 lg:py-28 bg-gradient-to-b from-white via-cream/30 to-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-12">
@@ -166,162 +134,127 @@ export default function TeamCredibility() {
           </p>
         </div>
 
-        {/* Tech Layer Tabs */}
-        <div className="flex border-b border-gray-200 mb-8 bg-white rounded-t-2xl overflow-hidden shadow-sm">
+        {/* Three Layer Architecture - Horizontal Pills */}
+        <div className="flex justify-center gap-2 sm:gap-4 mb-8">
           {techLayers.map((layer, index) => (
             <button
               key={layer.id}
               onClick={() => setActiveLayer(index)}
-              className={`flex-1 px-4 py-4 text-center transition-all duration-300 relative ${
+              className={`group relative px-4 sm:px-6 py-3 rounded-2xl transition-all duration-500 ${
                 activeLayer === index
-                  ? `bg-gradient-to-r ${layer.color} text-white`
-                  : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                  ? `bg-gradient-to-r ${layer.color} text-white shadow-lg scale-105`
+                  : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
               }`}
             >
-              <div className="flex items-center justify-center gap-2">
-                <layer.icon className="w-5 h-5" />
-                <span className="font-semibold text-sm hidden md:inline">{layer.title}</span>
-                <span className="font-semibold text-xs md:hidden">
-                  {index === 0 ? '感知层' : index === 1 ? '记忆层' : '输出层'}
-                </span>
+              <div className="flex items-center gap-2">
+                <layer.icon className={`w-5 h-5 ${activeLayer === index ? 'animate-pulse' : ''}`} />
+                <span className="font-semibold text-sm hidden sm:inline">{layer.title}</span>
+                <span className="font-semibold text-xs sm:hidden">Layer {layer.id}</span>
               </div>
-              {layer.isCore && (
-                <span className="absolute -top-1 -right-1 px-1.5 py-0.5 bg-coral text-white text-[10px] rounded-full font-bold">
-                  核心
-                </span>
+              {activeLayer === index && (
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-current" />
               )}
             </button>
           ))}
         </div>
 
         {/* Content Area */}
-        {activeLayer === 1 ? (
-          // 专属教育记忆大模型 - 特殊展示
-          <div className="bg-white rounded-2xl shadow-card overflow-hidden border border-gray-100">
-            {/* Header */}
-            <div className="bg-gradient-to-r from-orange to-sunny p-6 text-white">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
-                  <Brain className="w-8 h-8" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">专属教育记忆大模型</h3>
-                  <p className="text-white/80 text-sm">不是更大的模型，是更懂学习的模型</p>
+        <div className={`relative bg-white rounded-3xl shadow-xl overflow-hidden border-2 ${current.borderColor} transition-all duration-500`}>
+          
+          {/* 如果是记忆模型，展示特殊的6卡片布局 */}
+          {activeLayer === 1 ? (
+            <div className="p-6 lg:p-10">
+              {/* 记忆模型标题 */}
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-3 mb-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange to-sunny rounded-2xl flex items-center justify-center shadow-lg">
+                    <Brain className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="text-2xl font-bold text-navy">专属教育记忆大模型</h3>
+                    <p className="text-gray-500 text-sm">不是更大的模型，是更懂学习的模型</p>
+                  </div>
                 </div>
               </div>
-              <p className="mt-4 text-white/90 text-sm leading-relaxed max-w-3xl">
-                通用AI训练模型记住世界，MeetMind训练模型记住你孩子的学习旅程。
-                我们构建了专为教育场景设计的记忆系统，理解学习的本质规律。
-              </p>
-            </div>
 
-            {/* 6 Capabilities Grid */}
-            <div className="p-6">
-              {/* Capability Tabs */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {memoryCapabilities.map((cap, index) => (
-                  <button
+              {/* 6大核心能力 - 蜂窝式布局 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                {memoryFeatures.map((feature, index) => (
+                  <div
                     key={index}
-                    onClick={() => setActiveMemory(index)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                      activeMemory === index
-                        ? `${cap.color} text-white shadow-md`
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    onClick={() => setActiveMemoryCard(index)}
+                    className={`group relative p-5 rounded-2xl cursor-pointer transition-all duration-300 border-2 ${
+                      activeMemoryCard === index 
+                        ? `bg-gradient-to-br ${feature.gradient} border-${feature.color}/40 shadow-lg scale-[1.02]`
+                        : 'bg-gray-50/50 border-transparent hover:border-gray-200 hover:shadow-md'
                     }`}
                   >
-                    <cap.icon className="w-4 h-4" />
-                    <span className="hidden sm:inline">{cap.title}</span>
-                    <span className="sm:hidden">{index + 1}</span>
-                  </button>
+                    {/* Icon & Title */}
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all ${
+                        activeMemoryCard === index 
+                          ? `bg-${feature.color} shadow-md` 
+                          : 'bg-gray-200 group-hover:bg-gray-300'
+                      }`}>
+                        <feature.icon className={`w-5 h-5 ${activeMemoryCard === index ? 'text-white' : 'text-gray-600'}`} />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-navy text-sm">{feature.title}</h4>
+                        <p className="text-xs text-gray-500">{feature.tagline}</p>
+                      </div>
+                    </div>
+
+                    {/* Points - 展开显示 */}
+                    <div className={`space-y-1.5 overflow-hidden transition-all duration-300 ${
+                      activeMemoryCard === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
+                      {feature.points.map((point, i) => (
+                        <div key={i} className="flex items-start gap-2 text-xs text-gray-600">
+                          <span className={`text-${feature.color} mt-0.5`}>•</span>
+                          <span>{point}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Highlight */}
+                    <div className={`mt-3 pt-3 border-t transition-all duration-300 ${
+                      activeMemoryCard === index ? 'border-gray-200 opacity-100' : 'border-transparent opacity-0'
+                    }`}>
+                      <p className={`text-xs font-medium text-${feature.color}`}>
+                        💡 {feature.highlight}
+                      </p>
+                    </div>
+
+                    {/* 序号角标 */}
+                    <div className={`absolute top-3 right-3 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                      activeMemoryCard === index 
+                        ? `bg-${feature.color} text-white` 
+                        : 'bg-gray-200 text-gray-500'
+                    }`}>
+                      {index + 1}
+                    </div>
+                  </div>
                 ))}
               </div>
 
-              {/* Active Capability Detail */}
-              <div className={`rounded-2xl p-6 ${currentMemory.lightColor} border border-gray-100`}>
-                <div className="flex flex-col lg:flex-row gap-6">
-                  {/* Left - Title & Icon */}
-                  <div className="lg:w-1/3">
-                    <div className={`w-14 h-14 ${currentMemory.color} rounded-xl flex items-center justify-center mb-4`}>
-                      <currentMemory.icon className="w-7 h-7 text-white" />
-                    </div>
-                    <h4 className="text-xl font-bold text-navy mb-2">{currentMemory.title}</h4>
-                    <p className={`text-sm ${currentMemory.textColor} font-medium`}>
-                      "{currentMemory.tagline}"
+              {/* 底部总结 */}
+              <div className="bg-gradient-to-r from-navy to-navy/90 rounded-2xl p-6 text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-sunny/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4">
+                  <div className="text-4xl">🧠</div>
+                  <div className="flex-1 text-center sm:text-left">
+                    <p className="text-lg font-semibold mb-1">
+                      通用AI训练模型记住世界
                     </p>
-                  </div>
-
-                  {/* Right - Points */}
-                  <div className="lg:w-2/3">
-                    <ul className="space-y-3 mb-4">
-                      {currentMemory.points.map((point, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <CheckCircle2 className={`w-5 h-5 ${currentMemory.textColor} flex-shrink-0 mt-0.5`} />
-                          <span className="text-gray-700 text-sm">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    {/* Highlight */}
-                    <div className={`inline-flex items-center gap-2 px-4 py-2 ${currentMemory.color} text-white rounded-lg text-sm font-medium`}>
-                      <Sparkles className="w-4 h-4" />
-                      {currentMemory.highlight}
-                    </div>
+                    <p className="text-sunny font-bold text-xl">
+                      MeetMind训练模型记住你孩子的学习旅程
+                    </p>
                   </div>
                 </div>
               </div>
-
-              {/* Quick Navigation Dots */}
-              <div className="flex justify-center gap-2 mt-6">
-                {memoryCapabilities.map((cap, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveMemory(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      activeMemory === index ? `w-8 ${cap.color}` : 'bg-gray-300'
-                    }`}
-                  />
-                ))}
-              </div>
             </div>
-
-            {/* Summary Bar */}
-            <div className="bg-navy/5 px-6 py-4 border-t border-gray-100">
-              <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
-                <span className="flex items-center gap-2 text-navy">
-                  <BookOpen className="w-4 h-4 text-sky" />
-                  课堂原生
-                </span>
-                <span className="text-gray-300">|</span>
-                <span className="flex items-center gap-2 text-navy">
-                  <Clock className="w-4 h-4 text-orange" />
-                  科学复习
-                </span>
-                <span className="text-gray-300">|</span>
-                <span className="flex items-center gap-2 text-navy">
-                  <User className="w-4 h-4 text-mint" />
-                  个性画像
-                </span>
-                <span className="text-gray-300">|</span>
-                <span className="flex items-center gap-2 text-navy">
-                  <Link2 className="w-4 h-4 text-coral" />
-                  证据链
-                </span>
-                <span className="text-gray-300">|</span>
-                <span className="flex items-center gap-2 text-navy">
-                  <Target className="w-4 h-4 text-sunny" />
-                  考纲对齐
-                </span>
-                <span className="text-gray-300">|</span>
-                <span className="flex items-center gap-2 text-navy">
-                  <Scale className="w-4 h-4 text-navy" />
-                  动态平衡
-                </span>
-              </div>
-            </div>
-          </div>
-        ) : (
-          // 其他层 - 标准展示
-          <div className="bg-white rounded-2xl shadow-card overflow-hidden border border-gray-100">
+          ) : (
+            /* 其他层级的标准展示 */
             <div className="p-6 lg:p-10">
               <div className="flex flex-col lg:flex-row items-center gap-8">
                 {/* Left - Icon & Title */}
@@ -337,71 +270,70 @@ export default function TeamCredibility() {
                 </div>
 
                 {/* Right - Features Grid */}
-                {'features' in current && current.features && (
-                  <div className="flex-1 grid grid-cols-2 gap-4">
-                    {current.features.map((feature, i) => (
-                      <div
-                        key={i}
-                        className="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors border border-gray-100"
-                      >
-                        <div className="flex items-start gap-2">
-                          <Sparkles className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                            activeLayer === 0 ? 'text-sky' : 'text-mint'
-                          }`} />
-                          <div>
-                            <p className="font-semibold text-navy text-sm">{feature.label}</p>
-                            <p className="text-xs text-gray-500">{feature.desc}</p>
-                          </div>
+                <div className="flex-1 grid grid-cols-2 gap-4">
+                  {current.features.map((feature, i) => (
+                    <div
+                      key={i}
+                      className="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors border border-gray-100 hover:shadow-md"
+                    >
+                      <div className="flex items-start gap-2">
+                        <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${current.iconBg}`} />
+                        <div>
+                          <p className="font-semibold text-navy text-sm">{feature.label}</p>
+                          <p className="text-xs text-gray-500">{feature.desc}</p>
                         </div>
                       </div>
-                    ))}
-                  </div>
-                )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+          )}
 
-            {/* Navigation */}
-            <div className="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-gray-50">
-              <button
-                onClick={prevLayer}
-                className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-navy transition-colors"
-              >
-                <ChevronLeft className="w-5 h-5" />
-                <span className="text-sm">上一层</span>
-              </button>
+          {/* Navigation */}
+          <div className="flex items-center justify-between px-6 lg:px-10 py-4 border-t border-gray-100 bg-gray-50/50">
+            <button
+              onClick={prevLayer}
+              className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-navy transition-colors rounded-lg hover:bg-white"
+            >
+              <ChevronLeft className="w-5 h-5" />
+              <span className="text-sm hidden sm:inline">上一层</span>
+            </button>
 
-              <div className="flex gap-2">
-                {techLayers.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveLayer(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      activeLayer === index ? 'w-6 bg-navy' : 'bg-gray-300'
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={nextLayer}
-                className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-navy transition-colors"
-              >
-                <span className="text-sm">下一层</span>
-                <ChevronRight className="w-5 h-5" />
-              </button>
+            {/* Progress Dots */}
+            <div className="flex gap-2">
+              {techLayers.map((layer, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveLayer(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    activeLayer === index 
+                      ? `w-8 bg-gradient-to-r ${layer.color}` 
+                      : 'w-2 bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
             </div>
+
+            <button
+              onClick={nextLayer}
+              className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-navy transition-colors rounded-lg hover:bg-white"
+            >
+              <span className="text-sm hidden sm:inline">下一层</span>
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
-        )}
+        </div>
 
         {/* Team Badge */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
-          <div className="flex items-center gap-3 px-6 py-3 bg-navy rounded-full text-white">
+          <div className="flex items-center gap-3 px-6 py-3 bg-navy rounded-full text-white shadow-lg">
             <GraduationCap className="w-5 h-5 text-sunny" />
             <span className="font-medium">清华北大联合团队</span>
           </div>
           <div className="flex flex-wrap justify-center gap-2">
             {['远场语音识别', '教育NLP', '知识图谱', '隐私计算'].map((tech, i) => (
-              <span key={i} className="px-3 py-1.5 bg-white rounded-full text-xs text-navy border border-gray-200 shadow-sm">
+              <span key={i} className="px-3 py-1.5 bg-white rounded-full text-xs text-navy border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                 {tech}
               </span>
             ))}

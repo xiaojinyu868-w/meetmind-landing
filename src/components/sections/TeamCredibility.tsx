@@ -89,7 +89,7 @@ const memoryFeatures = [
   {
     icon: Target,
     title: '考纲精准对齐',
-    tagline: '学的每一分钟都指向考试',
+    tagline: '学的每一分钟都有的放矢',
     points: ['每个知识点锚定课程标准', '区分了解/理解/掌握/应用层级', '聚焦高频考点，过滤无效信息'],
     highlight: '不是"学得全"，是"学得准"',
     color: 'coral',

@@ -81,15 +81,14 @@ const categories: Category[] = [
         id: 'thinking',
         title: '思维引导',
         subtitle: '跟我一起理清思路，培养思维能力',
-        description: 'AI以苏格拉底式提问引导学生思考，从"听前预判"到"听中锚定"再到"听后回溯"，逐步培养分析问题的思维方法，而不只是给出答案。',
+        description: 'AI以学霸思维引导学生思考，例如，例子中就英语听力问题，从"听前预判"到"听中锚定"再到"听后回溯"，逐步培养分析问题的思维方法。',
         image: '/product-thinking.png',
         color: 'bg-pink-500',
         lightColor: 'bg-pink-500/10',
         borderColor: 'border-pink-500/30',
         Icon: Lightbulb,
         features: [
-          { icon: Sparkles, text: '三步思维法引导' },
-          { icon: Brain, text: '苏格拉底式提问' },
+          { icon: Sparkles, text: '学霸思维法引导' },
           { icon: MessageCircle, text: '思维方法可复用' },
         ]
       },

@@ -85,7 +85,7 @@ export default function PainPoints() {
           <div className="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-sunny/20 to-orange/20 rounded-2xl">
             <span className="text-2xl">🎯</span>
             <span className="text-navy font-semibold text-lg">
-              MeetMind：把漏掉的5%，变成提分的100%
+              MeetMind：把漏掉的5%，变成进步的100%
             </span>
           </div>
         </div>

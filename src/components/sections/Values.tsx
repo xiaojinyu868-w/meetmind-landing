@@ -105,7 +105,7 @@ export default function Values() {
                   <TrendingUp className="w-5 h-5 text-mint" />
                   <p className="text-3xl font-bold text-mint">+20</p>
                 </div>
-                <p className="text-sm text-white/80">平均提分</p>
+                <p className="text-sm text-white/80">学习进步</p>
               </div>
             </div>
           </div>

@@ -32,7 +32,7 @@ export default function Footer() {
               <span className="text-xl font-bold">MeetMind</span>
             </div>
             <p className="text-white/70 mb-6 max-w-sm">
-              首个"家校同频"智能助教系统，为每个孩子配备真正"听过课"的AI同桌。
+              首款真正基于"课堂记忆"的AI学习伴侣，为每个孩子配备真正"听过课"的智能同桌。
             </p>
             
             {/* Contact Info */}

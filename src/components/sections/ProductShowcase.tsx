@@ -1,83 +1,179 @@
 import { useState } from 'react'
-import { Mic, Brain, Users, GraduationCap, ChevronLeft, ChevronRight, Sparkles, Clock, MessageCircle, BarChart3 } from 'lucide-react'
+import { Mic, Brain, Users, GraduationCap, ChevronLeft, ChevronRight, Sparkles, Clock, MessageCircle, BarChart3, Zap, FileText } from 'lucide-react'
 
-const products = [
+type ProductItem = {
+  id: string
+  title: string
+  subtitle: string
+  description: string
+  image: string
+  color: string
+  lightColor: string
+  borderColor: string
+  Icon: React.ElementType
+  features: { icon: React.ElementType; text: string }[]
+}
+
+type Category = {
+  id: string
+  name: string
+  Icon: React.ElementType
+  color: string
+  products: ProductItem[]
+}
+
+const categories: Category[] = [
   {
-    id: 'recording',
-    title: '学生端 · 课堂录音',
-    subtitle: '上课一键录音，自动标记困惑',
-    description: '学生上课时打开录音，系统自动转录课堂内容。遇到听不懂的地方，轻点一下即可标记"困惑点"，课后AI会重点解答。',
-    image: '/product-recording.png',
+    id: 'student',
+    name: '学生端',
+    Icon: GraduationCap,
     color: 'bg-sky',
-    lightColor: 'bg-sky/10',
-    borderColor: 'border-sky/30',
-    Icon: Mic,
-    features: [
-      { icon: Clock, text: '实时录音转文字' },
-      { icon: Sparkles, text: '一键标记困惑点' },
-      { icon: MessageCircle, text: '边录边转，不漏重点' },
-    ]
-  },
-  {
-    id: 'review',
-    title: '学生端 · AI智能复习',
-    subtitle: 'AI同桌解答困惑，苏格拉底式引导',
-    description: '课后打开复习界面，AI会定位到标记的困惑点，用老师原话+AI引导帮你彻底搞懂。还能继续追问，直到真正理解。',
-    image: '/product-review.png',
-    color: 'bg-sunny',
-    lightColor: 'bg-sunny/10',
-    borderColor: 'border-sunny/30',
-    Icon: Brain,
-    features: [
-      { icon: Clock, text: '时间轴精准定位' },
-      { icon: Sparkles, text: 'AI逐句解析困惑' },
-      { icon: MessageCircle, text: '对话式深度辅导' },
+    products: [
+      {
+        id: 'recording',
+        title: '课堂录音',
+        subtitle: '上课一键录音，自动标记困惑',
+        description: '学生上课时打开录音，系统自动转录课堂内容。遇到听不懂的地方，轻点一下即可标记"困惑点"，课后AI会重点解答。',
+        image: '/product-recording.png',
+        color: 'bg-sky',
+        lightColor: 'bg-sky/10',
+        borderColor: 'border-sky/30',
+        Icon: Mic,
+        features: [
+          { icon: Clock, text: '实时录音转文字' },
+          { icon: Sparkles, text: '一键标记困惑点' },
+          { icon: MessageCircle, text: '边录边转，不漏重点' },
+        ]
+      },
+      {
+        id: 'highlights',
+        title: '精选回顾',
+        subtitle: '课堂重点一目了然，高效复习',
+        description: 'AI自动提取课堂精华片段，按重点和要点分类标记。可视化时间轴让你快速定位关键内容，支持按主题筛选，一键播放回顾。',
+        image: '/product-highlights.png',
+        color: 'bg-coral',
+        lightColor: 'bg-coral/10',
+        borderColor: 'border-coral/30',
+        Icon: Zap,
+        features: [
+          { icon: Clock, text: '时间轴精准定位' },
+          { icon: Sparkles, text: '重点要点自动标记' },
+          { icon: MessageCircle, text: '按主题筛选播放' },
+        ]
+      },
+      {
+        id: 'summary',
+        title: '智能摘要',
+        subtitle: '课堂概要秒懂，知识点清晰梳理',
+        description: 'AI智能生成课堂概要，自动提炼主要知识点并分层呈现。重点难点高亮标注，帮你快速掌握课堂核心内容，支持添加个人笔记。',
+        image: '/product-summary.png',
+        color: 'bg-purple-500',
+        lightColor: 'bg-purple-500/10',
+        borderColor: 'border-purple-500/30',
+        Icon: FileText,
+        features: [
+          { icon: Sparkles, text: '课堂概要自动生成' },
+          { icon: BarChart3, text: '知识点分层梳理' },
+          { icon: MessageCircle, text: '重点难点高亮标注' },
+        ]
+      },
+      {
+        id: 'review',
+        title: 'AI智能复习',
+        subtitle: 'AI同桌解答困惑，苏格拉底式引导',
+        description: '课后打开复习界面，AI会定位到标记的困惑点，用老师原话+AI引导帮你彻底搞懂。还能继续追问，直到真正理解。',
+        image: '/product-review.png',
+        color: 'bg-sunny',
+        lightColor: 'bg-sunny/10',
+        borderColor: 'border-sunny/30',
+        Icon: Brain,
+        features: [
+          { icon: Clock, text: '时间轴精准定位' },
+          { icon: Sparkles, text: 'AI逐句解析困惑' },
+          { icon: MessageCircle, text: '对话式深度辅导' },
+        ]
+      },
     ]
   },
   {
     id: 'parent',
-    title: '家长端 · 学习情况',
-    subtitle: '了解孩子每日学习，精准陪伴',
-    description: '家长可以看到孩子每天录了几节课、有多少困惑点、哪些已解决。AI还会生成今日学习总结和行动建议。',
-    image: '/product-parent.png',
-    color: 'bg-mint',
-    lightColor: 'bg-mint/10',
-    borderColor: 'border-mint/30',
+    name: '家长端',
     Icon: Users,
-    features: [
-      { icon: BarChart3, text: '学习数据一目了然' },
-      { icon: Sparkles, text: 'AI智能总结报告' },
-      { icon: MessageCircle, text: '困惑时刻详情查看' },
+    color: 'bg-mint',
+    products: [
+      {
+        id: 'parent-dashboard',
+        title: '学习情况',
+        subtitle: '了解孩子每日学习，精准陪伴',
+        description: '家长可以看到孩子每天录了几节课、有多少困惑点、哪些已解决。AI还会生成今日学习总结和行动建议。',
+        image: '/product-parent.png',
+        color: 'bg-mint',
+        lightColor: 'bg-mint/10',
+        borderColor: 'border-mint/30',
+        Icon: Users,
+        features: [
+          { icon: BarChart3, text: '学习数据一目了然' },
+          { icon: Sparkles, text: 'AI智能总结报告' },
+          { icon: MessageCircle, text: '困惑时刻详情查看' },
+        ]
+      },
     ]
   },
   {
     id: 'teacher',
-    title: '教师端 · 课后反馈',
-    subtitle: '掌握全班困惑热点，精准教学',
-    description: '教师可以看到全班学生的困惑热点TOP3，了解哪些知识点讲得不够清楚。一键生成课后反思报告，持续改进教学。',
-    image: '/product-teacher.png',
-    color: 'bg-orange',
-    lightColor: 'bg-orange/10',
-    borderColor: 'border-orange/30',
+    name: '教师端',
     Icon: GraduationCap,
-    features: [
-      { icon: BarChart3, text: '困惑热点TOP3' },
-      { icon: Sparkles, text: 'AI生成教学反思' },
-      { icon: Users, text: '实时学生数据' },
+    color: 'bg-orange',
+    products: [
+      {
+        id: 'teacher-feedback',
+        title: '课后反馈',
+        subtitle: '掌握全班困惑热点，精准教学',
+        description: '教师可以看到全班学生的困惑热点TOP3，了解哪些知识点讲得不够清楚。一键生成课后反思报告，持续改进教学。',
+        image: '/product-teacher.png',
+        color: 'bg-orange',
+        lightColor: 'bg-orange/10',
+        borderColor: 'border-orange/30',
+        Icon: GraduationCap,
+        features: [
+          { icon: BarChart3, text: '困惑热点TOP3' },
+          { icon: Sparkles, text: 'AI生成教学反思' },
+          { icon: Users, text: '实时学生数据' },
+        ]
+      },
     ]
   },
 ]
 
 export default function ProductShowcase() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const activeProduct = products[activeIndex]
+  const [activeCategoryIdx, setActiveCategoryIdx] = useState(0)
+  const [activeProductIdx, setActiveProductIdx] = useState(0)
+  
+  const activeCategory = categories[activeCategoryIdx]
+  const activeProduct = activeCategory.products[activeProductIdx]
+
+  const handleCategoryChange = (idx: number) => {
+    setActiveCategoryIdx(idx)
+    setActiveProductIdx(0)
+  }
 
   const nextProduct = () => {
-    setActiveIndex((prev) => (prev + 1) % products.length)
+    setActiveProductIdx((prev) => (prev + 1) % activeCategory.products.length)
   }
 
   const prevProduct = () => {
-    setActiveIndex((prev) => (prev - 1 + products.length) % products.length)
+    setActiveProductIdx((prev) => (prev - 1 + activeCategory.products.length) % activeCategory.products.length)
+  }
+
+  const getTextColor = (color: string) => {
+    switch(color) {
+      case 'bg-sky': return 'text-sky'
+      case 'bg-sunny': return 'text-sunny'
+      case 'bg-mint': return 'text-mint'
+      case 'bg-coral': return 'text-coral'
+      case 'bg-purple-500': return 'text-purple-500'
+      default: return 'text-orange'
+    }
   }
 
   return (
@@ -98,27 +194,49 @@ export default function ProductShowcase() {
           </p>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {products.map((product, index) => {
-            const Icon = product.Icon
+        {/* Category Navigation - Main Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-6">
+          {categories.map((category, idx) => {
+            const Icon = category.Icon
             return (
               <button
-                key={product.id}
-                onClick={() => setActiveIndex(index)}
-                className={`flex items-center gap-2 px-5 py-3 rounded-full font-medium transition-all duration-300 ${
-                  index === activeIndex
-                    ? `${product.color} text-white shadow-lg scale-105`
+                key={category.id}
+                onClick={() => handleCategoryChange(idx)}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                  idx === activeCategoryIdx
+                    ? `${category.color} text-white shadow-lg scale-105`
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
                 <Icon className="w-5 h-5" />
-                <span className="hidden sm:inline">{product.title.split(' · ')[1]}</span>
-                <span className="sm:hidden">{product.title.split(' · ')[1].slice(0, 4)}</span>
+                <span>{category.name}</span>
               </button>
             )
           })}
         </div>
+
+        {/* Sub Navigation - Product Tabs (only for categories with multiple products) */}
+        {activeCategory.products.length > 1 && (
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {activeCategory.products.map((product, idx) => {
+              const Icon = product.Icon
+              return (
+                <button
+                  key={product.id}
+                  onClick={() => setActiveProductIdx(idx)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    idx === activeProductIdx
+                      ? `${product.color} text-white shadow-md`
+                      : 'bg-gray-50 text-gray-500 hover:bg-gray-100 border border-gray-200'
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span>{product.title}</span>
+                </button>
+              )
+            })}
+          </div>
+        )}
 
         {/* Product Display */}
         <div className={`rounded-3xl p-6 lg:p-10 ${activeProduct.lightColor} border ${activeProduct.borderColor} transition-all duration-500`}>
@@ -144,7 +262,7 @@ export default function ProductShowcase() {
                 {activeProduct.features.map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-3">
                     <div className={`w-8 h-8 ${activeProduct.color}/20 rounded-lg flex items-center justify-center`}>
-                      <feature.icon className={`w-4 h-4 ${activeProduct.color === 'bg-sky' ? 'text-sky' : activeProduct.color === 'bg-sunny' ? 'text-sunny' : activeProduct.color === 'bg-mint' ? 'text-mint' : 'text-orange'}`} />
+                      <feature.icon className={`w-4 h-4 ${getTextColor(activeProduct.color)}`} />
                     </div>
                     <span className="text-gray-700">{feature.text}</span>
                   </div>
@@ -152,30 +270,32 @@ export default function ProductShowcase() {
               </div>
 
               {/* Navigation Arrows - Mobile */}
-              <div className="flex items-center justify-center gap-4 mt-8 lg:hidden">
-                <button
-                  onClick={prevProduct}
-                  className="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
-                >
-                  <ChevronLeft className="w-6 h-6 text-gray-600" />
-                </button>
-                <div className="flex gap-2">
-                  {products.map((_, idx) => (
-                    <div
-                      key={idx}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        idx === activeIndex ? activeProduct.color : 'bg-gray-300'
-                      }`}
-                    />
-                  ))}
+              {activeCategory.products.length > 1 && (
+                <div className="flex items-center justify-center gap-4 mt-8 lg:hidden">
+                  <button
+                    onClick={prevProduct}
+                    className="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+                  >
+                    <ChevronLeft className="w-6 h-6 text-gray-600" />
+                  </button>
+                  <div className="flex gap-2">
+                    {activeCategory.products.map((_, idx) => (
+                      <div
+                        key={idx}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          idx === activeProductIdx ? activeProduct.color : 'bg-gray-300'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <button
+                    onClick={nextProduct}
+                    className="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+                  >
+                    <ChevronRight className="w-6 h-6 text-gray-600" />
+                  </button>
                 </div>
-                <button
-                  onClick={nextProduct}
-                  className="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
-                >
-                  <ChevronRight className="w-6 h-6 text-gray-600" />
-                </button>
-              </div>
+              )}
             </div>
 
             {/* Right: Screenshot */}
@@ -189,20 +309,22 @@ export default function ProductShowcase() {
               </div>
 
               {/* Navigation Arrows - Desktop */}
-              <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 -left-5 -right-5 justify-between pointer-events-none">
-                <button
-                  onClick={prevProduct}
-                  className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-shadow pointer-events-auto"
-                >
-                  <ChevronLeft className="w-5 h-5 text-gray-600" />
-                </button>
-                <button
-                  onClick={nextProduct}
-                  className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-shadow pointer-events-auto"
-                >
-                  <ChevronRight className="w-5 h-5 text-gray-600" />
-                </button>
-              </div>
+              {activeCategory.products.length > 1 && (
+                <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 -left-5 -right-5 justify-between pointer-events-none">
+                  <button
+                    onClick={prevProduct}
+                    className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-shadow pointer-events-auto"
+                  >
+                    <ChevronLeft className="w-5 h-5 text-gray-600" />
+                  </button>
+                  <button
+                    onClick={nextProduct}
+                    className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-shadow pointer-events-auto"
+                  >
+                    <ChevronRight className="w-5 h-5 text-gray-600" />
+                  </button>
+                </div>
+              )}
 
               {/* Decorative Elements */}
               <div className={`absolute -top-4 -right-4 w-24 h-24 ${activeProduct.color}/20 rounded-full blur-2xl`} />
@@ -212,17 +334,19 @@ export default function ProductShowcase() {
         </div>
 
         {/* Bottom Indicator - Desktop */}
-        <div className="hidden lg:flex justify-center gap-3 mt-8">
-          {products.map((product, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                idx === activeIndex ? `w-8 ${product.color}` : 'w-2 bg-gray-300 hover:bg-gray-400'
-              }`}
-            />
-          ))}
-        </div>
+        {activeCategory.products.length > 1 && (
+          <div className="hidden lg:flex justify-center gap-3 mt-8">
+            {activeCategory.products.map((product, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveProductIdx(idx)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  idx === activeProductIdx ? `w-8 ${product.color}` : 'w-2 bg-gray-300 hover:bg-gray-400'
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )

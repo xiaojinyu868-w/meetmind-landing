@@ -5,6 +5,7 @@ const navLinks = [
   { name: '首页', href: '#home' },
   { name: '痛点', href: '#pain-points' },
   { name: '如何工作', href: '#workflow' },
+  { name: '产品', href: '#product' },
   { name: '价值', href: '#values' },
   { name: '用户故事', href: '#testimonials' },
 ]

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Mic, Brain, Users, GraduationCap, ChevronLeft, ChevronRight, Sparkles, Clock, MessageCircle, BarChart3, Zap, FileText } from 'lucide-react'
+import { Mic, Brain, Users, GraduationCap, ChevronLeft, ChevronRight, Sparkles, Clock, MessageCircle, BarChart3, Zap, FileText, Lightbulb } from 'lucide-react'
 
 type ProductItem = {
   id: string
@@ -75,6 +75,22 @@ const categories: Category[] = [
           { icon: Sparkles, text: '课堂概要自动生成' },
           { icon: BarChart3, text: '知识点分层梳理' },
           { icon: MessageCircle, text: '重点难点高亮标注' },
+        ]
+      },
+      {
+        id: 'thinking',
+        title: '思维引导',
+        subtitle: '跟我一起理清思路，培养思维能力',
+        description: 'AI以苏格拉底式提问引导学生思考，从"听前预判"到"听中锚定"再到"听后回溯"，逐步培养分析问题的思维方法，而不只是给出答案。',
+        image: '/product-thinking.png',
+        color: 'bg-pink-500',
+        lightColor: 'bg-pink-500/10',
+        borderColor: 'border-pink-500/30',
+        Icon: Lightbulb,
+        features: [
+          { icon: Sparkles, text: '三步思维法引导' },
+          { icon: Brain, text: '苏格拉底式提问' },
+          { icon: MessageCircle, text: '思维方法可复用' },
         ]
       },
       {
@@ -172,6 +188,7 @@ export default function ProductShowcase() {
       case 'bg-mint': return 'text-mint'
       case 'bg-coral': return 'text-coral'
       case 'bg-purple-500': return 'text-purple-500'
+      case 'bg-pink-500': return 'text-pink-500'
       default: return 'text-orange'
     }
   }

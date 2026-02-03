@@ -1,4 +1,5 @@
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { useState } from 'react'
+import { Mail, Phone, MapPin, X, ZoomIn } from 'lucide-react'
 
 const footerLinks = {
   product: [
@@ -19,6 +20,8 @@ const footerLinks = {
 }
 
 export default function Footer() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <footer className="bg-navy text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -82,15 +85,53 @@ export default function Footer() {
           {/* QR Code */}
           <div>
             <h4 className="font-semibold text-white mb-4">加入家长体验群</h4>
-            <div className="bg-white p-2 rounded-lg inline-block">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="group bg-white p-2 rounded-lg inline-block hover:shadow-lg transition-shadow duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunny focus-visible:ring-offset-2 relative"
+              aria-label="点击放大查看二维码"
+            >
               <img 
                 src="/vx.jpg" 
                 alt="微信扫码加入家长体验群" 
                 className="w-28 h-28 object-contain"
               />
-            </div>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg flex items-center justify-center">
+                <ZoomIn className="w-6 h-6 text-navy opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
+              </div>
+            </button>
             <p className="text-white/60 text-sm mt-2">微信扫码加入</p>
           </div>
+        </div>
+
+        {/* QR Code Modal */}
+        {isModalOpen && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => setIsModalOpen(false)}
+            role="dialog"
+            aria-modal="true"
+            aria-label="二维码大图"
+          >
+            <div 
+              className="relative bg-white rounded-2xl p-6 max-w-sm w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="absolute -top-3 -right-3 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
+                aria-label="关闭"
+              >
+                <X className="w-5 h-5 text-gray-600" aria-hidden="true" />
+              </button>
+              <img 
+                src="/vx.jpg" 
+                alt="微信扫码加入家长体验群" 
+                className="w-full h-auto rounded-lg"
+              />
+              <p className="text-center text-gray-600 mt-4 font-medium">微信扫码加入家长体验群</p>
+            </div>
+          </div>
+        )}
         </div>
 
         {/* Bottom Bar */}

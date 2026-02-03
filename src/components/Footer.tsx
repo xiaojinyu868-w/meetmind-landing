@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Mail, Phone, MapPin, X, ZoomIn } from 'lucide-react'
+import { Mail, MapPin, X, ZoomIn } from 'lucide-react'
 
 const footerLinks = {
   product: [
@@ -41,16 +41,12 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="space-y-3 text-sm text-white/60">
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4" />
-                <span>hello@meetmind.ai</span>
+                <Mail className="w-4 h-4" aria-hidden="true" />
+                <span>originedu@meetind.online</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                <span>400-888-8888</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" />
-                <span>北京市海淀区中关村科技园</span>
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <span>深圳市南山区粤海街道高新工业村R3-B栋01层</span>
               </div>
             </div>
           </div>
@@ -137,7 +133,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-white/50">
-            © 2026 MeetMind 原点教育 All Rights Reserved
+            © 2026 原点新途(深圳)创新科技有限公司 All Rights Reserved
           </p>
           <div className="flex gap-6 text-sm text-white/50">
             <a href="#" className="hover:text-sunny transition-colors">隐私政策</a>

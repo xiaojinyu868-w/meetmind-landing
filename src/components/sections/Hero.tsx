@@ -17,7 +17,7 @@ export default function Hero() {
             {/* 徽章标签 */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-sunny/20 border border-sunny/30 rounded-full mb-6">
               <Sparkles className="w-4 h-4 text-orange" />
-              <span className="text-sm font-medium text-navy">限量100名「优先体验官」招募中</span>
+              <span className="text-sm font-medium text-navy">新用户限时免费体验中</span>
             </div>
 
             {/* 主标题 */}
@@ -50,14 +50,14 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange hover:bg-orange/90 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               >
-                <span>申请「优先体验官」资格</span>
+                <span>免费试用 MeetMind</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
             {/* 小提示 */}
             <p className="mt-4 text-sm text-gray-500">
-              🎁 限量100名 · 免费体验全部功能 · 30秒即可开始
+              🎁 新用户免费体验全部功能 · 无需信用卡 · 30秒即可开始
             </p>
           </div>
 

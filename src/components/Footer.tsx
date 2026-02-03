@@ -130,14 +130,10 @@ export default function Footer() {
         )}
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/10 mt-12 pt-8 text-center">
           <p className="text-sm text-white/50">
             © 2026 原点新途(深圳)创新科技有限公司 All Rights Reserved
           </p>
-          <div className="flex gap-6 text-sm text-white/50">
-            <a href="#" className="hover:text-sunny transition-colors">隐私政策</a>
-            <a href="#" className="hover:text-sunny transition-colors">服务条款</a>
-          </div>
         </div>
       </div>
     </footer>

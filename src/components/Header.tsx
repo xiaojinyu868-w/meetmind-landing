@@ -24,7 +24,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-soft' : 'bg-transparent'
       }`}
     >
@@ -44,7 +44,7 @@ export default function Header() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-600 hover:text-navy font-medium transition-colors"
+                className="text-gray-600 hover:text-navy font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm cursor-pointer"
               >
                 {link.name}
               </a>
@@ -57,7 +57,7 @@ export default function Header() {
               href="https://meetmind.online"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2.5 bg-sunny hover:bg-sunny-dark text-navy font-semibold rounded-full transition-all duration-300 shadow-sm hover:shadow-md"
+              className="inline-block px-6 py-2.5 bg-sunny hover:bg-sunny-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 text-navy font-semibold rounded-full transition-[background-color,box-shadow] duration-300 shadow-sm hover:shadow-md cursor-pointer"
             >
               免费试用
             </a>
@@ -65,13 +65,15 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 cursor-pointer"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "关闭菜单" : "打开菜单"}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-navy" />
+              <X className="w-6 h-6 text-navy" aria-hidden="true" />
             ) : (
-              <Menu className="w-6 h-6 text-navy" />
+              <Menu className="w-6 h-6 text-navy" aria-hidden="true" />
             )}
           </button>
         </div>

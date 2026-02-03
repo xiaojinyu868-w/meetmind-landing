@@ -1,4 +1,4 @@
-import { HelpCircle, Bomb, RefreshCw } from 'lucide-react'
+import { HelpCircle, Bomb, RefreshCw, Target, Sparkles } from 'lucide-react'
 
 const painPoints = [
   {
@@ -39,8 +39,9 @@ export default function PainPoints() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-coral/10 text-coral-dark rounded-full text-sm font-medium mb-4">
-            😩 家长的真实困扰
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-coral/10 text-coral-dark rounded-full text-sm font-medium mb-4">
+            <HelpCircle className="w-4 h-4" aria-hidden="true" />
+            家长的真实困扰
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             这些场景，你一定不陌生
@@ -64,7 +65,7 @@ export default function PainPoints() {
               
               {/* Icon */}
               <div className={`w-14 h-14 rounded-2xl ${point.iconBg} flex items-center justify-center mb-6`}>
-                <point.icon className={`w-7 h-7 text-navy`} />
+                <point.icon className={`w-7 h-7 text-navy`} aria-hidden="true" />
               </div>
               
               {/* Content */}
@@ -73,7 +74,7 @@ export default function PainPoints() {
               
               {/* Solution Tag */}
               <div className={`inline-flex items-center gap-2 px-3 py-2 ${point.iconBg} rounded-lg`}>
-                <span className="text-xs">✨</span>
+                <Sparkles className="w-3.5 h-3.5 text-navy" aria-hidden="true" />
                 <span className="text-sm font-medium text-navy">{point.solution}</span>
               </div>
             </div>
@@ -83,7 +84,7 @@ export default function PainPoints() {
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-sunny/20 to-orange/20 rounded-2xl">
-            <span className="text-2xl">🎯</span>
+            <Target className="w-6 h-6 text-orange" aria-hidden="true" />
             <span className="text-navy font-semibold text-lg">
               MeetMind：把漏掉的5%，变成进步的100%
             </span>

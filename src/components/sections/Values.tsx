@@ -1,26 +1,29 @@
-import { Zap, Heart, Trophy, Clock, Smile, TrendingUp } from 'lucide-react'
+import { Zap, Trophy, Clock, Smile, TrendingUp, BookOpen, Heart, Award } from 'lucide-react'
 
 const childBenefits = [
   {
-    icon: '📚',
+    Icon: BookOpen,
     title: '少做题',
     description: '精准剔除你会的题，只做你不会的',
     highlight: '作业时间缩短 30%',
     color: 'bg-sky',
+    iconColor: 'text-sky',
   },
   {
-    icon: '😌',
+    Icon: Heart,
     title: '不挨骂',
     description: '遇到不懂的先问 AI 同桌，不用去问暴躁的爸妈',
     highlight: '亲子关系更和谐',
     color: 'bg-sunny',
+    iconColor: 'text-sunny',
   },
   {
-    icon: '🏆',
+    Icon: Award,
     title: '有面子',
     description: '成绩提上去了，还是自己"学"会的（不是抄答案）',
     highlight: '自信心显著提升',
     color: 'bg-mint',
+    iconColor: 'text-mint',
   },
 ]
 
@@ -31,7 +34,7 @@ export default function Values() {
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-sky/20 text-navy font-medium rounded-full text-sm mb-6">
-            <Smile className="w-4 h-4" />
+            <Smile className="w-4 h-4" aria-hidden="true" />
             孩子的真实感受
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6 leading-tight">
@@ -45,28 +48,33 @@ export default function Values() {
 
         {/* Child Benefits Cards */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
-          {childBenefits.map((benefit, index) => (
-            <div
-              key={index}
-              className={`relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 shadow-soft hover:shadow-card transition-all duration-300 hover:-translate-y-2 border border-gray-100 overflow-hidden`}
-            >
-              {/* 装饰背景 */}
-              <div className={`absolute top-0 right-0 w-32 h-32 ${benefit.color}/10 rounded-full -translate-y-1/2 translate-x-1/2`} />
-              
-              {/* Icon */}
-              <div className="text-5xl mb-6">{benefit.icon}</div>
+          {childBenefits.map((benefit, index) => {
+            const IconComponent = benefit.Icon
+            return (
+              <div
+                key={index}
+                className={`relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 shadow-soft hover:shadow-card transition-[box-shadow,transform] duration-300 motion-safe:hover:-translate-y-2 border border-gray-100 overflow-hidden`}
+              >
+                {/* 装饰背景 */}
+                <div className={`absolute top-0 right-0 w-32 h-32 ${benefit.color}/10 rounded-full -translate-y-1/2 translate-x-1/2`} />
+                
+                {/* Icon */}
+                <div className={`w-14 h-14 ${benefit.color}/20 rounded-2xl flex items-center justify-center mb-6`}>
+                  <IconComponent className={`w-7 h-7 ${benefit.iconColor}`} aria-hidden="true" />
+                </div>
 
-              {/* Content */}
-              <h3 className="text-2xl font-bold text-navy mb-3">{benefit.title}</h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">{benefit.description}</p>
-              
-              {/* Highlight Tag */}
-              <div className={`inline-flex items-center gap-2 px-4 py-2 ${benefit.color}/20 rounded-full`}>
-                <Zap className={`w-4 h-4 ${benefit.color === 'bg-sky' ? 'text-sky' : benefit.color === 'bg-sunny' ? 'text-sunny' : 'text-mint'}`} />
-                <span className="text-sm font-semibold text-navy">{benefit.highlight}</span>
+                {/* Content */}
+                <h3 className="text-2xl font-bold text-navy mb-3">{benefit.title}</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">{benefit.description}</p>
+                
+                {/* Highlight Tag */}
+                <div className={`inline-flex items-center gap-2 px-4 py-2 ${benefit.color}/20 rounded-full`}>
+                  <Zap className={`w-4 h-4 ${benefit.iconColor}`} aria-hidden="true" />
+                  <span className="text-sm font-semibold text-navy">{benefit.highlight}</span>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Result Promise */}

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Shield, Lock, UserCheck, CheckCircle, Users, TrendingUp, DollarSign, ChevronLeft, ChevronRight, GraduationCap, User, Heart, Lightbulb, Clock, BarChart3, AlertCircle, BookOpen, Frown, Smile, Brain, MessageCircle } from 'lucide-react'
+import { Shield, Lock, UserCheck, CheckCircle, Users, TrendingUp, DollarSign, ChevronLeft, ChevronRight, GraduationCap, User, Heart, Lightbulb, Clock, BarChart3, AlertCircle, BookOpen, Frown, Smile, Brain, MessageCircle, Sparkles, BarChart } from 'lucide-react'
 
 // 三个角色的数据
 const roles = [
@@ -138,10 +138,13 @@ export default function Testimonials() {
                 {/* 痛点 */}
                 <div className="flex items-start gap-3 mb-4 pb-4 border-b border-gray-100">
                   <div className="w-9 h-9 bg-coral/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-4 h-4 text-coral" />
+                    <item.icon className="w-4 h-4 text-coral" aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="text-xs text-coral font-medium mb-0.5">😥 痛点</p>
+                    <p className="text-xs text-coral font-medium mb-0.5 flex items-center gap-1">
+                      <Frown className="w-3 h-3" aria-hidden="true" />
+                      <span>痛点</span>
+                    </p>
                     <p className="text-gray-700 text-sm font-medium">{item.problem}</p>
                   </div>
                 </div>
@@ -149,10 +152,13 @@ export default function Testimonials() {
                 {/* 解决方案 */}
                 <div className="flex items-start gap-3">
                   <div className={`w-9 h-9 ${activeRole.lightColor} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                    <item.solutionIcon className={`w-4 h-4 ${activeRole.textColor}`} />
+                    <item.solutionIcon className={`w-4 h-4 ${activeRole.textColor}`} aria-hidden="true" />
                   </div>
                   <div>
-                    <p className={`text-xs ${activeRole.textColor} font-medium mb-0.5`}>✨ 解决</p>
+                    <p className={`text-xs ${activeRole.textColor} font-medium mb-0.5 flex items-center gap-1`}>
+                      <Sparkles className="w-3 h-3" aria-hidden="true" />
+                      <span>解决</span>
+                    </p>
                     <p className="text-navy text-sm font-semibold">{item.solution}</p>
                   </div>
                 </div>
@@ -164,7 +170,10 @@ export default function Testimonials() {
           <div className="grid lg:grid-cols-2 gap-6">
             {/* Stats */}
             <div className="bg-white rounded-2xl p-6 shadow-soft">
-              <p className="text-sm text-gray-500 mb-4 font-medium">📊 数据说话</p>
+              <p className="text-sm text-gray-500 mb-4 font-medium flex items-center gap-1.5">
+                <BarChart className="w-4 h-4" aria-hidden="true" />
+                <span>数据说话</span>
+              </p>
               <div className="flex gap-8">
                 {activeRole.stats.map((stat, idx) => (
                   <div key={idx}>
@@ -201,9 +210,10 @@ export default function Testimonials() {
           <div className="flex justify-center items-center gap-4 mt-8">
             <button
               onClick={prevRole}
-              className="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+              className="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 cursor-pointer"
+              aria-label="上一个角色"
             >
-              <ChevronLeft className="w-5 h-5 text-gray-600" />
+              <ChevronLeft className="w-5 h-5 text-gray-600" aria-hidden="true" />
             </button>
             <div className="flex gap-2">
               {roles.map((role, idx) => (
@@ -218,9 +228,10 @@ export default function Testimonials() {
             </div>
             <button
               onClick={nextRole}
-              className="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+              className="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 cursor-pointer"
+              aria-label="下一个角色"
             >
-              <ChevronRight className="w-5 h-5 text-gray-600" />
+              <ChevronRight className="w-5 h-5 text-gray-600" aria-hidden="true" />
             </button>
           </div>
         </div>

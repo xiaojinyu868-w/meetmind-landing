@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, FileText, MessageCircle, BarChart3, Shield, Lock } from 'lucide-react'
+import { ArrowRight, BookOpen, FileText, MessageCircle, BarChart3, Shield, Lock, LockKeyhole, FileCheck, Lightbulb, Users, Trash2 } from 'lucide-react'
 
 const steps = [
   {
@@ -6,7 +6,8 @@ const steps = [
     title: '专属记忆库',
     subtitle: 'AI胶囊伴读模式',
     description: '它像一个安静的学霸同桌，帮孩子把课堂上的重点、难点、老师的强调点，存入专属的"私有记忆库"。',
-    highlight: '🔒 数据私有，只属于你的孩子',
+    HighlightIcon: LockKeyhole,
+    highlightText: '数据私有，只属于你的孩子',
     color: 'bg-sky',
     Icon: BookOpen,
   },
@@ -15,7 +16,8 @@ const steps = [
     title: '自动生成"学霸笔记"',
     subtitle: '不需要回听45分钟',
     description: 'AI自动提取出当天的3个考点和1个易错坑，比孩子自己记的笔记还清晰。',
-    highlight: '📝 考点+易错坑，一目了然',
+    HighlightIcon: FileCheck,
+    highlightText: '考点+易错坑，一目了然',
     color: 'bg-sunny',
     Icon: FileText,
   },
@@ -24,7 +26,8 @@ const steps = [
     title: '同桌悄悄话',
     subtitle: '靶向查漏补缺',
     description: '做作业卡住了？MeetMind调出白天老师讲这道题时的原话，给孩子一个"神提示"，而不是直接给答案。',
-    highlight: '💡 启发思考，不是抄答案',
+    HighlightIcon: Lightbulb,
+    highlightText: '启发思考，不是抄答案',
     color: 'bg-mint',
     Icon: MessageCircle,
   },
@@ -33,7 +36,8 @@ const steps = [
     title: '家长看板',
     subtitle: '一页清晰报告',
     description: '每天一份学情报告：今天学了什么、哪里卡住了、建议怎么复习。再也不用问"今天老师讲了啥"。',
-    highlight: '📊 知道该看什么，辅导有据可依',
+    HighlightIcon: BarChart3,
+    highlightText: '知道该看什么，辅导有据可依',
     color: 'bg-orange',
     Icon: BarChart3,
   },
@@ -69,19 +73,22 @@ export default function Workflow() {
               {steps.map((step, index) => (
                 <div key={step.step} className="relative">
                   {/* Step Card */}
-                  <div className="bg-white rounded-3xl p-6 shadow-soft hover:shadow-card transition-all duration-300 hover:-translate-y-2 border border-gray-100 h-full">
+                  <div className="bg-white rounded-3xl p-6 shadow-soft hover:shadow-card transition-[box-shadow,transform] duration-300 motion-safe:hover:-translate-y-2 border border-gray-100 h-full">
                     {/* Step Number & Icon */}
                     <div className="flex items-center gap-3 mb-4">
                       <div className={`w-12 h-12 ${step.color} rounded-xl flex items-center justify-center text-white font-bold text-lg`}>
                         {step.step}
                       </div>
-                      <step.Icon className="w-6 h-6 text-gray-400" />
+                      <step.Icon className="w-6 h-6 text-gray-400" aria-hidden="true" />
                     </div>
 
                     <h3 className="text-lg font-bold text-navy mb-1">{step.title}</h3>
                     <p className="text-sm text-gray-500 mb-3">{step.subtitle}</p>
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">{step.description}</p>
-                    <p className="text-sm font-medium text-orange">{step.highlight}</p>
+                    <p className="text-sm font-medium text-orange flex items-center gap-1.5">
+                      <step.HighlightIcon className="w-4 h-4" aria-hidden="true" />
+                      <span>{step.highlightText}</span>
+                    </p>
                   </div>
 
                   {/* Arrow (except last) */}
@@ -115,7 +122,10 @@ export default function Workflow() {
                 <h3 className="font-bold text-navy mb-1">{step.title}</h3>
                 <p className="text-xs text-gray-500 mb-2">{step.subtitle}</p>
                 <p className="text-gray-600 text-sm mb-2">{step.description}</p>
-                <p className="text-sm font-medium text-orange">{step.highlight}</p>
+                <p className="text-sm font-medium text-orange flex items-center gap-1.5">
+                  <step.HighlightIcon className="w-4 h-4" aria-hidden="true" />
+                  <span>{step.highlightText}</span>
+                </p>
               </div>
             </div>
           ))}
@@ -139,15 +149,15 @@ export default function Workflow() {
             
             <div className="flex gap-6 md:ml-auto">
               <div className="text-center">
-                <Lock className="w-6 h-6 text-sunny mx-auto mb-1" />
+                <Lock className="w-6 h-6 text-sunny mx-auto mb-1" aria-hidden="true" />
                 <p className="text-xs text-white/70">端到端加密</p>
               </div>
               <div className="text-center">
-                <span className="text-2xl">👨‍👩‍👧</span>
+                <Users className="w-6 h-6 text-sunny mx-auto mb-1" aria-hidden="true" />
                 <p className="text-xs text-white/70">家长完全控制</p>
               </div>
               <div className="text-center">
-                <span className="text-2xl">🗑️</span>
+                <Trash2 className="w-6 h-6 text-sunny mx-auto mb-1" aria-hidden="true" />
                 <p className="text-xs text-white/70">随时可删除</p>
               </div>
             </div>

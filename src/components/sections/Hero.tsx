@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight, Sparkles, Gift, Lightbulb } from 'lucide-react'
 
 export default function Hero() {
   return (
@@ -16,7 +16,7 @@ export default function Hero() {
           <div className="relative z-10 text-center lg:text-left">
             {/* 徽章标签 */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-sunny/20 border border-sunny/30 rounded-full mb-6">
-              <Sparkles className="w-4 h-4 text-orange" />
+              <Sparkles className="w-4 h-4 text-orange" aria-hidden="true" />
               <span className="text-sm font-medium text-navy">新用户限时免费体验中</span>
             </div>
 
@@ -48,16 +48,17 @@ export default function Hero() {
                 href="https://meetmind.online" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange hover:bg-orange/90 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange hover:bg-orange/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-[transform,shadow,background-color] duration-300 motion-safe:hover:-translate-y-1 cursor-pointer"
               >
                 <span>免费试用 MeetMind</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform motion-safe:duration-200" aria-hidden="true" />
               </a>
             </div>
 
             {/* 小提示 */}
-            <p className="mt-4 text-sm text-gray-500">
-              🎁 新用户免费体验全部功能 · 30秒即可开始
+            <p className="mt-4 text-sm text-gray-500 flex items-center gap-1.5">
+              <Gift className="w-4 h-4 text-orange" aria-hidden="true" />
+              <span>新用户免费体验全部功能 · 30秒即可开始</span>
             </p>
           </div>
 
@@ -100,8 +101,9 @@ export default function Hero() {
 
               {/* AI对话气泡 */}
               <div className="absolute top-1/4 -left-4 sm:-left-8 bg-sunny rounded-2xl rounded-bl-sm p-4 shadow-lg max-w-[180px] sm:max-w-[220px]">
-                <p className="text-sm text-navy font-medium">
-                  💡 "这道题老师白天讲过，我帮你回忆一下..."
+                <p className="text-sm text-navy font-medium flex items-start gap-1.5">
+                  <Lightbulb className="w-4 h-4 text-navy flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span>"这道题老师白天讲过，我帮你回忆一下..."</span>
                 </p>
               </div>
             </div>

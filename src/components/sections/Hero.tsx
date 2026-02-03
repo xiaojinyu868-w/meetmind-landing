@@ -57,7 +57,7 @@ export default function Hero() {
 
             {/* 小提示 */}
             <p className="mt-4 text-sm text-gray-500">
-              🎁 新用户免费体验全部功能 · 无需信用卡 · 30秒即可开始
+              🎁 新用户免费体验全部功能 · 30秒即可开始
             </p>
           </div>
 

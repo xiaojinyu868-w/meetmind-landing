@@ -84,7 +84,7 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-4">加入家长体验群</h4>
             <div className="bg-white p-2 rounded-lg inline-block">
               <img 
-                src="/images/qrcode.png" 
+                src="/vx.jpg" 
                 alt="微信扫码加入家长体验群" 
                 className="w-28 h-28 object-contain"
               />

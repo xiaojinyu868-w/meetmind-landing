@@ -128,7 +128,6 @@ export default function Footer() {
             </div>
           </div>
         )}
-        </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">

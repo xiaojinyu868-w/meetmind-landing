@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, TrendingUp } from 'lucide-react'
+import { Menu, X, HelpCircle } from 'lucide-react'
 
 const navLinks = [
   { name: '首页', href: '#home' },
@@ -61,8 +61,8 @@ export default function Header() {
               }}
               className="flex items-center gap-1.5 text-gray-600 hover:text-navy font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm cursor-pointer"
             >
-              <TrendingUp className="w-4 h-4" />
-              <span>投资</span>
+              <HelpCircle className="w-4 h-4" />
+              <span>Q&A</span>
             </a>
             <a
               href="https://meetmind.online"

@@ -71,13 +71,6 @@ function App() {
         <Testimonials />
       </main>
       <Footer />
-      
-      <button
-        onClick={() => setPageState('qa-list')}
-        className="fixed bottom-6 right-6 z-50 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-full shadow-lg hover:bg-indigo-700 transition-colors"
-      >
-        投资人Q&A
-      </button>
     </div>
   )
 }

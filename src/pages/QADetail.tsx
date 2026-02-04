@@ -5,7 +5,8 @@ import {
   CheckCircle2, Lock, BarChart3, School, ArrowRight,
   Box, Hexagon, Quote,
   Mic, Home, MessageSquare, Clock,
-  ArrowLeft, FileText, Construction
+  ArrowLeft, FileText, Construction,
+  Globe, ChevronUp, ChevronDown
 } from 'lucide-react';
 
 interface QADetailProps {

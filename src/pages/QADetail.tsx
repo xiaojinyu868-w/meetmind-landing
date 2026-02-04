@@ -430,6 +430,257 @@ function Q1Content() {
   );
 }
 
+// 问题二完整内容 - 竞争壁垒
+function Q2Content() {
+  const [expandedItem, setExpandedItem] = useState<number | null>(0);
+
+  return (
+    <>
+      {/* 核心壁垒 */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8">核心壁垒：语境垄断与技术深度</h2>
+
+          {/* 数据壁垒 */}
+          <div className="mb-12 sm:mb-16">
+            <div className="flex items-center gap-3 mb-4 sm:mb-6">
+              <div className="h-10 w-10 sm:h-12 sm:w-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center">
+                <Lock className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold">数据壁垒：语境垄断</h3>
+            </div>
+            
+            <div className="bg-[#111] rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-gray-800">
+              <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-6">
+                通用大模型（如豆包、元宝）拥有海量的全网知识，但它们<Highlight color="red">无法进入公立校课堂</Highlight>，因此缺乏<Highlight>"私有上下文数据"</Highlight>。我们通过分体式硬件，垄断了<Highlight>"这堂课、这位老师、这个知识点"</Highlight>的原生语境。
+              </p>
+              
+              {/* 对比卡片 */}
+              <div className="grid md:grid-cols-2 gap-3 sm:gap-4">
+                <div className="bg-red-950/20 border border-red-900/50 rounded-xl p-4 sm:p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Globe className="h-4 w-4 sm:h-5 sm:w-5 text-red-400" />
+                    <h4 className="text-red-400 font-semibold text-sm sm:text-base">通用大模型</h4>
+                  </div>
+                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                    "勾股定理的定义是：在直角三角形中，两条直角边的平方和等于斜边的平方..."
+                  </p>
+                  <p className="text-red-400/70 text-xs mt-2">—— 通用的、教科书式的回答</p>
+                </div>
+                
+                <div className="bg-green-950/20 border border-green-900/50 rounded-xl p-4 sm:p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Mic className="h-4 w-4 sm:h-5 sm:w-5 text-green-400" />
+                    <h4 className="text-green-400 font-semibold text-sm sm:text-base">MeetMind 私有语境</h4>
+                  </div>
+                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                    "王老师今天上午讲梯子靠墙那个例子时，特别提醒要注意'地面是否水平'这个易错点，还展示了3种常见错误解法..."
+                  </p>
+                  <p className="text-green-400/70 text-xs mt-2">—— 专属的、课堂原生的回放</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 技术壁垒 */}
+          <div>
+            <div className="flex items-center gap-3 mb-4 sm:mb-6">
+              <div className="h-10 w-10 sm:h-12 sm:w-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+                <Cpu className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold">技术壁垒：语境流引擎</h3>
+            </div>
+            
+            <div className="bg-[#111] rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-gray-800">
+              <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-4 sm:mb-6">
+                依托<Highlight color="blue">清华大学多模态实验室（CVML）</Highlight>的技术积淀，我们不只是做录音，而是做<Highlight>"认知诊断"</Highlight>。通过长上下文理解技术，将非结构化的语音转化为结构化的知识图谱，这种针对课堂场景的深度打磨，是通用模型在短期内难以在细分垂直领域超越的。
+              </p>
+              
+              <div className="grid sm:grid-cols-3 gap-3 sm:gap-4">
+                {[
+                  { title: '声纹锁定', desc: '40人嘈杂教室精准提取老师音轨', color: 'blue' },
+                  { title: '长上下文理解', desc: '整节课连续语义分析，非碎片化', color: 'amber' },
+                  { title: '知识图谱构建', desc: '将语音转化为结构化认知网络', color: 'green' }
+                ].map((item, i) => (
+                  <div key={i} className="bg-[#0a0a0a] rounded-xl p-3 sm:p-4 border border-gray-800">
+                    <h4 className={`font-semibold text-sm sm:text-base mb-1 sm:mb-2 ${
+                      item.color === 'blue' ? 'text-blue-400' : item.color === 'amber' ? 'text-amber-400' : 'text-green-400'
+                    }`}>{item.title}</h4>
+                    <p className="text-gray-500 text-xs sm:text-sm">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 差异化竞争 */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8">差异化竞争：为什么不是他们？</h2>
+          
+          <div className="space-y-3 sm:space-y-4">
+            {/* 大厂 */}
+            <div className={`rounded-xl sm:rounded-2xl border transition-all ${
+              expandedItem === 0 ? 'border-gray-700 bg-[#111]' : 'border-gray-800 hover:border-gray-700'
+            }`}>
+              <button
+                onClick={() => setExpandedItem(expandedItem === 0 ? null : 0)}
+                className="w-full p-4 sm:p-6 text-left"
+              >
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold">为什么不是大厂？</h3>
+                    <p className="text-blue-400 text-xs sm:text-sm">字节、网易、讯飞等</p>
+                  </div>
+                  {expandedItem === 0 ? (
+                    <ChevronUp className="h-5 w-5 sm:h-6 sm:w-6 text-gray-500" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6 text-gray-500" />
+                  )}
+                </div>
+              </button>
+              
+              {expandedItem === 0 && (
+                <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+                  <div className="border-t border-gray-800 pt-4 sm:pt-6 space-y-4 sm:space-y-6">
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 sm:mb-2 text-sm sm:text-base">路径依赖</h4>
+                      <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">传统大厂更倾向于做"标准化"的普适产品（如录播课、题库），很难深入到每一个真实的课堂"毛细血管"里去做极其琐碎的私有数据采集。</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 sm:mb-2 text-sm sm:text-base">组织基因</h4>
+                      <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">大厂的教育业务往往作为内部的一个板块，缺乏从底层重新定义教育入口的"破坏性创新"动力。而我们是 AI 原生组织，产品从第一天起就是为了重塑家校链路。</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* 传统硬件商 */}
+            <div className={`rounded-xl sm:rounded-2xl border transition-all ${
+              expandedItem === 1 ? 'border-gray-700 bg-[#111]' : 'border-gray-800 hover:border-gray-700'
+            }`}>
+              <button
+                onClick={() => setExpandedItem(expandedItem === 1 ? null : 1)}
+                className="w-full p-4 sm:p-6 text-left"
+              >
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-700 flex items-center justify-center">
+                    <Box className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold">为什么不是传统硬件商？</h3>
+                    <p className="text-green-400 text-xs sm:text-sm">录音笔、学习机厂商</p>
+                  </div>
+                  {expandedItem === 1 ? (
+                    <ChevronUp className="h-5 w-5 sm:h-6 sm:w-6 text-gray-500" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6 text-gray-500" />
+                  )}
+                </div>
+              </button>
+              
+              {expandedItem === 1 && (
+                <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+                  <div className="border-t border-gray-800 pt-4 sm:pt-6 space-y-4 sm:space-y-6">
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 sm:mb-2 text-sm sm:text-base">工具 vs 操作系统</h4>
+                      <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">录音笔厂商卖的是"存储工具"，卖完即止；传统学习机依赖的是"旧题库"，存在路径依赖。</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 sm:mb-2 text-sm sm:text-base">定位差异</h4>
+                      <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">我们做的是应用操作系统 + 产品矩阵。硬件只是我们获取数据的"探针"，我们的核心价值是后端基于语境的 AI 辅导能力，这是纯硬件厂商无法跨越的软件鸿沟。</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 真正的对手 */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8">真正的对手是谁？</h2>
+          
+          <div className="bg-gradient-to-br from-amber-500/10 via-[#111] to-[#111] rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-amber-500/30">
+            <div className="flex items-center gap-3 mb-4 sm:mb-6">
+              <div className="h-10 w-10 sm:h-12 sm:w-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+                <Target className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold">无数本地教培机构和个体家教</h3>
+            </div>
+            
+            <QuoteBlock>
+              我们不是要取代他们，而是通过提供"课堂洞察系统"来赋能他们，让他们从"盲目辅导"变为"靶向辅导"，将对手变为生态合作伙伴。
+            </QuoteBlock>
+            
+            <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mt-6">
+              <div className="bg-red-950/20 rounded-xl p-4 border border-red-900/50">
+                <h4 className="text-red-400 font-semibold mb-2 flex items-center gap-2 text-sm sm:text-base">
+                  <Zap className="h-4 w-4" />
+                  传统模式
+                </h4>
+                <ul className="text-gray-400 text-xs sm:text-sm space-y-1">
+                  <li>• 家长描述："孩子数学不好"</li>
+                  <li>• 家教盲目：从第1章开始补</li>
+                  <li>• 效率低下：重复学校内容</li>
+                </ul>
+              </div>
+              
+              <div className="bg-green-950/20 rounded-xl p-4 border border-green-900/50">
+                <h4 className="text-green-400 font-semibold mb-2 flex items-center gap-2 text-sm sm:text-base">
+                  <Users className="h-4 w-4" />
+                  MeetMind 赋能
+                </h4>
+                <ul className="text-gray-400 text-xs sm:text-sm space-y-1">
+                  <li>• 数据洞察："王老师讲的函数图像没听懂"</li>
+                  <li>• 靶向辅导：精准补第3.2节的例题</li>
+                  <li>• 效率提升：与学校进度无缝衔接</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 壁垒总结 */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8">壁垒护城河</h2>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
+            {[
+              { icon: Lock, title: '数据垄断', desc: '课堂私有语境' },
+              { icon: Cpu, title: '技术壁垒', desc: '语境流引擎' },
+              { icon: Shield, title: '准入门槛', desc: '合规进校能力' },
+              { icon: Users, title: '生态网络', desc: 'B2B2C飞轮' }
+            ].map((item, i) => (
+              <div key={i} className="bg-[#111] rounded-xl p-3 sm:p-4 border border-gray-800">
+                <item.icon className="h-6 w-6 sm:h-8 sm:w-8 text-amber-500 mx-auto mb-2" />
+                <h4 className="font-semibold text-white text-sm sm:text-base">{item.title}</h4>
+                <p className="text-gray-500 text-xs sm:text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 sm:p-6">
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+              我们的壁垒不是单点技术，而是<Highlight>"数据垄断 + 技术深度 + 准入门槛 + 生态网络"</Highlight>的四位一体护城河。
+            </p>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 // 占位内容 - 其他问题
 function PlaceholderContent({ categoryId, questionId }: { categoryId: string | null; questionId: string | null }) {
   const categoryNames: Record<string, string> = {
@@ -469,6 +720,8 @@ function PlaceholderContent({ categoryId, questionId }: { categoryId: string | n
 export default function QADetail({ categoryId, questionId, onBackToList, onBackToHome }: QADetailProps) {
   // 判断是否显示问题一的完整内容
   const isQ1 = categoryId === 'strategy' && questionId === 'q1-1';
+  // 判断是否显示问题二的内容（竞争壁垒）
+  const isQ2 = categoryId === 'barrier' && questionId === 'q2-1';
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
@@ -552,7 +805,13 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
       </section>
 
       {/* 问题内容 - 条件渲染 */}
-      {isQ1 ? <Q1Content /> : <PlaceholderContent categoryId={categoryId} questionId={questionId} />}
+      {isQ1 ? (
+        <Q1Content />
+      ) : isQ2 ? (
+        <Q2Content />
+      ) : (
+        <PlaceholderContent categoryId={categoryId} questionId={questionId} />
+      )}
 
       {/* 底部导航 */}
       <section className="py-12 px-6 border-t border-gray-800">

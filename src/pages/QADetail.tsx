@@ -522,7 +522,7 @@ function Q2Content() {
                   },
                   { 
                     title: '专属教育记忆大模型', 
-                    desc: '长上下文理解+知识图谱，整节课连续语义分析，将语音转化为结构化认知网络，实现"听得懂"',
+                    desc: '不是更大的模型，是更懂学习的模型。真正听过这堂课的AI',
                     icon: Cpu,
                     color: 'amber' 
                   },
@@ -548,6 +548,116 @@ function Q2Content() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 专属教育记忆大模型 - 详细模块 */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center gap-3 mb-4 sm:mb-6">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+              <Cpu className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+            </div>
+            <div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold">专属教育记忆大模型</h3>
+              <p className="text-amber-400 text-xs sm:text-sm">不是更大的模型，是更懂学习的模型</p>
+            </div>
+          </div>
+          
+          <div className="bg-[#111] rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-gray-800">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              {[
+                { 
+                  num: '1',
+                  title: '课堂原生记忆', 
+                  subtitle: '真正听过这堂课的AI',
+                  points: [
+                    '100%还原老师讲解、强调、比喻',
+                    '秒级精准回溯：03:24 老师这样解释...',
+                    '不是题库检索，是今天课堂的检索'
+                  ],
+                  highlight: '别人给"标准答案"，我们给"老师怎么教的"'
+                },
+                { 
+                  num: '2',
+                  title: '科学复习引擎', 
+                  subtitle: '在最佳时机推送最需要的内容',
+                  points: [
+                    '基于艾宾浩斯遗忘曲线',
+                    '智能识别知识薄弱点',
+                    '个性化推送复习内容'
+                  ]
+                },
+                { 
+                  num: '3',
+                  title: '个性化学生画像', 
+                  subtitle: '千人千面的认知档案',
+                  points: [
+                    '记录每个学生的理解路径',
+                    '识别个人思维模式',
+                    '构建专属认知模型'
+                  ]
+                },
+                { 
+                  num: '4',
+                  title: '知识生命周期 & 证据链', 
+                  subtitle: '每个答案都有据可查',
+                  points: [
+                    '完整记录知识获取过程',
+                    '建立可追溯的证据链',
+                    '确保辅导有据可依'
+                  ]
+                },
+                { 
+                  num: '5',
+                  title: '考纲精准对齐', 
+                  subtitle: '学的每一分钟都指向考试',
+                  points: [
+                    '自动对齐课程标准',
+                    '精准定位考点覆盖',
+                    '高效利用学习时间'
+                  ]
+                },
+                { 
+                  num: '6',
+                  title: '认知动态平衡', 
+                  subtitle: '精准做加法，果断做减法',
+                  points: [
+                    '已掌握内容自动减量',
+                    '薄弱环节智能加强',
+                    '动态调整学习负荷'
+                  ]
+                }
+              ].map((item, i) => (
+                <div key={i} className="bg-[#0a0a0a] rounded-xl p-4 sm:p-5 border border-gray-800 hover:border-amber-500/30 transition-colors">
+                  <div className="flex items-start justify-between mb-3">
+                    <h4 className="font-semibold text-white text-sm sm:text-base">{item.title}</h4>
+                    <span className="text-xs text-gray-600 bg-gray-800 px-2 py-0.5 rounded-full">{item.num}</span>
+                  </div>
+                  <p className="text-amber-400/80 text-xs sm:text-sm mb-3">{item.subtitle}</p>
+                  <ul className="space-y-1.5">
+                    {item.points.map((point, j) => (
+                      <li key={j} className="text-gray-500 text-xs sm:text-sm flex items-start gap-2">
+                        <span className="text-amber-500 mt-1">•</span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {item.highlight && (
+                    <div className="mt-3 pt-3 border-t border-gray-800">
+                      <p className="text-amber-400 text-xs sm:text-sm italic">{item.highlight}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 差异化竞争 */}
             </div>
           </div>
         </div>

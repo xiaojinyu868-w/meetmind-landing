@@ -497,18 +497,54 @@ function Q2Content() {
               <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-4 sm:mb-6">
                 依托<Highlight color="blue">清华大学多模态实验室（CVML）</Highlight>的技术积淀，我们不只是做录音，而是做<Highlight>"认知诊断"</Highlight>。通过长上下文理解技术，将非结构化的语音转化为结构化的知识图谱，这种针对课堂场景的深度打磨，是通用模型在短期内难以在细分垂直领域超越的。
               </p>
+
+              {/* 认知-行动闭环 */}
+              <div className="bg-gradient-to-r from-blue-500/10 via-amber-500/10 to-green-500/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-800 mb-4 sm:mb-6">
+                <h4 className="text-center text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">
+                  完整的<Highlight>认知-行动</Highlight>闭环
+                </h4>
+                <div className="flex items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm mb-4 sm:mb-6">
+                  <span className="text-blue-400 font-medium">"听得到"</span>
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                  <span className="text-amber-400 font-medium">"听得懂"</span>
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                  <span className="text-green-400 font-medium">"说得对"</span>
+                </div>
+              </div>
               
               <div className="grid sm:grid-cols-3 gap-3 sm:gap-4">
                 {[
-                  { title: '声纹锁定', desc: '40人嘈杂教室精准提取老师音轨', color: 'blue' },
-                  { title: '长上下文理解', desc: '整节课连续语义分析，非碎片化', color: 'amber' },
-                  { title: '知识图谱构建', desc: '将语音转化为结构化认知网络', color: 'green' }
+                  { 
+                    title: '全息课堂高精度感知', 
+                    desc: '声纹锁定+远场拾音，40人嘈杂教室精准提取老师音轨，实现"听得到"',
+                    icon: Mic,
+                    color: 'blue' 
+                  },
+                  { 
+                    title: '专属教育记忆大模型', 
+                    desc: '长上下文理解+知识图谱，整节课连续语义分析，将语音转化为结构化认知网络，实现"听得懂"',
+                    icon: Cpu,
+                    color: 'amber' 
+                  },
+                  { 
+                    title: '清北学霸思维辅导Agent', 
+                    desc: '基于课堂原生的私有语境，提供个性化辅导策略与思维引导，实现"说得对"',
+                    icon: Users,
+                    color: 'green' 
+                  }
                 ].map((item, i) => (
                   <div key={i} className="bg-[#0a0a0a] rounded-xl p-3 sm:p-4 border border-gray-800">
+                    <div className={`h-8 w-8 sm:h-10 sm:w-10 rounded-lg flex items-center justify-center mb-2 sm:mb-3 ${
+                      item.color === 'blue' ? 'bg-blue-500/20' : item.color === 'amber' ? 'bg-amber-500/20' : 'bg-green-500/20'
+                    }`}>
+                      <item.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${
+                        item.color === 'blue' ? 'text-blue-400' : item.color === 'amber' ? 'text-amber-400' : 'text-green-400'
+                      }`} />
+                    </div>
                     <h4 className={`font-semibold text-sm sm:text-base mb-1 sm:mb-2 ${
                       item.color === 'blue' ? 'text-blue-400' : item.color === 'amber' ? 'text-amber-400' : 'text-green-400'
                     }`}>{item.title}</h4>
-                    <p className="text-gray-500 text-xs sm:text-sm">{item.desc}</p>
+                    <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>

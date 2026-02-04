@@ -91,7 +91,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 py-4">
+          <div className="md:hidden bg-white border-t border-gray-100 py-4 max-h-[80vh] overflow-y-auto">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -102,6 +102,17 @@ export default function Header() {
                 {link.name}
               </a>
             ))}
+            {/* 添加 Q&A 入口 */}
+            <button
+              className="w-full text-left px-4 py-3 text-gray-600 hover:text-navy hover:bg-gray-50 font-medium flex items-center gap-2"
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent('showInvestor'))
+                setIsMobileMenuOpen(false)
+              }}
+            >
+              <HelpCircle className="w-4 h-4" />
+              <span>投资人 Q&A</span>
+            </button>
             <div className="px-4 pt-4">
               <a
                 href="https://meetmind.online"

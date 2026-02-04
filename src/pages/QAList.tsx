@@ -98,42 +98,42 @@ export default function QAList({ onSelectQA, onBackToHome }: QAListProps) {
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       {/* 顶部导航栏 */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
           <button 
             onClick={onBackToHome}
-            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+            className="flex items-center gap-1.5 sm:gap-2 text-gray-400 hover:text-white transition-colors"
           >
-            <ArrowLeft className="h-5 w-5" />
-            <span className="font-medium">返回首页</span>
+            <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="font-medium text-sm sm:text-base">返回首页</span>
           </button>
           
-          <div className="flex items-center gap-2">
-            <FileText className="h-5 w-5 text-amber-500" />
-            <span className="font-semibold">投资人问答</span>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-amber-500" />
+            <span className="font-semibold text-sm sm:text-base">投资人问答</span>
           </div>
           
-          <div className="w-20" />
+          <div className="w-16 sm:w-20" />
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24">
+      <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="text-amber-500 text-sm font-medium tracking-[0.3em] uppercase mb-6 block">
+          <span className="text-amber-500 text-xs sm:text-sm font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-4 sm:mb-6 block">
             Investor Relations
           </span>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
             投资人问答
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-400 max-w-2xl mx-auto">
             深入了解 MeetMind 的产品逻辑、竞争壁垒、商业模式与项目现状
           </p>
         </div>
       </section>
 
       {/* 四大类问题 */}
-      <section className="pb-24 px-6 md:px-12 lg:px-24">
-        <div className="max-w-4xl mx-auto space-y-4">
+      <section className="pb-16 sm:pb-24 px-4 sm:px-6 md:px-12 lg:px-24">
+        <div className="max-w-4xl mx-auto space-y-3 sm:space-y-4">
           {categories.map((category) => {
             const Icon = category.icon;
             const isExpanded = expandedCategory === category.id;
@@ -141,40 +141,40 @@ export default function QAList({ onSelectQA, onBackToHome }: QAListProps) {
             return (
               <div 
                 key={category.id}
-                className={`rounded-2xl border transition-all ${isExpanded ? 'border-gray-700' : 'border-gray-800 hover:border-gray-700'}`}
+                className={`rounded-xl sm:rounded-2xl border transition-all ${isExpanded ? 'border-gray-700' : 'border-gray-800 hover:border-gray-700'}`}
               >
                 {/* 类别标题 - 可点击展开 */}
                 <button
                   onClick={() => toggleCategory(category.id)}
-                  className="w-full p-6 text-left"
+                  className="w-full p-4 sm:p-6 text-left"
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-3 sm:gap-4">
                     {/* 编号 & 图标 */}
-                    <div className="flex flex-col items-center gap-2 shrink-0">
-                      <span className="text-3xl font-bold text-gray-600">
+                    <div className="flex flex-col items-center gap-1.5 sm:gap-2 shrink-0">
+                      <span className="text-2xl sm:text-3xl font-bold text-gray-600">
                         {category.number}
                       </span>
-                      <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${colorMap[category.color].split(' ')[0]} ${colorMap[category.color].split(' ')[1]} flex items-center justify-center`}>
-                        <Icon className="h-6 w-6 text-white" />
+                      <div className={`h-10 w-10 sm:h-12 sm:w-12 rounded-lg sm:rounded-xl bg-gradient-to-br ${colorMap[category.color].split(' ')[0]} ${colorMap[category.color].split(' ')[1]} flex items-center justify-center`}>
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
                     </div>
 
                     {/* 内容 */}
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-xl md:text-2xl font-bold text-white">
+                      <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
                           {category.title}
                         </h3>
                         {isExpanded ? (
-                          <ChevronDown className="h-6 w-6 text-gray-500" />
+                          <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6 text-gray-500 shrink-0" />
                         ) : (
-                          <ChevronRight className="h-6 w-6 text-gray-500" />
+                          <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 text-gray-500 shrink-0" />
                         )}
                       </div>
-                      <p className={`text-sm mb-3 ${colorMap[category.color].split(' ')[2]}`}>
+                      <p className={`text-xs sm:text-sm mb-2 sm:mb-3 ${colorMap[category.color].split(' ')[2]}`}>
                         {category.subtitle}
                       </p>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-xs sm:text-sm text-gray-500">
                         {category.summary}
                       </p>
                     </div>
@@ -195,23 +195,25 @@ export default function QAList({ onSelectQA, onBackToHome }: QAListProps) {
                             : 'opacity-50 cursor-not-allowed'
                         }`}
                       >
-                        <div className="flex items-center justify-between pl-[88px]">
-                          <div className="flex items-center gap-3">
-                            <span className="text-xs text-gray-600 font-mono">
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="flex items-start gap-2 sm:gap-3 flex-1">
+                            <span className="text-xs text-gray-600 font-mono shrink-0 mt-0.5">
                               Q{category.number}-{index + 1}
                             </span>
-                            <span className={`text-sm ${question.hasContent ? 'text-gray-300 group-hover:text-white' : 'text-gray-500'}`}>
+                            <span className={`text-sm leading-relaxed ${question.hasContent ? 'text-gray-300 group-hover:text-white' : 'text-gray-500'}`}>
                               {question.title}
                             </span>
+                          </div>
+                          <div className="flex items-center gap-2 shrink-0">
                             {!question.hasContent && (
-                              <span className="text-xs text-gray-600 bg-gray-800 px-2 py-0.5 rounded">
+                              <span className="text-xs text-gray-600 bg-gray-800 px-2 py-0.5 rounded whitespace-nowrap">
                                 待完善
                               </span>
                             )}
+                            {question.hasContent && (
+                              <ChevronRight className="h-4 w-4 text-gray-600 group-hover:text-amber-500 transition-colors shrink-0" />
+                            )}
                           </div>
-                          {question.hasContent && (
-                            <ChevronRight className="h-4 w-4 text-gray-600 group-hover:text-amber-500 transition-colors" />
-                          )}
                         </div>
                       </button>
                     ))}
@@ -224,14 +226,14 @@ export default function QAList({ onSelectQA, onBackToHome }: QAListProps) {
       </section>
 
       {/* 底部 */}
-      <section className="py-12 px-6 border-t border-gray-800">
+      <section className="py-8 sm:py-12 px-4 sm:px-6 border-t border-gray-800">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-gray-500 mb-4">
+          <p className="text-gray-500 mb-3 sm:mb-4 text-sm sm:text-base">
             共 {categories.reduce((acc, c) => acc + c.questions.length, 0)} 个问题 · 持续更新中
           </p>
           <button 
             onClick={onBackToHome}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 text-black font-semibold rounded-full hover:bg-amber-400 transition-colors"
+            className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-amber-500 text-black font-semibold rounded-full hover:bg-amber-400 transition-colors text-sm sm:text-base"
           >
             <ArrowLeft className="h-4 w-4" />
             返回官网首页

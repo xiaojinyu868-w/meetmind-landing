@@ -17,11 +17,12 @@ interface QADetailProps {
 }
 
 // 高亮文本
-function Highlight({ children, color = 'amber' }: { children: React.ReactNode; color?: 'amber' | 'blue' | 'green' }) {
+function Highlight({ children, color = 'amber' }: { children: React.ReactNode; color?: 'amber' | 'blue' | 'green' | 'red' }) {
   const colors = {
     amber: 'text-amber-400 font-semibold',
     blue: 'text-blue-400 font-semibold',
-    green: 'text-green-400 font-semibold'
+    green: 'text-green-400 font-semibold',
+    red: 'text-red-400 font-semibold'
   };
   return <span className={colors[color]}>{children}</span>;
 }

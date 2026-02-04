@@ -6,7 +6,8 @@ import {
   Box, Hexagon, Quote,
   Mic, Home, MessageSquare, Clock,
   ArrowLeft, FileText, Construction,
-  Globe, ChevronUp, ChevronDown
+  Globe, ChevronUp, ChevronDown,
+  Brain, Layers
 } from 'lucide-react';
 
 interface QADetailProps {
@@ -432,130 +433,278 @@ function Q1Content() {
   );
 }
 
-// 问题二完整内容 - 竞争壁垒
+// 问题二完整内容 - AGI时代的核心壁垒
 function Q2Content() {
-  const [expandedItem, setExpandedItem] = useState<number | null>(0);
+  const [activeStep, setActiveStep] = useState(0);
 
   return (
     <>
-      {/* 核心壁垒 */}
+      {/* 核心洞察：AGI时代的生存逻辑 */}
       <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8">核心壁垒：语境垄断与技术深度</h2>
-
-          {/* 数据壁垒 */}
-          <div className="mb-12 sm:mb-16">
-            <div className="flex items-center gap-3 mb-4 sm:mb-6">
-              <div className="h-10 w-10 sm:h-12 sm:w-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center">
-                <Lock className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-              </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold">数据壁垒：语境垄断</h3>
+          <div className="flex items-center gap-3 mb-6 sm:mb-8">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 bg-gradient-to-br from-purple-500 to-violet-700 rounded-xl flex items-center justify-center">
+              <Brain className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
             </div>
-            
-            <div className="bg-[#111] rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-gray-800">
-              <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-6">
-                通用大模型（如豆包、元宝）拥有海量的全网知识，但它们<Highlight color="red">无法进入公立校课堂</Highlight>，因此缺乏<Highlight>"私有上下文数据"</Highlight>。我们通过分体式硬件，垄断了<Highlight>"这堂课、这位老师、这个知识点"</Highlight>的原生语境。
-              </p>
-              
-              {/* 对比卡片 */}
-              <div className="grid md:grid-cols-2 gap-3 sm:gap-4">
-                <div className="bg-red-950/20 border border-red-900/50 rounded-xl p-4 sm:p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Globe className="h-4 w-4 sm:h-5 sm:w-5 text-red-400" />
-                    <h4 className="text-red-400 font-semibold text-sm sm:text-base">通用大模型</h4>
-                  </div>
-                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
-                    "勾股定理的定义是：在直角三角形中，两条直角边的平方和等于斜边的平方..."
-                  </p>
-                  <p className="text-red-400/70 text-xs mt-2">—— 通用的、教科书式的回答</p>
-                </div>
-                
-                <div className="bg-green-950/20 border border-green-900/50 rounded-xl p-4 sm:p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Mic className="h-4 w-4 sm:h-5 sm:w-5 text-green-400" />
-                    <h4 className="text-green-400 font-semibold text-sm sm:text-base">MeetMind 私有语境</h4>
-                  </div>
-                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
-                    "王老师今天上午讲梯子靠墙那个例子时，特别提醒要注意'地面是否水平'这个易错点，还展示了3种常见错误解法..."
-                  </p>
-                  <p className="text-green-400/70 text-xs mt-2">—— 专属的、课堂原生的回放</p>
-                </div>
-              </div>
-            </div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">核心洞察：AGI时代的生存逻辑</h2>
           </div>
 
-          {/* 技术壁垒 */}
-          <div>
-            <div className="flex items-center gap-3 mb-4 sm:mb-6">
-              <div className="h-10 w-10 sm:h-12 sm:w-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-                <Cpu className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-              </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold">技术壁垒：语境流引擎</h3>
-            </div>
-            
-            <div className="bg-[#111] rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-gray-800">
-              <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-4 sm:mb-6">
-                依托<Highlight color="blue">清华大学计算机视觉与机器学习实验室（CVML）</Highlight>的技术积淀，我们不只是做录音，而是做<Highlight>"认知诊断"</Highlight>。通过长上下文理解技术，将非结构化的语音转化为结构化的知识图谱，这种针对课堂场景的深度打磨，是通用模型在短期内难以在细分垂直领域超越的。
-              </p>
+          <QuoteBlock>
+            如果通用超级智能（AGI）的到来不可避免，那么未来最稀缺的资源不再是"解题能力"，而是对"多样化人类价值函数"的深度理解——即准确把握人类在具体语境下真正需要什么。
+          </QuoteBlock>
 
-              {/* 认知-行动闭环 */}
-              <div className="bg-gradient-to-r from-blue-500/10 via-amber-500/10 to-green-500/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-800 mb-4 sm:mb-6">
-                <h4 className="text-center text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">
-                  完整的<Highlight>认知-行动</Highlight>闭环
-                </h4>
-                <div className="flex items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm mb-4 sm:mb-6">
-                  <span className="text-blue-400 font-medium">"听得到"</span>
-                  <ArrowRight className="h-4 w-4 text-gray-600" />
-                  <span className="text-amber-400 font-medium">"听得懂"</span>
-                  <ArrowRight className="h-4 w-4 text-gray-600" />
-                  <span className="text-green-400 font-medium">"说得对"</span>
-                </div>
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-6 mt-8">
+            {/* AGI时代什么变得廉价 */}
+            <div className="bg-red-950/20 border border-red-900/50 rounded-2xl p-5 sm:p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Globe className="h-5 w-5 text-red-400" />
+                <h3 className="text-red-400 font-semibold text-sm sm:text-base">AGI时代：什么变得廉价？</h3>
               </div>
-              
-              <div className="grid sm:grid-cols-3 gap-3 sm:gap-4">
-                {[
-                  { 
-                    title: '全息课堂高精度感知', 
-                    desc: '声纹锁定+远场拾音，40人嘈杂教室精准提取老师音轨，实现"听得到"',
-                    icon: Mic,
-                    color: 'blue' 
-                  },
-                  { 
-                    title: '专属教育记忆大模型', 
-                    desc: '不是更大的模型，是更懂学习的模型。真正听过这堂课的AI',
-                    icon: Cpu,
-                    color: 'amber' 
-                  },
-                  { 
-                    title: '清北学霸思维辅导Agent', 
-                    desc: '基于课堂原生的私有语境，提供个性化辅导策略与思维引导，实现"说得对"',
-                    icon: Users,
-                    color: 'green' 
-                  }
-                ].map((item, i) => (
-                  <div key={i} className="bg-[#0a0a0a] rounded-xl p-3 sm:p-4 border border-gray-800">
-                    <div className={`h-8 w-8 sm:h-10 sm:w-10 rounded-lg flex items-center justify-center mb-2 sm:mb-3 ${
-                      item.color === 'blue' ? 'bg-blue-500/20' : item.color === 'amber' ? 'bg-amber-500/20' : 'bg-green-500/20'
-                    }`}>
-                      <item.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${
-                        item.color === 'blue' ? 'text-blue-400' : item.color === 'amber' ? 'text-amber-400' : 'text-green-400'
-                      }`} />
-                    </div>
-                    <h4 className={`font-semibold text-sm sm:text-base mb-1 sm:mb-2 ${
-                      item.color === 'blue' ? 'text-blue-400' : item.color === 'amber' ? 'text-amber-400' : 'text-green-400'
-                    }`}>{item.title}</h4>
-                    <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
+              <ul className="space-y-3 text-gray-400 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 mt-1">×</span>
+                  <span>通用知识（随时可查询）</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 mt-1">×</span>
+                  <span>计算能力（算力不再稀缺）</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 mt-1">×</span>
+                  <span>标准答案（大模型都能给）</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* AGI时代什么变得昂贵 */}
+            <div className="bg-green-950/20 border border-green-900/50 rounded-2xl p-5 sm:p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Target className="h-5 w-5 text-green-400" />
+                <h3 className="text-green-400 font-semibold text-sm sm:text-base">AGI时代：什么变得昂贵？</h3>
+              </div>
+              <ul className="space-y-3 text-gray-400 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-green-400 mt-1">✓</span>
+                  <span><Highlight color="green">私有语境</Highlight>（你独特的上下文）</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-400 mt-1">✓</span>
+                  <span><Highlight color="green">个人价值函数</Highlight>（你真正需要什么）</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-400 mt-1">✓</span>
+                  <span><Highlight color="green">时间连续性</Highlight>（陪你成长的历史）</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 破局路径：构建"语境垄断" */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8">破局路径：构建"语境垄断"</h2>
+          
+          <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-8">
+            我们不奢望用户为了"贡献数据"而使用产品。<Highlight>壁垒是用户在中长期使用过程中自然留存的结果</Highlight>：
+          </p>
+
+          {/* 三步流程 */}
+          <div className="flex flex-col md:flex-row items-stretch gap-4 mb-8">
+            {[
+              {
+                icon: Zap,
+                title: '实用工具作为钩子',
+                desc: '通过极致实用的功能（如"作业时光机"、"黄金笔记"）切入用户的每日高频场景，解决即时痛点。',
+                color: 'amber'
+              },
+              {
+                icon: Layers,
+                title: '语境的沉淀与留存',
+                desc: '随着用户持续使用分体式硬件记录课堂和学习过程，系统内沉淀了大量属于该个体的、非结构化的私有上下文。',
+                color: 'blue'
+              },
+              {
+                icon: Lock,
+                title: '不可迁移的粘性',
+                desc: '这种壁垒是"长"出来的。用户使用的时间越长，AI对其认知断点、老师教学风格、个人习惯的理解就越深。',
+                color: 'green'
+              }
+            ].map((step, i) => (
+              <div 
+                key={i}
+                className={`flex-1 rounded-2xl p-5 sm:p-6 border cursor-pointer transition-all ${
+                  activeStep === i 
+                    ? 'bg-[#111] border-amber-500/50' 
+                    : 'bg-[#0a0a0a] border-gray-800 hover:border-gray-700'
+                }`}
+                onClick={() => setActiveStep(i)}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`h-10 w-10 rounded-xl flex items-center justify-center ${
+                    step.color === 'amber' ? 'bg-amber-500/20' : 
+                    step.color === 'blue' ? 'bg-blue-500/20' : 'bg-green-500/20'
+                  }`}>
+                    <step.icon className={`h-5 w-5 ${
+                      step.color === 'amber' ? 'text-amber-400' : 
+                      step.color === 'blue' ? 'text-blue-400' : 'text-green-400'
+                    }`} />
                   </div>
-                ))}
+                  <div className="h-6 w-6 rounded-full bg-gray-800 flex items-center justify-center text-xs font-bold text-gray-400">
+                    {i + 1}
+                  </div>
+                </div>
+                <h3 className="font-semibold text-white mb-2 text-sm sm:text-base">{step.title}</h3>
+                <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* 核心结论 */}
+          <div className="bg-gradient-to-r from-amber-500/10 to-transparent border border-amber-500/30 rounded-2xl p-5 sm:p-6">
+            <div className="flex items-start gap-3">
+              <Shield className="h-6 w-6 text-amber-400 shrink-0 mt-1" />
+              <div>
+                <h4 className="font-semibold text-white mb-2 text-sm sm:text-base">核心结论</h4>
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                  即使未来出现更强大的通用AI，它也无法取代一个<Highlight>"全程陪同你上课、最懂你知识薄弱点"</Highlight>的数字化记忆系统。这是时间沉淀的壁垒，是数据飞轮的结果。
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 专属教育记忆大模型 - 详细模块 */}
+      {/* 从"通用智能"转向"私有语境" */}
       <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
         <div className="max-w-6xl mx-auto">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8">从"通用智能"转向"私有语境"</h2>
+
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+            {/* 通用AI的局限 */}
+            <div className="bg-[#111] rounded-2xl p-5 sm:p-6 border border-gray-800">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-red-500/20 flex items-center justify-center">
+                  <Globe className="h-5 w-5 text-red-400" />
+                </div>
+                <h3 className="text-lg font-bold text-red-400">通用AI的局限</h3>
+              </div>
+              
+              <p className="text-gray-400 text-sm mb-4">
+                通用大模型（如豆包、元宝）拥有海量的"世界知识"，但它们<Highlight color="red">无法进入物理课堂</Highlight>，永远缺乏<Highlight color="red">"私有上下文数据"</Highlight>。
+              </p>
+
+              <div className="bg-red-950/20 rounded-xl p-4 border border-red-900/30">
+                <p className="text-gray-300 text-sm italic">
+                  "勾股定理的定义是：在直角三角形中，两条直角边的平方和等于斜边的平方..."
+                </p>
+                <p className="text-red-400/70 text-xs mt-2">—— 回答"是什么（What）"</p>
+              </div>
+            </div>
+
+            {/* 我们的优势 */}
+            <div className="bg-[#111] rounded-2xl p-5 sm:p-6 border border-gray-800">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-green-500/20 flex items-center justify-center">
+                  <Users className="h-5 w-5 text-green-400" />
+                </div>
+                <h3 className="text-lg font-bold text-green-400">我们的优势</h3>
+              </div>
+              
+              <p className="text-gray-400 text-sm mb-4">
+                竞品在回答"是什么（What）"，我们在理解<Highlight color="green">"你（Who）"</Highlight>和<Highlight color="green">"如何教你（How）"</Highlight>。
+              </p>
+
+              <div className="bg-green-950/20 rounded-xl p-4 border border-green-900/30">
+                <p className="text-gray-300 text-sm italic">
+                  "王老师今天上午讲梯子靠墙那个例子时，特别强调了'地面是否水平'这个易错点..."
+                </p>
+                <p className="text-green-400/70 text-xs mt-2">—— 理解"你哪里不懂"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 战略终局 */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8">战略终局：掌握"人类价值函数"的最后1公里</h2>
+
+          <QuoteBlock>
+            当计算力与知识变得廉价，什么才是昂贵的？答案是：对人类真实需求的准确把握。
+          </QuoteBlock>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-8">
+            {[
+              {
+                title: '把握真实需求',
+                desc: '在AGI时代，最紧要的任务是准确把握人类真正需要什么',
+                icon: Target
+              },
+              {
+                title: '理解多样化的人',
+                desc: '每个学生、每位老师的价值函数都是多样且独特的',
+                icon: Users
+              },
+              {
+                title: '深耕课堂原生语境',
+                desc: '捕捉人类在具体学习场景下的反馈与意图',
+                icon: Layers
+              }
+            ].map((item, i) => (
+              <div key={i} className="bg-[#111] rounded-xl p-5 border border-gray-800">
+                <item.icon className="h-8 w-8 text-amber-500 mb-3" />
+                <h3 className="font-semibold text-white mb-2 text-sm sm:text-base">{item.title}</h3>
+                <p className="text-gray-500 text-xs sm:text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* 终极结论 */}
+          <div className="mt-8 sm:mt-12 bg-gradient-to-r from-purple-500/10 via-amber-500/10 to-green-500/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-amber-500/30">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="h-16 w-16 sm:h-20 sm:w-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center shrink-0">
+                <Lock className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
+              </div>
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold mb-3">终极结论</h3>
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                  我们通过硬件进入物理世界，拿到了通往<Highlight>"人类真实价值函数"</Highlight>的独家门票。这种对<Highlight color="purple">"人类语境"</Highlight>的理解能力，是我们面对大厂和通用AI时最宽的护城河。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 我们的回答 */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8">我们的回答</h2>
+          
+          <div className="bg-[#111] rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-800">
+            <p className="text-lg sm:text-xl md:text-2xl text-white leading-relaxed mb-6">
+              我们的壁垒不是<Highlight color="red">"模型"</Highlight>，<br className="hidden sm:block" />
+              而是<Highlight color="green">"语境（Context）"</Highlight>。
+            </p>
+            
+            <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-600 mx-auto mb-6" />
+            
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+              在AGI不可避免的未来，<br />
+              最稀缺的资源是对<Highlight>"多样化人类价值函数"</Highlight>的深度理解。<br />
+              我们通过硬件进入物理世界，垄断了通往<Highlight color="purple">"人类真实需求"</Highlight>的最后1公里。
+            </p>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// 占位内容 - 其他问题
           <div className="flex items-center gap-3 mb-4 sm:mb-6">
             <div className="h-10 w-10 sm:h-12 sm:w-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
               <Cpu className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
@@ -939,19 +1088,19 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
           ) : isQ2 ? (
             <>
               <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.15] sm:leading-[1.1] tracking-tight mb-6 sm:mb-8">
-                <span className="sm:hidden">项目的壁垒在哪里？为什么是我们来做？</span>
+                <span className="sm:hidden">AGI时代，我们的生存空间在哪里？</span>
                 <span className="hidden sm:block">
-                  项目的壁垒在哪里？
+                  AGI时代，
                   <br />
-                  <span className="text-gray-500">为什么</span>
-                  <span className="text-amber-400">是我们</span>
-                  <span className="text-gray-500">来做？</span>
+                  <span className="text-gray-500">我们的</span>
+                  <span className="text-purple-400">生存空间</span>
+                  <span className="text-gray-500">在哪里？</span>
                 </span>
               </h1>
               
-              <div className="bg-gradient-to-r from-blue-500/10 via-amber-500/5 to-transparent border-l-4 border-blue-500 pl-4 sm:pl-8 py-6 sm:py-8 pr-4 sm:pr-6 rounded-r-xl sm:rounded-r-2xl">
+              <div className="bg-gradient-to-r from-purple-500/10 via-amber-500/5 to-transparent border-l-4 border-purple-500 pl-4 sm:pl-8 py-6 sm:py-8 pr-4 sm:pr-6 rounded-r-xl sm:rounded-r-2xl">
                 <p className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed">
-                  我们的壁垒是<Highlight>"数据垄断 + 技术深度 + 准入门槛 + 生态网络"</Highlight>的四位一体护城河。通过分体式硬件垄断课堂<Highlight>私有语境数据</Highlight>，依托<Highlight color="blue">清华CVML实验室</Highlight>构建语境流引擎，以合规能力突破准入门槛，最终形成B2B2C的生态飞轮。
+                  我们的壁垒不是<Highlight color="red">"模型"</Highlight>，而是<Highlight color="green">"语境（Context）"</Highlight>。如果超级智能的到来不可避免，那么未来最稀缺的资源不再是"解题能力"，而是对<Highlight>"多样化人类价值函数"</Highlight>的深度理解——即准确把握人类在具体语境下真正需要什么。
                 </p>
               </div>
             </>

@@ -495,7 +495,7 @@ function Q2Content() {
             
             <div className="bg-[#111] rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-gray-800">
               <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-4 sm:mb-6">
-                依托<Highlight color="blue">清华大学多模态实验室（CVML）</Highlight>的技术积淀，我们不只是做录音，而是做<Highlight>"认知诊断"</Highlight>。通过长上下文理解技术，将非结构化的语音转化为结构化的知识图谱，这种针对课堂场景的深度打磨，是通用模型在短期内难以在细分垂直领域超越的。
+                依托<Highlight color="blue">清华大学计算机视觉与机器学习实验室（CVML）</Highlight>的技术积淀，我们不只是做录音，而是做<Highlight>"认知诊断"</Highlight>。通过长上下文理解技术，将非结构化的语音转化为结构化的知识图谱，这种针对课堂场景的深度打磨，是通用模型在短期内难以在细分垂直领域超越的。
               </p>
 
               {/* 认知-行动闭环 */}

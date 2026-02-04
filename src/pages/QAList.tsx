@@ -37,13 +37,12 @@ const categories = [
     color: 'blue',
     summary: '技术壁垒、数据壁垒、团队基因优势、大厂竞争应对',
     questions: [
-      { id: 'q2-1', title: '项目的壁垒在哪里？（包括技术壁垒、数据壁垒）', hasContent: true },
-      { id: 'q2-2', title: '如果有大厂入局怎么办？', hasContent: false },
-      { id: 'q2-3', title: '为什么这事不是录音笔厂商去做？', hasContent: false },
-      { id: 'q2-4', title: '为什么不是传统教育厂商去做？', hasContent: false },
-      { id: 'q2-5', title: '为什么不是大厂去做？', hasContent: false },
-      { id: 'q2-6', title: '为什么是我们来做？（团队/基因优势）', hasContent: false },
-      { id: 'q2-7', title: '竞争对手是谁？', hasContent: false },
+      { 
+        id: 'q2-1', 
+        title: '项目的壁垒在哪里？为什么是我们来做？', 
+        subtitle: '涵盖：技术壁垒/数据壁垒/大厂竞争/差异化优势/团队基因/真正的对手',
+        hasContent: true 
+      },
     ]
   },
   {
@@ -196,13 +195,20 @@ export default function QAList({ onSelectQA, onBackToHome }: QAListProps) {
                         }`}
                       >
                         <div className="flex items-start justify-between gap-2">
-                          <div className="flex items-start gap-2 sm:gap-3 flex-1">
-                            <span className="text-xs text-gray-600 font-mono shrink-0 mt-0.5">
-                              Q{category.number}-{index + 1}
-                            </span>
-                            <span className={`text-sm leading-relaxed ${question.hasContent ? 'text-gray-300 group-hover:text-white' : 'text-gray-500'}`}>
-                              {question.title}
-                            </span>
+                          <div className="flex-1">
+                            <div className="flex items-start gap-2 sm:gap-3 mb-1">
+                              <span className="text-xs text-gray-600 font-mono shrink-0 mt-0.5">
+                                Q{category.number}-{index + 1}
+                              </span>
+                              <span className={`text-sm leading-relaxed ${question.hasContent ? 'text-gray-300 group-hover:text-white' : 'text-gray-500'}`}>
+                                {question.title}
+                              </span>
+                            </div>
+                            {question.subtitle && (
+                              <p className="text-xs text-gray-600 pl-6 sm:pl-9">
+                                {question.subtitle}
+                              </p>
+                            )}
                           </div>
                           <div className="flex items-center gap-2 shrink-0">
                             {!question.hasContent && (

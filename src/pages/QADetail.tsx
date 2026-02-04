@@ -826,6 +826,25 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
                 </p>
               </div>
             </>
+          ) : isQ2 ? (
+            <>
+              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.15] sm:leading-[1.1] tracking-tight mb-6 sm:mb-8">
+                <span className="sm:hidden">项目的壁垒在哪里？为什么是我们来做？</span>
+                <span className="hidden sm:block">
+                  项目的壁垒在哪里？
+                  <br />
+                  <span className="text-gray-500">为什么</span>
+                  <span className="text-amber-400">是我们</span>
+                  <span className="text-gray-500">来做？</span>
+                </span>
+              </h1>
+              
+              <div className="bg-gradient-to-r from-blue-500/10 via-amber-500/5 to-transparent border-l-4 border-blue-500 pl-4 sm:pl-8 py-6 sm:py-8 pr-4 sm:pr-6 rounded-r-xl sm:rounded-r-2xl">
+                <p className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed">
+                  我们的壁垒是<Highlight>"数据垄断 + 技术深度 + 准入门槛 + 生态网络"</Highlight>的四位一体护城河。通过分体式硬件垄断课堂<Highlight>私有语境数据</Highlight>，依托<Highlight color="blue">清华CVML实验室</Highlight>构建语境流引擎，以合规能力突破准入门槛，最终形成B2B2C的生态飞轮。
+                </p>
+              </div>
+            </>
           ) : (
             <>
               <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.15] sm:leading-[1.1] tracking-tight mb-6 sm:mb-8 text-gray-400">

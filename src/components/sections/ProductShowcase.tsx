@@ -95,7 +95,7 @@ const categories: Category[] = [
       {
         id: 'review',
         title: 'AI智能复习',
-        subtitle: 'AI同桌解答困惑，苏格拉底式引导',
+        subtitle: 'AI同桌解答困惑，学霸式引导',
         description: '课后打开复习界面，AI会定位到标记的困惑点，用老师原话+AI引导帮你彻底搞懂。还能继续追问，直到真正理解。',
         image: '/product-review.png',
         color: 'bg-sunny',

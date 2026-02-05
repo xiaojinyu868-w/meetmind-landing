@@ -10,8 +10,10 @@ import Testimonials from './components/sections/Testimonials'
 import TeamCredibility from './components/sections/TeamCredibility'
 import QAList from './pages/QAList'
 import QADetail from './pages/QADetail'
+import TeamSection from './pages/TeamSection'
+import AINativeSection from './pages/AINativeSection'
 
-type PageState = 'home' | 'qa-list' | 'qa-detail';
+type PageState = 'home' | 'qa-list' | 'qa-detail' | 'team' | 'ai-native';
 
 function App() {
   const [pageState, setPageState] = useState<PageState>('home')
@@ -21,6 +23,15 @@ function App() {
   useEffect(() => {
     const handleShowInvestor = () => setPageState('qa-list')
     window.addEventListener('showInvestor', handleShowInvestor)
+    
+    // 检查是否为团队页面或AI原生页面
+    if (window.location.hash === '#team') {
+      setPageState('team')
+    }
+    if (window.location.hash === '#ai-native') {
+      setPageState('ai-native')
+    }
+    
     return () => window.removeEventListener('showInvestor', handleShowInvestor)
   }, [])
 
@@ -57,6 +68,16 @@ function App() {
       />
     )
   }
+
+  if (pageState === 'team') {
+    return <TeamSection />
+  }
+
+  if (pageState === 'ai-native') {
+    return <AINativeSection />
+  }
+
+
 
   return (
     <div className="min-h-screen bg-white">

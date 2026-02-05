@@ -40,7 +40,13 @@ const categories = [
       { 
         id: 'q2-1', 
         title: '项目的壁垒在哪里？为什么是我们来做？', 
-        subtitle: '涵盖：技术壁垒/数据壁垒/大厂竞争/差异化优势/团队基因/真正的对手',
+        subtitle: '涵盖：技术壁垒/数据壁垒/大厂竞争/差异化优势/真正的对手',
+        hasContent: true 
+      },
+      { 
+        id: 'q2-2', 
+        title: '为什么是你们？团队构建合理性与组织基因的独特之处', 
+        subtitle: '涵盖：黄金三角配置/AI原生组织/双原生驱动/敏捷打法',
         hasContent: true 
       },
     ]
@@ -204,7 +210,7 @@ export default function QAList({ onSelectQA, onBackToHome }: QAListProps) {
                                 {question.title}
                               </span>
                             </div>
-                            {question.subtitle && (
+                            {'subtitle' in question && question.subtitle && (
                               <p className="text-xs text-gray-600 pl-6 sm:pl-9">
                                 {question.subtitle}
                               </p>
@@ -223,6 +229,39 @@ export default function QAList({ onSelectQA, onBackToHome }: QAListProps) {
                         </div>
                       </button>
                     ))}
+                    
+                    {/* Q2 类别添加快速入口 */}
+                    {category.id === 'barrier' && (
+                      <div className="p-4 bg-[#0d0d0d] border-t border-gray-800">
+                        <p className="text-xs text-gray-500 mb-3">深度阅读</p>
+                        <div className="flex flex-wrap gap-3">
+                          <a 
+                            href="/#team"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              window.location.hash = 'team';
+                              window.location.reload();
+                            }}
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-400 text-sm hover:bg-amber-500/20 transition-colors"
+                          >
+                            <Users className="h-4 w-4" />
+                            团队详细介绍
+                          </a>
+                          <a 
+                            href="/#ai-native"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              window.location.hash = 'ai-native';
+                              window.location.reload();
+                            }}
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg text-purple-400 text-sm hover:bg-purple-500/20 transition-colors"
+                          >
+                            <Cpu className="h-4 w-4" />
+                            AI 原生组织
+                          </a>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

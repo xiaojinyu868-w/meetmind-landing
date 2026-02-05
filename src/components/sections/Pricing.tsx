@@ -154,7 +154,7 @@ export default function Pricing() {
             上传今天课堂录音，体验AI同桌魔法
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-4">
             <a 
               href="https://meetmind.online" 
               target="_blank" 
@@ -168,6 +168,17 @@ export default function Pricing() {
               预约1对1产品讲解
             </button>
           </div>
+          <p className="text-white/50 text-sm mb-8">
+            访问慢？
+            <a 
+              href="https://hk.meetmind.online" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-warm-400 hover:text-warm-300 underline underline-offset-2 ml-1"
+            >
+              尝试香港节点 →
+            </a>
+          </p>
 
           <div className="flex justify-center items-center gap-6 text-white/60 text-sm">
             <span>加入家长体验群（微信扫码）</span>

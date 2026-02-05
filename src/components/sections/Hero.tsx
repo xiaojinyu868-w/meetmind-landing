@@ -60,6 +60,17 @@ export default function Hero() {
               <Gift className="w-4 h-4 text-orange" aria-hidden="true" />
               <span>新用户免费体验全部功能 · 30秒即可开始</span>
             </p>
+            <p className="mt-2 text-xs text-gray-400">
+              访问受阻？
+              <a 
+                href="https://hk.meetmind.online" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-orange hover:text-orange/80 underline underline-offset-2 ml-1"
+              >
+                尝试香港节点 →
+              </a>
+            </p>
           </div>
 
           {/* 右侧 - 产品截图 */}

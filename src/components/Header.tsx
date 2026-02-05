@@ -72,6 +72,15 @@ export default function Header() {
             >
               免费试用
             </a>
+            <a
+              href="https://hk.meetmind.online"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-gray-400 hover:text-orange underline underline-offset-2 hidden lg:block"
+              title="如果主站访问慢，可尝试香港节点"
+            >
+              备用
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -113,7 +122,7 @@ export default function Header() {
               <HelpCircle className="w-4 h-4" />
               <span>投资人 Q&A</span>
             </button>
-            <div className="px-4 pt-4">
+            <div className="px-4 pt-4 space-y-2">
               <a
                 href="https://meetmind.online"
                 target="_blank"
@@ -121,6 +130,14 @@ export default function Header() {
                 className="block w-full text-center px-6 py-3 bg-sunny text-navy font-semibold rounded-full"
               >
                 免费试用
+              </a>
+              <a
+                href="https://hk.meetmind.online"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center px-6 py-2 text-sm text-gray-400 hover:text-orange"
+              >
+                访问慢？尝试香港节点 →
               </a>
             </div>
           </div>

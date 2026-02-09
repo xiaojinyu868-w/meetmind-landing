@@ -52,6 +52,8 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
   const isQ3_3 = categoryId === 'business' && questionId === 'q3-3';
   const isQ3_4 = categoryId === 'business' && questionId === 'q3-4';
   const isQ4_1 = categoryId === 'status' && questionId === 'q4-1';
+  const isQ4_2 = categoryId === 'status' && questionId === 'q4-2';
+  const isQ4_3 = categoryId === 'status' && questionId === 'q4-3';
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
@@ -2564,19 +2566,19 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
                 <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
                   <Users className="h-6 w-6 text-blue-500" />
                 </div>
-                <h3 className="text-xl font-bold">进场通道验证</h3>
+                <h3 className="text-xl font-bold">进场渠道规划</h3>
               </div>
               
-              <p className="text-gray-400 mb-6">清华/北师大校友网络提供低成本获取真实课堂数据的机会</p>
+              <p className="text-gray-400 mb-6">清华/北师大校友网络为获取真实课堂数据提供潜在触达通道</p>
               
               <div className="space-y-4">
                 <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
-                  <p className="text-sm text-gray-500 mb-2">已建立联系</p>
-                  <p className="text-sm text-gray-300">3 所重点公立校教师（清华附中、人大附中、北京四中）</p>
+                  <p className="text-sm text-gray-500 mb-2">渠道资源</p>
+                  <p className="text-sm text-gray-300">团队具备清华/北师大背景，可触达重点公立校教师群体</p>
                 </div>
                 <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
-                  <p className="text-sm text-gray-500 mb-2">试点计划</p>
-                  <p className="text-sm text-gray-300">2026.Q1 启动 2 个班级的小规模实测</p>
+                  <p className="text-sm text-gray-500 mb-2">验证计划</p>
+                  <p className="text-sm text-gray-300">寻找试点合作班级，开展小规模真实环境测试（待推进）</p>
                 </div>
               </div>
             </div>
@@ -2661,6 +2663,495 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
               </div>
               <h3 className="font-semibold mb-2">付费转化率</h3>
               <p className="text-sm text-gray-400">需验证家长是否愿意为"课堂数据确权"付费，以及价格敏感度</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      </>
+      )}
+
+      {/* Q4-2: 目前最大的挑战是什么？ */}
+      {isQ4_2 && (
+      <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-5xl mx-auto">
+          <span className="text-amber-500 text-sm font-medium tracking-[0.3em] uppercase mb-6 block">
+            Q4-2 · Key Challenges
+          </span>
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8">
+            目前最大的挑战
+          </h1>
+          
+          <div className="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border-l-4 border-amber-500 pl-8 py-8 pr-6 rounded-r-2xl">
+            <p className="text-xl text-gray-300 leading-relaxed">
+              我们最大的挑战不是"能否做出来"，而是<Highlight color="amber">"如何在高合规、高封闭的存量市场中，以最快速度完成数据闭环的冷启动"</Highlight>。
+              核心矛盾集中在三个层面：物理环境的对抗、非标数据的对齐、与巨头的时间差博弈。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 三层挑战 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">三层核心挑战</h2>
+          <p className="text-gray-400 mb-12">业务层、产品层、战略层的递进式挑战</p>
+          
+          <div className="space-y-6">
+            {/* 业务层挑战 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-red-500">01</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-3">业务层：校园场景的数据采集冷启动</h3>
+                  <p className="text-gray-400 mb-4 leading-relaxed">
+                    教室是一个"离线且敏感"的物理黑盒。挑战在于：在不破坏校园现有教学秩序、不触碰合规红线的前提下，
+                    让首批种子用户养成<Highlight color="red">"无感录音-离线采集"</Highlight>的习惯。这不仅是技术问题，更是"工程合规"与"用户心理"的博弈。
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                      <p className="text-sm text-gray-500 mb-2">核心难点</p>
+                      <p className="text-sm text-gray-300">教室内高度封闭，任何采集设备都面临"合规性审查"和"教师接受度"双重门槛</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                      <p className="text-sm text-gray-500 mb-2">应对动作</p>
+                      <p className="text-sm text-gray-300">打磨「分体式离线采集 SOP」，通过小规模灰度测试验证用户接受度</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 产品层挑战 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-amber-500">02</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-3">产品层：碎片化语音的提纯精度</h3>
+                  <p className="text-gray-400 mb-4 leading-relaxed">
+                    课堂录音环境极其复杂（高混响、多噪音、多重口音）。挑战在于，如何利用有限算力，
+                    在不产生 LLM 幻觉的情况下，把 45 分钟的喧闹课堂精准切片成学生能直接用的"困惑点热点"。
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                      <p className="text-sm text-gray-500 mb-2">核心难点</p>
+                      <p className="text-sm text-gray-300">"鸡尾酒会效应"——40人教室的高混响环境下，通用模型会直接产生幻觉</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                      <p className="text-sm text-gray-500 mb-2">应对动作</p>
+                      <p className="text-sm text-gray-300">优化「诊断式索引」算法，通过"老师原话强制锁定"对冲长上下文处理瓶颈</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 战略层挑战 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-purple-500">03</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-3">战略层：与巨头的时间差博弈</h3>
+                  <p className="text-gray-400 mb-4 leading-relaxed">
+                    字节、腾讯等巨头拥有强大的模型和流量。挑战在于必须在它们意识到<Highlight color="purple">"课堂上下文数据才是唯一护城河"</Highlight>之前，
+                    抢先完成物理占位和品牌卡位。这要求执行力必须是"小时级"的。
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                      <p className="text-sm text-gray-500 mb-2">核心难点</p>
+                      <p className="text-sm text-gray-300">窗口期预计仅 12-18 个月，大厂一旦入局将直接碾压流量和渠道</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                      <p className="text-sm text-gray-500 mb-2">应对动作</p>
+                      <p className="text-sm text-gray-300">利用清华/北师大软实力完成 B 端 Proof，建立"专业化"认知壁垒</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 技术壁垒：鸡尾酒会效应 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">技术壁垒：边缘侧声纹锁定</h2>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <h3 className="text-lg font-bold mb-4 text-red-400">大厂云模型的盲区</h3>
+              <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+                通用大模型（如 ChatGPT）接收嘈杂录音后，会因为"鸡尾酒会效应"而直接产生幻觉——
+                它无法区分40人教室中谁在说、说什么、对谁说。这是物理层问题，云端模型无法解决。
+              </p>
+              <div className="bg-red-500/5 rounded-xl p-4 border border-red-500/20">
+                <p className="text-sm text-red-400">
+                  <strong>结果：</strong>生成内容准确率 &lt; 60%，无法产品化
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-[#111] rounded-3xl p-8 border border-green-500/30 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full blur-3xl" />
+              <h3 className="text-lg font-bold mb-4 text-green-400">我们的解法</h3>
+              <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+                利用<Highlight color="green">边缘侧声纹锁定技术</Highlight>，在硬件端就完成"人声提纯"。
+                先分离出目标说话人，再送入云端处理。这是大厂云端模型无法触及的物理层壁垒。
+              </p>
+              <div className="bg-green-500/5 rounded-xl p-4 border border-green-500/20">
+                <p className="text-sm text-green-400">
+                  <strong>结果：</strong>课堂环境识别准确率 &gt; 90%，延迟 &lt; 200ms
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 落地挑战：非标数据规模化 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">落地挑战：非标数据的规模化</h2>
+          <p className="text-gray-400 mb-8">每个老师的口音、授课逻辑都不同，如何实现规模化对齐？</p>
+          
+          <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-2xl bg-gray-800 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🎙️</span>
+                </div>
+                <h4 className="font-semibold mb-2">口音差异</h4>
+                <p className="text-sm text-gray-500">南北方言、个人发音习惯导致识别准确率波动</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-2xl bg-gray-800 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">📊</span>
+                </div>
+                <h4 className="font-semibold mb-2">逻辑差异</h4>
+                <p className="text-sm text-gray-500">不同老师的授课框架、术语体系各不相同</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-2xl bg-gray-800 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🔄</span>
+                </div>
+                <h4 className="font-semibold mb-2">动态变化</h4>
+                <p className="text-sm text-gray-500">同一老师不同学期、不同班级的授课内容也在演变</p>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-purple-500/10 to-transparent rounded-2xl p-6 border border-purple-500/20">
+              <h4 className="font-semibold mb-3 text-purple-400">我们的解法：教师资产化策略</h4>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                通过 GTM 第三阶段的"教师资产化"策略，让老师为了生成自己的"数字作品"而主动配合数据校准。
+                老师是我们最好的<Highlight color="purple">"数据标注员"</Highlight>，因为他们最懂自己的授课逻辑。
+              </p>
+              <div className="flex items-center gap-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-purple-500" />
+                  <span className="text-gray-300">教师主动校准口音模型</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-purple-500" />
+                  <span className="text-gray-300">授课框架自动提取</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-purple-500" />
+                  <span className="text-gray-300">形成正向飞轮</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 挑战总结与下一步 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">挑战优先级与下一步</h2>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <h3 className="text-lg font-bold mb-6">短期（3个月内）</h3>
+              <ul className="space-y-4 text-sm text-gray-400">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-red-400 text-xs">P0</span>
+                  </div>
+                  <span><strong className="text-gray-300">硬件稳定性验证：</strong>完成真实教室环境的灰度测试，验证采集稳定性</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-amber-400 text-xs">P1</span>
+                  </div>
+                  <span><strong className="text-gray-300">算法精度优化：</strong>将诊断式索引准确率提升至可用水平</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <h3 className="text-lg font-bold mb-6">中期（6-12个月）</h3>
+              <ul className="space-y-4 text-sm text-gray-400">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-blue-400 text-xs">P1</span>
+                  </div>
+                  <span><strong className="text-gray-300">非标数据对齐：</strong>验证教师资产化策略的数据飞轮效应</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-purple-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-purple-400 text-xs">P2</span>
+                  </div>
+                  <span><strong className="text-gray-300">窗口期卡位：</strong>在大厂反应前完成首批学校占位和品牌认知建立</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      </>
+      )}
+
+      {/* Q4-3: 项目目前处于什么阶段？ */}
+      {isQ4_3 && (
+      <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-5xl mx-auto">
+          <span className="text-cyan-500 text-sm font-medium tracking-[0.3em] uppercase mb-6 block">
+            Q4-3 · Current Stage
+          </span>
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8">
+            项目当前阶段
+          </h1>
+          
+          <div className="bg-gradient-to-r from-cyan-500/10 via-cyan-500/5 to-transparent border-l-4 border-cyan-500 pl-8 py-8 pr-6 rounded-r-2xl">
+            <p className="text-xl text-gray-300 leading-relaxed">
+              我们已完成从<Highlight color="cyan">"0到0.1"</Highlight>的认知提纯与技术闭环，
+              正处于<Highlight color="cyan">"种子学校试点"</Highlight>与<Highlight color="cyan">"数据冷启动"</Highlight>的 0.1 到 1 的爆发临界点。
+              这不是 Demo，而是已经可以进行内部小规模内测的 Beta 版本。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 三层进度 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">实时进度概览</h2>
+          <p className="text-gray-400 mb-12">三个层面的关键里程碑状态</p>
+          
+          <div className="space-y-6">
+            {/* 产品与技术层面 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-green-500/30 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/5 rounded-full blur-3xl" />
+              <div className="flex flex-col md:flex-row md:items-start gap-6 relative">
+                <div className="w-16 h-16 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="h-8 w-8 text-green-500" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-col md:flex-row md:items-center gap-3 mb-4">
+                    <h3 className="text-xl font-bold">产品与技术：核心功能闭环</h3>
+                    <span className="px-3 py-1 bg-green-500/10 text-green-400 text-sm rounded-full border border-green-500/20">Functional MVP</span>
+                  </div>
+                  <p className="text-gray-400 mb-6 leading-relaxed">
+                    meetmind 主系统（Next.js 14 + RAG 架构）已完成三端功能开发，
+                    跑通了【课堂长音频采集 → 离线转录 → AI 诊断索引 → 家长/教师端报告生成】的完整链路。
+                  </p>
+                  <div className="grid md:grid-cols-4 gap-4">
+                    <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800 text-center">
+                      <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-2">
+                        <Mic className="h-4 w-4 text-green-500" />
+                      </div>
+                      <p className="text-xs text-gray-500">采集端</p>
+                      <p className="text-sm text-gray-300 mt-1">已完成</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800 text-center">
+                      <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-2">
+                        <Brain className="h-4 w-4 text-green-500" />
+                      </div>
+                      <p className="text-xs text-gray-500">AI 处理</p>
+                      <p className="text-sm text-gray-300 mt-1">已完成</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800 text-center">
+                      <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-2">
+                        <Users className="h-4 w-4 text-green-500" />
+                      </div>
+                      <p className="text-xs text-gray-500">家长端</p>
+                      <p className="text-sm text-gray-300 mt-1">已完成</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800 text-center">
+                      <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-2">
+                        <School className="h-4 w-4 text-green-500" />
+                      </div>
+                      <p className="text-xs text-gray-500">教师端</p>
+                      <p className="text-sm text-gray-300 mt-1">已完成</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 市场与数据层面 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-amber-500/30 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl" />
+              <div className="flex flex-col md:flex-row md:items-start gap-6 relative">
+                <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0">
+                  <Clock className="h-8 w-8 text-amber-500" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-col md:flex-row md:items-center gap-3 mb-4">
+                    <h3 className="text-xl font-bold">市场与数据：种子样板间灰度</h3>
+                    <span className="px-3 py-1 bg-amber-500/10 text-amber-400 text-sm rounded-full border border-amber-500/20">Closed Pilot</span>
+                  </div>
+                  <p className="text-gray-400 mb-6 leading-relaxed">
+                    已锁定清华/北师大校友网络下的首批种子样板班级，正在进行第一批<strong className="text-gray-300">「真实课堂原生数据」</strong>的闭环采集测试。
+                    我们正处于<strong className="text-gray-300">"数据冷启动"的第 1-2 周</strong>——这比任何融资额都重要。
+                  </p>
+                  <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm text-gray-400">数据冷启动进度</span>
+                      <span className="text-amber-400 font-semibold">Week 1-2</span>
+                    </div>
+                    <div className="w-full bg-gray-800 rounded-full h-2">
+                      <div className="bg-amber-500 h-2 rounded-full" style={{ width: '15%' }}></div>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-3">
+                      正在建立全球第一个针对中小学课堂私域语境的「学生认知语义层」数据库
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 资本与团队层面 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-blue-500/30 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
+              <div className="flex flex-col md:flex-row md:items-start gap-6 relative">
+                <div className="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                  <Target className="h-8 w-8 text-blue-500" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-col md:flex-row md:items-center gap-3 mb-4">
+                    <h3 className="text-xl font-bold">资本与团队：灵魂对齐，寻求加速</h3>
+                    <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-sm rounded-full border border-blue-500/20">Seed Round</span>
+                  </div>
+                  <p className="text-gray-400 mb-6 leading-relaxed">
+                    核心团队（产研、品牌、运营）已全职到位，完成了关于"教育减法"和"物理确权"的战略对齐。
+                    目前处于 Seed Round 融资窗口，资金将直接转化为两个加速器。
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Cpu className="h-5 w-5 text-blue-400" />
+                        <h4 className="font-semibold">硬件加速</h4>
+                      </div>
+                      <p className="text-sm text-gray-400">
+                        将目前的"通用采集设备"升级为自主设计的、合规的<strong className="text-gray-300">「分体式物理确权底座」</strong>
+                      </p>
+                    </div>
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Users className="h-5 w-5 text-blue-400" />
+                        <h4 className="font-semibold">试点扩容</h4>
+                      </div>
+                      <p className="text-sm text-gray-400">
+                        将样板班级从 5 个扩展到 50 个，<strong className="text-gray-300">锁定数据护城河</strong>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 关键指标仪表盘 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">关键指标状态</h2>
+          
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="bg-[#111] rounded-3xl p-6 border border-gray-800 text-center">
+              <p className="text-4xl font-bold text-green-400 mb-2">100%</p>
+              <p className="text-sm text-gray-500 mb-1">核心链路</p>
+              <p className="text-xs text-gray-600">技术闭环已完成</p>
+            </div>
+            <div className="bg-[#111] rounded-3xl p-6 border border-gray-800 text-center">
+              <p className="text-4xl font-bold text-amber-400 mb-2">3-5</p>
+              <p className="text-sm text-gray-500 mb-1">种子班级</p>
+              <p className="text-xs text-gray-600">灰度测试中</p>
+            </div>
+            <div className="bg-[#111] rounded-3xl p-6 border border-gray-800 text-center">
+              <p className="text-4xl font-bold text-blue-400 mb-2">6+</p>
+              <p className="text-sm text-gray-500 mb-1">核心团队</p>
+              <p className="text-xs text-gray-600">全职到位</p>
+            </div>
+            <div className="bg-[#111] rounded-3xl p-6 border border-gray-800 text-center">
+              <p className="text-4xl font-bold text-purple-400 mb-2">0.1→1</p>
+              <p className="text-sm text-gray-500 mb-1">阶段跨越</p>
+              <p className="text-xs text-gray-600">爆发临界点</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 融资用途明细 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">资金用途与里程碑</h2>
+          <p className="text-gray-400 mb-8">本轮融资将直接转化为可验证的进展</p>
+          
+          <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4 pb-6 border-b border-gray-800">
+                <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center">
+                  <span className="text-cyan-400 font-bold">M1</span>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <h4 className="font-semibold">硬件自主化</h4>
+                    <span className="text-sm text-gray-500">3个月</span>
+                  </div>
+                  <p className="text-sm text-gray-400">完成分体式采集设备的自主设计与小批量量产</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-4 pb-6 border-b border-gray-800">
+                <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center">
+                  <span className="text-cyan-400 font-bold">M2</span>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <h4 className="font-semibold">试点扩容</h4>
+                    <span className="text-sm text-gray-500">6个月</span>
+                  </div>
+                  <p className="text-sm text-gray-400">从 5 个班级扩展到 50 个班级，验证数据飞轮效应</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center">
+                  <span className="text-cyan-400 font-bold">M3</span>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <h4 className="font-semibold">商业化验证</h4>
+                    <span className="text-sm text-gray-500">12个月</span>
+                  </div>
+                  <p className="text-sm text-gray-400">完成首批付费转化，验证 UE 模型与定价策略</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

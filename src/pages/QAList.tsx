@@ -75,10 +75,9 @@ const categories = [
     color: 'purple',
     summary: '信用背书、项目阶段、0-1验证、最大挑战',
     questions: [
-      { id: 'q4-1', title: '信用背书是什么？', hasContent: false },
-      { id: 'q4-2', title: '遇到的最大挑战是什么？', hasContent: false },
-      { id: 'q4-3', title: '目前处于什么阶段？', hasContent: false },
-      { id: 'q4-4', title: '是否已经完成了0-1的市场验证？', hasContent: false },
+      { id: 'q4-1', title: '目前处于什么阶段？', hasContent: true },
+      { id: 'q4-2', title: '遇到的最大挑战是什么？', hasContent: true },
+      { id: 'q4-3', title: '核心团队与信用背书', hasContent: true },
     ]
   }
 ];

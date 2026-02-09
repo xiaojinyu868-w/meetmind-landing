@@ -51,6 +51,9 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
   const isQ3_2 = categoryId === 'business' && questionId === 'q3-2';
   const isQ3_3 = categoryId === 'business' && questionId === 'q3-3';
   const isQ3_4 = categoryId === 'business' && questionId === 'q3-4';
+  const isQ4_1 = categoryId === 'status' && questionId === 'q4-1';
+  const isQ4_2 = categoryId === 'status' && questionId === 'q4-2';
+  const isQ4_3 = categoryId === 'status' && questionId === 'q4-3';
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
@@ -2376,6 +2379,391 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
               技术条件成熟、用户痛点真实、竞争空档存在，但窗口期预计仅 12-18 个月。
               团队需要在 2026 年内完成产品验证、数据积累和首批学校占位，以建立可持续的竞争优势。
             </p>
+          </div>
+        </div>
+      </section>
+      </>
+      )}
+
+      {/* Q4-1: 目前处于什么阶段？ */}
+      {isQ4_1 && (
+      <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-5xl mx-auto">
+          <span className="text-purple-500 text-sm font-medium tracking-[0.3em] uppercase mb-6 block">
+            Q4-1 · Current Stage
+          </span>
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8">
+            项目阶段与里程碑
+          </h1>
+          
+          <div className="bg-gradient-to-r from-purple-500/10 via-purple-500/5 to-transparent border-l-4 border-purple-500 pl-8 py-8 pr-6 rounded-r-2xl">
+            <p className="text-xl text-gray-300 leading-relaxed">
+              MeetMind 目前处于<Highlight color="purple">产品验证期</Highlight>向<Highlight color="purple">商业化初期</Highlight>过渡阶段。
+              核心算法已完成原型验证，硬件进入小批量试产，正在进行种子用户招募与产品迭代。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 阶段详情 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-12">发展阶段路线图</h2>
+          
+          <div className="relative">
+            {/* 时间线 */}
+            <div className="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 bg-gray-800" />
+            
+            <div className="space-y-12">
+              {/* 已完成 */}
+              <div className="relative pl-12 md:pl-20">
+                <div className="absolute left-0 md:left-4 top-0 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
+                  <CheckCircle2 className="w-5 h-5 text-white" />
+                </div>
+                <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+                  <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                    <span className="px-3 py-1 bg-green-500/10 text-green-400 text-sm rounded-full">已完成</span>
+                    <span className="text-gray-500 text-sm">2024.Q3 - 2025.Q1</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">概念验证与原型开发</h3>
+                  <ul className="space-y-2 text-sm text-gray-400">
+                    <li>• 完成"诊断式索引"核心算法原型，在测试数据集上达到 85%+ 准确率</li>
+                    <li>• 验证硬件技术可行性，完成采集胶囊 MVP 样机</li>
+                    <li>• 确定目标用户群体与核心价值主张</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* 进行中 */}
+              <div className="relative pl-12 md:pl-20">
+                <div className="absolute left-0 md:left-4 top-0 w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
+                  <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+                </div>
+                <div className="bg-[#111] rounded-3xl p-8 border border-purple-500/30">
+                  <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                    <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-sm rounded-full">进行中</span>
+                    <span className="text-gray-500 text-sm">2025.Q2 - 2026.Q1</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">产品验证与种子用户</h3>
+                  <ul className="space-y-2 text-sm text-gray-400">
+                    <li>• 硬件小批量试产（500 台），验证供应链与品控</li>
+                    <li>• 招募 1,000 名种子用户，验证产品-市场契合</li>
+                    <li>• 完成首轮融资，用于团队扩张与产品迭代</li>
+                    <li>• 目标：实现 15%+ 付费转化率，NRR &gt; 100%</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* 规划中 */}
+              <div className="relative pl-12 md:pl-20">
+                <div className="absolute left-0 md:left-4 top-0 w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center">
+                  <div className="w-2 h-2 bg-gray-400 rounded-full" />
+                </div>
+                <div className="bg-[#111] rounded-3xl p-8 border border-gray-800 opacity-70">
+                  <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                    <span className="px-3 py-1 bg-gray-700 text-gray-300 text-sm rounded-full">规划中</span>
+                    <span className="text-gray-500 text-sm">2026.Q2 起</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">规模化扩张</h3>
+                  <ul className="space-y-2 text-sm text-gray-400">
+                    <li>• 启动 B2B2C 渠道，进入私立/教培机构场景</li>
+                    <li>• 硬件量产（10,000+ 台），成本优化至目标价位</li>
+                    <li>• 开启 A 轮融资，支持市场扩张与团队建设</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 关键数据 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">当前关键数据</h2>
+          
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="bg-[#111] rounded-3xl p-6 border border-gray-800 text-center">
+              <p className="text-3xl font-bold text-purple-400 mb-2">500</p>
+              <p className="text-sm text-gray-500">硬件试产数量（台）</p>
+            </div>
+            <div className="bg-[#111] rounded-3xl p-6 border border-gray-800 text-center">
+              <p className="text-3xl font-bold text-purple-400 mb-2">1,000</p>
+              <p className="text-sm text-gray-500">目标种子用户数</p>
+            </div>
+            <div className="bg-[#111] rounded-3xl p-6 border border-gray-800 text-center">
+              <p className="text-3xl font-bold text-purple-400 mb-2">85%+</p>
+              <p className="text-sm text-gray-500">算法准确率</p>
+            </div>
+            <div className="bg-[#111] rounded-3xl p-6 border border-gray-800 text-center">
+              <p className="text-3xl font-bold text-purple-400 mb-2">8</p>
+              <p className="text-sm text-gray-500">核心团队人数</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      </>
+      )}
+
+      {/* Q4-2: 遇到的最大挑战是什么？ */}
+      {isQ4_2 && (
+      <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-5xl mx-auto">
+          <span className="text-purple-500 text-sm font-medium tracking-[0.3em] uppercase mb-6 block">
+            Q4-2 · Key Challenges
+          </span>
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8">
+            核心挑战与应对策略
+          </h1>
+          
+          <div className="bg-gradient-to-r from-purple-500/10 via-purple-500/5 to-transparent border-l-4 border-purple-500 pl-8 py-8 pr-6 rounded-r-2xl">
+            <p className="text-xl text-gray-300 leading-relaxed">
+              作为教育科技领域的早期创业项目，MeetMind 面临<Highlight color="purple">技术、市场、监管</Highlight>三方面的核心挑战。
+              我们采取"直面问题、分阶段突破"的策略，优先解决阻碍产品上市的关键瓶颈。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 三大挑战 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-12">三大核心挑战</h2>
+          
+          <div className="space-y-8">
+            {/* 挑战一 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl font-bold text-red-400">01</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-3">硬件进校的合规与信任门槛</h3>
+                  <p className="text-gray-400 mb-6">公立校对课堂录音设备有天然的谨慎态度，涉及数据隐私、教学秩序、家长沟通等多重顾虑。</p>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <h4 className="font-semibold text-white mb-2 text-sm">挑战详情</h4>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• 审批流程长，决策周期可能以年计</li>
+                        <li>• 需获得教育局、学校、家长三重认可</li>
+                        <li>• 数据安全与隐私保护要求严格</li>
+                      </ul>
+                    </div>
+                    <div className="bg-purple-500/5 rounded-xl p-5 border border-purple-500/20">
+                      <h4 className="font-semibold text-purple-400 mb-2 text-sm">应对策略</h4>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• <strong className="text-gray-300">分层切入：</strong>优先从线上自学、私立场景切入，积累案例后再攻公立校</li>
+                        <li>• <strong className="text-gray-300">合规先行：</strong>取得相关资质，建立数据安全体系</li>
+                        <li>• <strong className="text-gray-300">教师驱动：</strong>以教师提效为切入点，降低校方阻力</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 挑战二 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl font-bold text-amber-400">02</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-3">数据采集的稳定性与准确性</h3>
+                  <p className="text-gray-400 mb-6">真实教室环境复杂（回声、噪音、多人同时说话），对硬件采集和算法处理提出极高要求。</p>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <h4 className="font-semibold text-white mb-2 text-sm">挑战详情</h4>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• 教室回声、桌椅移动声干扰</li>
+                        <li>• 教师走动导致距离变化</li>
+                        <li>• 学生讨论与教师讲解区分</li>
+                      </ul>
+                    </div>
+                    <div className="bg-amber-500/5 rounded-xl p-5 border border-amber-500/20">
+                      <h4 className="font-semibold text-amber-400 mb-2 text-sm">应对策略</h4>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• <strong className="text-gray-300">硬件优化：</strong>定向拾音麦克风阵列+降噪算法</li>
+                        <li>• <strong className="text-gray-300">算法迭代：</strong>在真实场景数据上持续训练模型</li>
+                        <li>• <strong className="text-gray-300">容错设计：</strong>关键信息多重备份，确保数据完整性</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 挑战三 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl font-bold text-blue-400">03</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-3">大厂的潜在竞争压力</h3>
+                  <p className="text-gray-400 mb-6">字节、腾讯、猿辅导等教育科技巨头拥有流量、资金、内容优势，可能快速跟进类似产品。</p>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <h4 className="font-semibold text-white mb-2 text-sm">挑战详情</h4>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• 大厂云端内容库优势明显</li>
+                        <li>• 营销预算与渠道能力碾压</li>
+                        <li>• 可能采取免费策略抢占市场</li>
+                      </ul>
+                    </div>
+                    <div className="bg-blue-500/5 rounded-xl p-5 border border-blue-500/20">
+                      <h4 className="font-semibold text-blue-400 mb-2 text-sm">应对策略</h4>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• <strong className="text-gray-300">数据壁垒：</strong>物理现场数据是云端无法复制的护城河</li>
+                        <li>• <strong className="text-gray-300">先发占位：</strong>快速建立学校与家长端的使用习惯</li>
+                        <li>• <strong className="text-gray-300">差异化定位：</strong>专注"减法"与"索引"，避免与大厂正面竞争</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 风险矩阵 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">风险优先级矩阵</h2>
+          
+          <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-red-500/5 rounded-xl p-5 border border-red-500/20">
+                <h4 className="font-semibold text-red-400 mb-3">高优先级（立即应对）</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>• 硬件采集稳定性</li>
+                  <li>• 产品-市场契合验证</li>
+                  <li>• 现金流管理</li>
+                </ul>
+              </div>
+              <div className="bg-amber-500/5 rounded-xl p-5 border border-amber-500/20">
+                <h4 className="font-semibold text-amber-400 mb-3">中优先级（持续监控）</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>• 进校合规审批</li>
+                  <li>• 供应链成本控制</li>
+                  <li>• 团队扩张节奏</li>
+                </ul>
+              </div>
+              <div className="bg-blue-500/5 rounded-xl p-5 border border-blue-500/20">
+                <h4 className="font-semibold text-blue-400 mb-3">低优先级（长期准备）</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>• 大厂竞争反应</li>
+                  <li>• 技术路线颠覆</li>
+                  <li>• 海外市场拓展</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </>
+      )}
+
+      {/* Q4-3: 核心团队与信用背书 */}
+      {isQ4_3 && (
+      <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-5xl mx-auto">
+          <span className="text-purple-500 text-sm font-medium tracking-[0.3em] uppercase mb-6 block">
+            Q4-3 · Team & Credibility
+          </span>
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8">
+            核心团队与信用背书
+          </h1>
+          
+          <div className="bg-gradient-to-r from-purple-500/10 via-purple-500/5 to-transparent border-l-4 border-purple-500 pl-8 py-8 pr-6 rounded-r-2xl">
+            <p className="text-xl text-gray-300 leading-relaxed">
+              MeetMind 核心团队来自<Highlight color="purple">清华、北大</Highlight>等顶尖学府，
+              具备技术、产品、商业的互补能力。团队在 AI、教育、硬件领域均有深厚积累。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 核心团队 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-12">核心团队</h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* CEO */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6">
+                <User className="h-8 w-8 text-amber-500" />
+              </div>
+              <h3 className="text-xl font-bold mb-1">李浩</h3>
+              <p className="text-sm text-amber-400 mb-4">CEO / 产品负责人</p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>• 清华大学计算机硕士，多模态视频理解方向</li>
+                <li>• 大模型+社会科学交叉研究背景</li>
+                <li>• 具备技术可行性与教育需求的桥梁能力</li>
+              </ul>
+            </div>
+
+            {/* CTO */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6">
+                <Cpu className="h-8 w-8 text-blue-500" />
+              </div>
+              <h3 className="text-xl font-bold mb-1">陈子康</h3>
+              <p className="text-sm text-blue-400 mb-4">CTO / 技术负责人</p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>• 清华大学计算机硕士</li>
+                <li>• Agentic Search 架构与 LLM 应用开发专家</li>
+                <li>• 专注于技术预判与可扩展架构设计</li>
+              </ul>
+            </div>
+
+            {/* CFO */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="w-16 h-16 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-6">
+                <TrendingUp className="h-8 w-8 text-green-500" />
+              </div>
+              <h3 className="text-xl font-bold mb-1">朱春兮</h3>
+              <p className="text-sm text-green-400 mb-4">CFO / 增长与财务</p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>• 北大汇丰硕士</li>
+                <li>• 内容运营与增长实战经验</li>
+                <li>• 供应链整合与商业闭环构建能力</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* 团队配置总结 */}
+          <div className="mt-8 bg-[#111] rounded-3xl p-8 border border-gray-800">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-center">
+              <div>
+                <p className="text-2xl font-bold text-gray-300">清华计算机硕士 × 2</p>
+                <p className="text-sm text-gray-500 mt-1">技术+产品双引擎</p>
+              </div>
+              <div className="hidden md:block w-px h-12 bg-gray-800" />
+              <div>
+                <p className="text-2xl font-bold text-gray-300">北大汇丰硕士 × 1</p>
+                <p className="text-sm text-gray-500 mt-1">增长+财务支撑</p>
+              </div>
+              <div className="hidden md:block w-px h-12 bg-gray-800" />
+              <div>
+                <p className="text-2xl font-bold text-gray-300">黄金三角配置</p>
+                <p className="text-sm text-gray-500 mt-1">技术-产品-商业闭环</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

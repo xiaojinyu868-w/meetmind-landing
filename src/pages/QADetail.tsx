@@ -51,6 +51,7 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
   const isQ3_2 = categoryId === 'business' && questionId === 'q3-2';
   const isQ3_3 = categoryId === 'business' && questionId === 'q3-3';
   const isQ3_4 = categoryId === 'business' && questionId === 'q3-4';
+  const isQ4_1 = categoryId === 'status' && questionId === 'q4-1';
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
@@ -2404,6 +2405,263 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
               技术条件成熟、用户痛点真实、竞争空档存在，但窗口期预计仅 12-18 个月。
               团队需要在 2026 年内完成产品验证、数据积累和首批学校占位，以建立可持续的竞争优势。
             </p>
+          </div>
+        </div>
+      </section>
+      </>
+      )}
+
+      {/* Q4-1: 核心背书是什么？ */}
+      {isQ4_1 && (
+      <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-5xl mx-auto">
+          <span className="text-purple-500 text-sm font-medium tracking-[0.3em] uppercase mb-6 block">
+            Q4-1 · Credibility
+          </span>
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8">
+            核心背书与团队能力
+          </h1>
+          
+          <div className="bg-gradient-to-r from-purple-500/10 via-purple-500/5 to-transparent border-l-4 border-purple-500 pl-8 py-8 pr-6 rounded-r-2xl">
+            <p className="text-xl text-gray-300 leading-relaxed">
+              MeetMind 的核心背书不是"加密架构"或"概念验证"，而是<Highlight color="purple">"已在本地跑通的数据生产线"</Highlight>。
+              我们完成了从"45 分钟碎片语音"到"300 字精准陪学脚本"的全链路验证。
+              团队具备"清华技术 + 北师大教育 + 深圳落地"的黄金三角能力，
+              确保从实验室到教室的最后一公里可落地。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 黄金三角能力 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">团队能力矩阵</h2>
+          <p className="text-gray-400 mb-12">技术底座、教育认知、落地执行的三维支撑</p>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* 技术能力 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
+                  <Cpu className="h-6 w-6 text-purple-500" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold">技术底座</h3>
+                  <p className="text-sm text-gray-500">清华大学 CVML 实验室</p>
+                </div>
+              </div>
+              
+              <div className="space-y-4 text-sm text-gray-400">
+                <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                  <p className="text-gray-500 mb-2">核心能力</p>
+                  <p>声纹分离、长文本理解处于 SOTA 水平，解决"听得清"和"听得懂"的技术底座</p>
+                </div>
+                <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                  <p className="text-gray-500 mb-2">技术验证</p>
+                  <p>课堂环境语音识别准确率 &gt; 90%，多说话人分离延迟 &lt; 200ms</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 教育认知 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+                  <GraduationCap className="h-6 w-6 text-amber-500" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold">教育认知</h3>
+                  <p className="text-sm text-gray-500">北京师范大学</p>
+                </div>
+              </div>
+              
+              <div className="space-y-4 text-sm text-gray-400">
+                <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                  <p className="text-gray-500 mb-2">核心能力</p>
+                  <p>懂教育心理学，确保产品做的是"减法教育"而非"监控教育"</p>
+                </div>
+                <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                  <p className="text-gray-500 mb-2">产品验证</p>
+                  <p>Humble AI 设计原则：克制生成、强制唤醒，让孩子不产生抵触情绪</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 落地执行 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                  <Building2 className="h-6 w-6 text-blue-500" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold">落地执行</h3>
+                  <p className="text-sm text-gray-500">深圳供应链 + 腾讯系背景</p>
+                </div>
+              </div>
+              
+              <div className="space-y-4 text-sm text-gray-400">
+                <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                  <p className="text-gray-500 mb-2">核心能力</p>
+                  <p>硬件量产成本控制能力，目标把 AI 硬件做成"教辅书价格"</p>
+                </div>
+                <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                  <p className="text-gray-500 mb-2">成本验证</p>
+                  <p>采集胶囊 BOM 成本 ¥120，量产目标 ¥80，零售价 ¥299</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 真实背书 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">真实背书：可验证的进展</h2>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* 产品验证 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center">
+                  <CheckCircle2 className="h-6 w-6 text-green-500" />
+                </div>
+                <h3 className="text-xl font-bold">产品原型验证</h3>
+              </div>
+              
+              <p className="text-gray-400 mb-6">已完成 meetmind 主项目的核心链路开发，数据生产线已跑通</p>
+              
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  <span className="text-gray-300">学生端录音采集（本地部署）</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  <span className="text-gray-300">AI 语义处理与索引生成</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  <span className="text-gray-300">家长端陪学脚本自动推送</span>
+                </div>
+              </div>
+              
+              <div className="mt-6 pt-6 border-t border-gray-800">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-500">数据转化率</span>
+                  <span className="text-green-400 font-semibold">45分钟音频 → 300字脚本</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 进场验证 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                  <Users className="h-6 w-6 text-blue-500" />
+                </div>
+                <h3 className="text-xl font-bold">进场通道验证</h3>
+              </div>
+              
+              <p className="text-gray-400 mb-6">清华/北师大校友网络提供低成本获取真实课堂数据的机会</p>
+              
+              <div className="space-y-4">
+                <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                  <p className="text-sm text-gray-500 mb-2">已建立联系</p>
+                  <p className="text-sm text-gray-300">3 所重点公立校教师（清华附中、人大附中、北京四中）</p>
+                </div>
+                <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                  <p className="text-sm text-gray-500 mb-2">试点计划</p>
+                  <p className="text-sm text-gray-300">2026.Q1 启动 2 个班级的小规模实测</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 认知背书 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">认知背书：对赛道的深度理解</h2>
+          <p className="text-gray-400 mb-8">投资人投的是"人对赛道的理解"，我们能清晰指出行业死穴</p>
+          
+          <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-bold mb-4 text-red-400">现有方案为何失败</h3>
+                <ul className="space-y-3 text-sm text-gray-400">
+                  <li className="flex items-start gap-3">
+                    <span className="text-red-500 mt-0.5">×</span>
+                    <span><strong className="text-gray-300">学习机：</strong>没有课堂上下文，无法建立个性化关联</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-red-500 mt-0.5">×</span>
+                    <span><strong className="text-gray-300">通用大模型：</strong>反馈延迟，无法介入"今天的困惑"</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-red-500 mt-0.5">×</span>
+                    <span><strong className="text-gray-300">拍照搜题：</strong>助长思维惰性，已被政策限制</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-bold mb-4 text-green-400">MeetMind 的解法</h3>
+                <ul className="space-y-3 text-sm text-gray-400">
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-0.5">✓</span>
+                    <span><strong className="text-gray-300">物理现场数据：</strong>建立"今天的课堂"与"今晚的复习"的直接连接</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-0.5">✓</span>
+                    <span><strong className="text-gray-300">即时反馈：</strong>当天生成陪学脚本，困惑不过夜</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-0.5">✓</span>
+                    <span><strong className="text-gray-300">减法设计：</strong>不替代思考，只提供"脚手架"</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 待验证与风险 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">待验证的关键假设</h2>
+          <p className="text-gray-400 mb-8">诚实地承认当前阶段的局限性与下一步验证重点</p>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-[#111] rounded-3xl p-6 border border-gray-800">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4">
+                <span className="text-amber-500 font-bold">01</span>
+              </div>
+              <h3 className="font-semibold mb-2">硬件稳定性</h3>
+              <p className="text-sm text-gray-400">当前原型在实验室环境验证，需在真实教室（回声、遮挡、多说话人）中测试稳定性</p>
+            </div>
+            
+            <div className="bg-[#111] rounded-3xl p-6 border border-gray-800">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4">
+                <span className="text-amber-500 font-bold">02</span>
+              </div>
+              <h3 className="font-semibold mb-2">教师 Adoption</h3>
+              <p className="text-sm text-gray-400">需验证教师是否愿意将课堂数据同步给家长，以及使用频率是否能达到阈值</p>
+            </div>
+            
+            <div className="bg-[#111] rounded-3xl p-6 border border-gray-800">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4">
+                <span className="text-amber-500 font-bold">03</span>
+              </div>
+              <h3 className="font-semibold mb-2">付费转化率</h3>
+              <p className="text-sm text-gray-400">需验证家长是否愿意为"课堂数据确权"付费，以及价格敏感度</p>
+            </div>
           </div>
         </div>
       </section>

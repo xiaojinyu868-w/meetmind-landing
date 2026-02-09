@@ -60,12 +60,10 @@ const categories = [
     color: 'green',
     summary: '目标用户、商业模式、市场战略、为什么是现在',
     questions: [
-      { id: 'q3-1', title: '目标用户是谁？', hasContent: false },
-      { id: 'q3-2', title: '用户人群已经确认了吗？', hasContent: false },
-      { id: 'q3-3', title: '市场战略是什么？', hasContent: false },
-      { id: 'q3-4', title: '商业模式是什么？', hasContent: false },
-      { id: 'q3-5', title: '商业闭环是什么？', hasContent: false },
-      { id: 'q3-6', title: '为什么是现在做？（Timing）', hasContent: false },
+      { id: 'q3-1', title: '目标用户是谁？如何找到第一批买单的人？', hasContent: true },
+      { id: 'q3-2', title: '市场战略与 GTM 路线图', hasContent: true },
+      { id: 'q3-3', title: '商业模式与 UE 模型', hasContent: true },
+      { id: 'q3-4', title: '为什么是现在做？（Timing）', hasContent: true },
     ]
   },
   {

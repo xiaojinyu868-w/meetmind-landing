@@ -6,7 +6,7 @@ import {
   Box, Hexagon, Quote,
   Mic, WifiOff, Home, MessageSquare, Clock,
   ArrowLeft, Globe, Brain, Bot, BookOpen, User, Link2, Scale,
-  AlertCircle, Sparkles
+  AlertCircle, Sparkles, TrendingUp
 } from 'lucide-react';
 
 interface QADetailProps {
@@ -47,6 +47,10 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
   const isQ1 = categoryId === 'strategy' && questionId === 'q1-1';
   const isQ2 = categoryId === 'barrier' && questionId === 'q2-1';
   const isQ2Team = categoryId === 'barrier' && questionId === 'q2-2';
+  const isQ3_1 = categoryId === 'business' && questionId === 'q3-1';
+  const isQ3_2 = categoryId === 'business' && questionId === 'q3-2';
+  const isQ3_3 = categoryId === 'business' && questionId === 'q3-3';
+  const isQ3_4 = categoryId === 'business' && questionId === 'q3-4';
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
@@ -1577,6 +1581,532 @@ export default function QADetail({ categoryId, questionId, onBackToList, onBackT
               <div className="h-2 w-2 rounded-full bg-cyan-500" />
               <span className="text-gray-300">Agile Native</span>
             </div>
+          </div>
+        </div>
+      </section>
+      </>
+      )}
+
+      {/* Q3-1: 目标用户是谁？如何找到第一批买单的人？ */}
+      {isQ3_1 && (
+      <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-5xl mx-auto">
+          <span className="text-green-500 text-sm font-medium tracking-[0.3em] uppercase mb-6 block">
+            Q3-1 · Target Users
+          </span>
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8">
+            我们抢占的不是"家长"，
+            <br />
+            <span className="text-gray-500">而是</span>
+            <span className="text-green-400">"私有语境"</span>
+          </h1>
+          
+          <div className="bg-gradient-to-r from-green-500/10 via-green-500/5 to-transparent border-l-4 border-green-500 pl-8 py-8 pr-6 rounded-r-2xl">
+            <p className="text-xl text-gray-300 leading-relaxed">
+              全球大模型都在卷"公域知识"，但知识是有半衰期的。真正不贬值的是
+              <Highlight color="green">"属于某一个体的私有语境"</Highlight>
+              ——在那 45 分钟里，你是怎么理解牛顿第一定律的。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 三类核心用户 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-12">三类具备"认知提纯"刚需的高净值群体</h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* 群体一 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800 hover:border-green-500/30 transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6">
+                <Users className="h-6 w-6 text-amber-500" />
+              </div>
+              <h3 className="text-lg font-bold mb-3 text-amber-400">群体一</h3>
+              <p className="font-semibold text-white mb-3">存在"认知断层"的 K12 精英家庭</p>
+              <div className="space-y-3 text-sm text-gray-400">
+                <p><strong className="text-gray-300">核心痛点：</strong>高强度的辅导投入意愿，但受困于"家校信息不对称"。家长缺乏孩子在校 45 分钟的真实课堂上下文，导致辅导动作盲目且伴随高频情绪摩擦。</p>
+                <p className="pt-3 border-t border-gray-800"><strong className="text-green-400">买单逻辑：</strong>购买"物理级确权的课堂上下文数据"，作为低成本、高效率进行精准辅导的唯一证据。</p>
+              </div>
+            </div>
+
+            {/* 群体二 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800 hover:border-green-500/30 transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6">
+                <Globe className="h-6 w-6 text-blue-500" />
+              </div>
+              <h3 className="text-lg font-bold mb-3 text-blue-400">群体二</h3>
+              <p className="font-semibold text-white mb-3">英联邦教育体系的"自主学习者"</p>
+              <div className="space-y-3 text-sm text-gray-400">
+                <p><strong className="text-gray-300">核心痛点：</strong>IB/A-Level 体系强调批判性思维与研讨式学习。学生需要从大量非结构化课堂讨论中提取核心论据。</p>
+                <p className="pt-3 border-t border-gray-800"><strong className="text-green-400">买单逻辑：</strong>购买"元认知检索资产"。将碎片笔记转化为结构化知识库，直接产出学术证据。</p>
+              </div>
+            </div>
+
+            {/* 群体三 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800 hover:border-green-500/30 transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6">
+                <Brain className="h-6 w-6 text-purple-500" />
+              </div>
+              <h3 className="text-lg font-bold mb-3 text-purple-400">群体三</h3>
+              <p className="font-semibold text-white mb-3">高熵内容环境下的"高强度自学者"</p>
+              <div className="space-y-3 text-sm text-gray-400">
+                <p><strong className="text-gray-300">核心痛点：</strong>考研/公考/职场深造者，每天面对 10 小时视频流的信息熵增，需要最大化单位时间内的认知信噪比。</p>
+                <p className="pt-3 border-t border-gray-800"><strong className="text-green-400">买单逻辑：</strong>购买"纯粹的时间"。利用"诊断式过滤"砍掉 90% 的低增量复习时间。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 冷启动路径 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">寻找首批买单人：从"高势能圈层"向下渗透</h2>
+          
+          <div className="bg-gradient-to-r from-green-500/10 via-[#111] to-[#111] rounded-3xl p-8 border border-green-500/30 mb-12">
+            <p className="text-gray-300 text-lg leading-relaxed">
+              我们不参与大规模的流量竞价。核心策略是找到对<Highlight color="green">"Humble AI"和"减法教育"</Highlight>有深度认同感的高势能人群，利用其圈层势能建立专业准入门槛。
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {/* 路径一 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl font-bold text-white">01</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-3">KOL "专业主义"共鸣与共创</h3>
+                  <p className="text-gray-400 mb-4">锁定张咋啦、即刻/X 平台的 AI 原生开发者、哈佛/北大校友圈等高势能人群。</p>
+                  <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                    <p className="text-sm text-gray-300">通过邀请其成为首批<Highlight color="amber">"产品共创者"</Highlight>，不招募"用户"，而是招募"1000 位认知代理人"。通过分享《减法教育》白皮书，筛选出价值观一致的种子用户。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 路径二 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl font-bold text-white">02</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-3">B端"基础设施化"倒逼 C 端购买</h3>
+                  <p className="text-gray-400 mb-4">通过向标杆校（或特定班级）教师赠送"AI 教学助手系统"。</p>
+                  <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                    <p className="text-sm text-gray-300">核心不在"硬件进校"，而在<Highlight color="blue">"老师的资产化"</Highlight>。当老师习惯用 MeetMind 同步进度，全班"数据同频"产生的社交重力，会迫使家长端产生极高转化率的刚需购买。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 路径三 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl font-bold text-white">03</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-3">"真理之线"的信任临界点跨越</h3>
+                  <p className="text-gray-400 mb-4">在产品体验期，优先提供即时的 Aha Moment。</p>
+                  <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                    <p className="text-sm text-gray-300">通过<Highlight color="purple">"3 分钟课堂精华"</Highlight>或<Highlight color="purple">"共性盲区预警"</Highlight>，用物理事实的精准命中，快速弥补家长对 AI 的"信任鸿沟"，完成从免费测试向付费订阅的转化。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </>
+      )}
+
+      {/* Q3-2: 市场战略与 GTM 路线图 */}
+      {isQ3_2 && (
+      <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-5xl mx-auto">
+          <span className="text-green-500 text-sm font-medium tracking-[0.3em] uppercase mb-6 block">
+            Q3-2 · Go-to-Market Strategy
+          </span>
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8">
+            "信源垄断"的过程推演
+          </h1>
+          
+          <div className="bg-gradient-to-r from-green-500/10 via-green-500/5 to-transparent border-l-4 border-green-500 pl-8 py-8 pr-6 rounded-r-2xl">
+            <p className="text-xl text-gray-300 leading-relaxed">
+              这不再是一份平庸的市场计划，而是一个<Highlight color="green">"认知信噪比层级跃迁"</Highlight>的战略路径。
+              横轴（用户）：自学者 → 机构家长 → 公立校家长。
+              纵轴（硬件）：纯软件 → 辅助性硬件 → 基础设施化硬件。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 战略进度条 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-12">认知信噪比的层级跃迁</h2>
+          
+          <div className="relative">
+            {/* 进度线 */}
+            <div className="absolute left-8 top-16 bottom-16 w-0.5 bg-gradient-to-b from-amber-500 via-blue-500 to-green-500 hidden md:block" />
+            
+            <div className="space-y-8">
+              {/* 第一阶段 */}
+              <div className="relative md:pl-20">
+                <div className="hidden md:flex absolute left-4 top-0 w-8 h-8 rounded-full bg-amber-500 items-center justify-center">
+                  <span className="text-sm font-bold text-white">01</span>
+                </div>
+                <div className="bg-[#111] rounded-3xl p-8 border border-gray-800 hover:border-amber-500/30 transition-colors">
+                  <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                    <span className="px-3 py-1 bg-amber-500/10 text-amber-400 text-sm rounded-full">2026.Q1-Q2</span>
+                    <h3 className="text-xl font-bold text-amber-400">[认知插旗] —— 公域自学提纯</h3>
+                  </div>
+                  <p className="text-gray-400 mb-4">路径：DTC (Direct to Cognitive) 模式。绕过所有物理围墙，直接进入学习者的"屏幕"。</p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <h4 className="font-semibold text-white mb-2">核心动作</h4>
+                      <p className="text-sm text-gray-400">利用"网课索引"和"认知降噪"功能，狙击考研/公考等高熵视频流场景。</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <h4 className="font-semibold text-white mb-2">阶段目标</h4>
+                      <p className="text-sm text-gray-400">跑通"减法哲学"的商业付费闭环，完成核心算法在千万级数据量下的压力测试。</p>
+                    </div>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-gray-800">
+                    <p className="text-sm text-gray-500">深度逻辑：这个阶段我们是在 <Highlight color="amber">"积累熵减能力"</Highlight></p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 第二阶段 */}
+              <div className="relative md:pl-20">
+                <div className="hidden md:flex absolute left-4 top-0 w-8 h-8 rounded-full bg-blue-500 items-center justify-center">
+                  <span className="text-sm font-bold text-white">02</span>
+                </div>
+                <div className="bg-[#111] rounded-3xl p-8 border border-gray-800 hover:border-blue-500/30 transition-colors">
+                  <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                    <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-sm rounded-full">2026.Q2-Q3</span>
+                    <h3 className="text-xl font-bold text-blue-400">[关系确权] —— 私立与家教生态</h3>
+                  </div>
+                  <p className="text-gray-400 mb-4">路径：B2B2C "信任协议"模式。进入 1 对 1 家教和私立研讨课，解决"教学过程黑盒"痛点。</p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <h4 className="font-semibold text-white mb-2">核心动作</h4>
+                      <p className="text-sm text-gray-400">采集胶囊物理进入小型、高价值课堂。为国际化学校学生提供"讨论索引"。</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <h4 className="font-semibold text-white mb-2">阶段目标</h4>
+                      <p className="text-sm text-gray-400">建立"听过课的 AI"第一口碑，验证硬件在大规模离散环境下的采集稳定性。</p>
+                    </div>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-gray-800">
+                    <p className="text-sm text-gray-500">深度逻辑：这个阶段我们是在 <Highlight color="blue">"建立信任协议"</Highlight></p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 第三阶段 */}
+              <div className="relative md:pl-20">
+                <div className="hidden md:flex absolute left-4 top-0 w-8 h-8 rounded-full bg-green-500 items-center justify-center">
+                  <span className="text-sm font-bold text-white">03</span>
+                </div>
+                <div className="bg-[#111] rounded-3xl p-8 border border-gray-800 hover:border-green-500/30 transition-colors">
+                  <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                    <span className="px-3 py-1 bg-green-500/10 text-green-400 text-sm rounded-full">2026.Q4+</span>
+                    <h3 className="text-xl font-bold text-green-400">[基建收割] —— 公立校基础设施线</h3>
+                  </div>
+                  <p className="text-gray-400 mb-4">路径："特洛伊木马"资产化模式。核心不在卖硬件，在<Highlight color="green">"赋能老师的资产感"</Highlight>。</p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <h4 className="font-semibold text-white mb-2">核心动作</h4>
+                      <p className="text-sm text-gray-400">向老师赠送"AI 助教笔"，帮其将口语教学转化为结构化的"数字作品"。</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <h4 className="font-semibold text-white mb-2">阶段目标</h4>
+                      <p className="text-sm text-gray-400">完成对 45 分钟物理课堂语境的物理级垄断，确立"家校同频"唯一信源标准。</p>
+                    </div>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-gray-800">
+                    <p className="text-sm text-gray-500">深度逻辑：这个阶段我们是在 <Highlight color="green">"重塑教育的信源标准"</Highlight></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </>
+      )}
+
+      {/* Q3-3: 商业模式与 UE 模型 */}
+      {isQ3_3 && (
+      <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-5xl mx-auto">
+          <span className="text-green-500 text-sm font-medium tracking-[0.3em] uppercase mb-6 block">
+            Q3-3 · Business Model & Unit Economics
+          </span>
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8">
+            硬件即入口，
+            <br />
+            <span className="text-green-400">数据即资产</span>
+          </h1>
+          
+          <div className="bg-gradient-to-r from-green-500/10 via-green-500/5 to-transparent border-l-4 border-green-500 pl-8 py-8 pr-6 rounded-r-2xl">
+            <p className="text-xl text-gray-300 leading-relaxed">
+              我们的 UE（单元经济模型）不靠卖硬件赚快钱，靠的是<Highlight color="green">"认知信噪比"</Highlight>的长期订阅溢价。
+              我们卖的不是"功能"，是"认知带宽"。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 营收结构 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-12">从"一次性博弈"到"全生命周期资产"</h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* 硬件入口 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center mb-6">
+                <Box className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">硬件入口</h3>
+              <p className="text-sm text-gray-500 mb-4">Hardware as an Entrance</p>
+              <div className="space-y-3 text-sm text-gray-400">
+                <p><strong className="text-white">采集胶囊：</strong>定价策略为"成本价+极低毛利"</p>
+                <p className="pt-3 border-t border-gray-800 text-green-400">它不是利润中心，而是"信源占位符"。降低进校和家教场景的决策门槛。</p>
+              </div>
+            </div>
+
+            {/* 服务订阅 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-3xl" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-6">
+                <Zap className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">服务订阅</h3>
+              <p className="text-sm text-gray-500 mb-4">Data as an Asset - SaaS</p>
+              <div className="space-y-3 text-sm text-gray-400">
+                <p><strong className="text-white">核心模块：</strong>诊断式索引、真理之线、语义审计、记忆保险箱</p>
+                <p className="pt-3 border-t border-gray-800 text-green-400">采用 Freemium 模式。基础转录免费，高价值的"提纯功能"按月/年订阅。</p>
+              </div>
+            </div>
+
+            {/* 资产增值 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center mb-6">
+                <TrendingUp className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">资产增值</h3>
+              <p className="text-sm text-gray-500 mb-4">Future Option</p>
+              <div className="space-y-3 text-sm text-gray-400">
+                <p><strong className="text-white">长期价值：</strong>个人成长账本具备极强的迁移成本</p>
+                <p className="pt-3 border-t border-gray-800 text-green-400">后期可衍生出"升学/背景提升"的数据验证服务。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* UE 模型 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">UE 模型推演：为什么我们的 CAC 能低 5 倍？</h2>
+          
+          <div className="bg-gradient-to-r from-green-500/10 via-[#111] to-[#111] rounded-3xl p-8 border border-green-500/30 mb-12">
+            <p className="text-gray-300 text-lg leading-relaxed">
+              不同于普通教辅 App，MeetMind 的数据具有<Highlight color="green">"累加效应"</Highlight>——积累时间越长，AI 越懂你。
+              预估留存率远高于行业平均水平，因为用户无法带着已经沉淀在 MeetMind 里的"两年的物理课堂上下文"去竞品平台。
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* LTV */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                  <BarChart3 className="h-6 w-6 text-blue-500" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">LTV（用户生命周期价值）</h3>
+                  <p className="text-sm text-gray-500">Lifetime Value</p>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                  <p className="text-sm text-gray-300">数据的<Highlight color="blue">"累加效应"</Highlight>创造极高迁移成本</p>
+                </div>
+                <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                  <p className="text-sm text-gray-300">预估留存率远高于行业平均水平</p>
+                </div>
+              </div>
+            </div>
+
+            {/* CAC */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center">
+                  <Target className="h-6 w-6 text-green-500" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">CAC（获客成本）</h3>
+                  <p className="text-sm text-gray-500">Customer Acquisition Cost</p>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                  <span className="text-sm text-gray-400">传统 App CAC</span>
+                  <span className="text-red-400 font-semibold">~500-1500 元</span>
+                </div>
+                <div className="flex items-center justify-between bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                  <span className="text-sm text-gray-400">MeetMind 预期 CAC</span>
+                  <span className="text-green-400 font-semibold">~100-300 元</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CAC 优化路径 */}
+          <div className="mt-8 bg-[#111] rounded-3xl p-8 border border-gray-800">
+            <h3 className="text-lg font-bold mb-6">CAC 优化路径</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <Building2 className="h-5 w-5 text-blue-500" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white mb-1">B2B2C 杠杆</h4>
+                  <p className="text-sm text-gray-400">一个老师的使用带动全班，边际成本趋近于零</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                  <Users className="h-5 w-5 text-purple-500" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white mb-1">社交引力</h4>
+                  <p className="text-sm text-gray-400">班级内"今日难点"同步产生的压力自发引流</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </>
+      )}
+
+      {/* Q3-4: 为什么是现在做？（Timing） */}
+      {isQ3_4 && (
+      <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-5xl mx-auto">
+          <span className="text-green-500 text-sm font-medium tracking-[0.3em] uppercase mb-6 block">
+            Q3-4 · Why Now
+          </span>
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8">
+            三股力量的
+            <span className="text-green-400">共振时刻</span>
+          </h1>
+          
+          <div className="bg-gradient-to-r from-green-500/10 via-green-500/5 to-transparent border-l-4 border-green-500 pl-8 py-8 pr-6 rounded-r-2xl">
+            <p className="text-xl text-gray-300 leading-relaxed">
+              这不仅仅是时间点的问题，这是<Highlight color="green">"技术、市场、与宏观心智"</Highlight>三股力量在 2026 年初达成共振的结果。
+              这是 MeetMind 的 iPhone 4 瞬间。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 三股力量 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24 bg-[#0c0c0c]">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* 技术转折 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800 hover:border-blue-500/30 transition-colors">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center mb-6">
+                <Cpu className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-blue-400">技术转折</h3>
+              <p className="text-sm text-gray-500 mb-4">从"对话框"到"Memory-Native"</p>
+              <div className="space-y-4 text-sm text-gray-400">
+                <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                  <p className="text-gray-500 mb-2">现状</p>
+                  <p>2024-2025 是"通用大模型"的狂欢。但 2026 年，行业已经意识到"没有上下文的 AI 只是玩具"。</p>
+                </div>
+                <div className="bg-blue-500/5 rounded-xl p-4 border border-blue-500/20">
+                  <p className="text-blue-400 mb-2">奇点</p>
+                  <p>LLM 架构已支持毫秒级海量私域上下文检索。<Highlight color="blue">"物理课堂 45 分钟的语义对齐"</Highlight>从"不可能"变成"低成本可行"。</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 市场反弹 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800 hover:border-amber-500/30 transition-colors">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center mb-6">
+                <TrendingUp className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-amber-400">市场反弹</h3>
+              <p className="text-sm text-gray-500 mb-4">对"大脑懒政型 AI"的全面厌倦</p>
+              <div className="space-y-4 text-sm text-gray-400">
+                <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                  <p className="text-gray-500 mb-2">现状</p>
+                  <p>过去两年的"拍搜"类 App 彻底透支了家长的信任。孩子用 AI 越多，思维越退化。</p>
+                </div>
+                <div className="bg-amber-500/5 rounded-xl p-4 border border-amber-500/20">
+                  <p className="text-amber-400 mb-2">红利</p>
+                  <p>市场正在产生极强的<Highlight color="amber">"反向审美"</Highlight>。MeetMind 这种"克制生成、强制唤醒、Humble AI"的产品，踩中了家长的补偿性刚需。</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 数据孤岛 */}
+            <div className="bg-[#111] rounded-3xl p-8 border border-gray-800 hover:border-green-500/30 transition-colors">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-6">
+                <Lock className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-green-400">数据孤岛</h3>
+              <p className="text-sm text-gray-500 mb-4">公域已竭，私域为王</p>
+              <div className="space-y-4 text-sm text-gray-400">
+                <div className="bg-[#0a0a0a] rounded-xl p-4 border border-gray-800">
+                  <p className="text-gray-500 mb-2">现状</p>
+                  <p>互联网上能被爬取的数据（公域）已经被 OpenAI, Google 刷完了。</p>
+                </div>
+                <div className="bg-green-500/5 rounded-xl p-4 border border-green-500/20">
+                  <p className="text-green-400 mb-2">壁垒</p>
+                  <p>教室是天然的数据孤岛。<Highlight color="green">谁先占领物理教室，谁就拥有了未来 10 年教育 AI 的底层信源协议。</Highlight></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 总结 */}
+      <section className="py-16 px-6 md:px-12 lg:px-24">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-green-500/20 via-green-500/10 to-green-500/5 rounded-3xl p-10 border border-green-500/30">
+            <h2 className="text-2xl font-bold mb-6 text-center">共振结论</h2>
+            <p className="text-lg text-gray-300 leading-relaxed text-center">
+              技术可行性 + 市场价值观红利 + 物理数据壁垒 = 
+              <br />
+              <span className="text-green-400 font-bold text-2xl mt-4 block">MeetMind 的 iPhone 4 时刻</span>
+            </p>
           </div>
         </div>
       </section>

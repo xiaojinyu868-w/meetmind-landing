@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Mic, Brain, Users, GraduationCap, ChevronLeft, ChevronRight, Sparkles, Clock, MessageCircle, BarChart3, Zap, FileText, Lightbulb } from 'lucide-react'
+import { useState, useRef } from 'react'
+import { Mic, Brain, Users, GraduationCap, ChevronLeft, ChevronRight, Sparkles, Clock, MessageCircle, BarChart3, Zap, FileText, Lightbulb, Image, Headphones, Layers, HelpCircle, GitBranch, Play, Pause, Target } from 'lucide-react'
 
 type ProductItem = {
   id: string
@@ -158,26 +158,167 @@ const categories: Category[] = [
       },
     ]
   },
+  {
+    id: 'ai-apps',
+    name: 'AI应用矩阵',
+    Icon: Sparkles,
+    color: 'bg-purple-600',
+    products: [
+      {
+        id: 'infograph',
+        title: '智能信息图',
+        subtitle: 'AI定制专属知识可视化',
+        description: '选择场景和参数，AI为你生成专属信息图。支持知识信息图、流程图、概念地图、时间线、对比分析图等多种类型，让复杂知识一目了然。',
+        image: '/images/infograph.png',
+        color: 'bg-blue-500',
+        lightColor: 'bg-blue-500/10',
+        borderColor: 'border-blue-500/30',
+        Icon: Image,
+        features: [
+          { icon: Layers, text: '8+种场景类型' },
+          { icon: Sparkles, text: 'AI智能生图' },
+          { icon: FileText, text: '支持自定义描述' },
+        ]
+      },
+      {
+        id: 'podcast',
+        title: '课堂播客生成',
+        subtitle: '双人对话式课堂复盘',
+        description: '把课堂内容转成可收听播客，支持章节定位与回放的课堂复盘。火山播客风格的双人对话，让复习像听节目一样轻松。',
+        image: '/images/podcast_card.png',
+        color: 'bg-orange-500',
+        lightColor: 'bg-orange-500/10',
+        borderColor: 'border-orange-500/30',
+        Icon: Headphones,
+        features: [
+          { icon: Play, text: '真实播客音频生成' },
+          { icon: Clock, text: '章节定位与回放' },
+          { icon: MessageCircle, text: '双人对话式复盘' },
+        ]
+      },
+      {
+        id: 'flashcard',
+        title: '智能闪卡',
+        subtitle: '翻转记忆，高效掌握',
+        description: 'AI自动生成问答式闪卡，正面问题、背面答案。点击翻转即可查看解析，支持"先说概念，再说方法，最后说应用"的结构化记忆。',
+        image: '/images/flashcard.png',
+        color: 'bg-indigo-500',
+        lightColor: 'bg-indigo-500/10',
+        borderColor: 'border-indigo-500/30',
+        Icon: Layers,
+        features: [
+          { icon: Sparkles, text: 'AI自动生成问答' },
+          { icon: Zap, text: '翻转交互记忆' },
+          { icon: Brain, text: '结构化知识梳理' },
+        ]
+      },
+      {
+        id: 'quiz',
+        title: '智能测验',
+        subtitle: '即时检测，查漏补缺',
+        description: '基于课堂内容生成选择题测验，即时检测学习效果。每道题都有详细解析，帮助发现知识盲区，针对性复习提升。',
+        image: '/images/quiz.png',
+        color: 'bg-green-500',
+        lightColor: 'bg-green-500/10',
+        borderColor: 'border-green-500/30',
+        Icon: HelpCircle,
+        features: [
+          { icon: FileText, text: '课堂内容生成题目' },
+          { icon: BarChart3, text: '即时检测与解析' },
+          { icon: Target, text: '精准查漏补缺' },
+        ]
+      },
+      {
+        id: 'mindmap',
+        title: '思维导图',
+        subtitle: '知识架构可视化',
+        description: '自动生成课堂内容的思维导图，清晰展示知识架构和逻辑关系。支持点击展开各分支，帮助建立系统化的知识体系。',
+        image: '/images/mindmap.png',
+        color: 'bg-pink-500',
+        lightColor: 'bg-pink-500/10',
+        borderColor: 'border-pink-500/30',
+        Icon: GitBranch,
+        features: [
+          { icon: GitBranch, text: '自动知识架构梳理' },
+          { icon: Layers, text: '层级化分支展示' },
+          { icon: Lightbulb, text: '系统化知识体系' },
+        ]
+      },
+    ]
+  },
 ]
 
 export default function ProductShowcase() {
   const [activeCategoryIdx, setActiveCategoryIdx] = useState(0)
   const [activeProductIdx, setActiveProductIdx] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioRef = useRef<HTMLAudioElement>(null)
   
   const activeCategory = categories[activeCategoryIdx]
   const activeProduct = activeCategory.products[activeProductIdx]
 
+  const toggleAudio = async () => {
+    if (!audioRef.current) return
+    
+    try {
+      if (isPlaying) {
+        audioRef.current.pause()
+        setIsPlaying(false)
+      } else {
+        // Reset to beginning if ended
+        if (audioRef.current.ended) {
+          audioRef.current.currentTime = 0
+        }
+        await audioRef.current.play()
+        setIsPlaying(true)
+      }
+    } catch (error) {
+      console.error('Audio playback error:', error)
+      setIsPlaying(false)
+    }
+  }
+
   const handleCategoryChange = (idx: number) => {
     setActiveCategoryIdx(idx)
     setActiveProductIdx(0)
+    // Reset audio when changing category
+    if (audioRef.current) {
+      audioRef.current.pause()
+      setIsPlaying(false)
+    }
+  }
+
+  const handleProductChange = (idx: number) => {
+    setActiveProductIdx(idx)
+    // Reset audio when changing product
+    if (audioRef.current) {
+      audioRef.current.pause()
+      setIsPlaying(false)
+    }
   }
 
   const nextProduct = () => {
-    setActiveProductIdx((prev) => (prev + 1) % activeCategory.products.length)
+    setActiveProductIdx((prev) => {
+      const next = (prev + 1) % activeCategory.products.length
+      // Reset audio
+      if (audioRef.current) {
+        audioRef.current.pause()
+        setIsPlaying(false)
+      }
+      return next
+    })
   }
 
   const prevProduct = () => {
-    setActiveProductIdx((prev) => (prev - 1 + activeCategory.products.length) % activeCategory.products.length)
+    setActiveProductIdx((prev) => {
+      const next = (prev - 1 + activeCategory.products.length) % activeCategory.products.length
+      // Reset audio
+      if (audioRef.current) {
+        audioRef.current.pause()
+        setIsPlaying(false)
+      }
+      return next
+    })
   }
 
   const getTextColor = (color: string) => {
@@ -188,6 +329,10 @@ export default function ProductShowcase() {
       case 'bg-coral': return 'text-coral'
       case 'bg-purple-500': return 'text-purple-500'
       case 'bg-pink-500': return 'text-pink-500'
+      case 'bg-blue-500': return 'text-blue-500'
+      case 'bg-orange-500': return 'text-orange-500'
+      case 'bg-indigo-500': return 'text-indigo-500'
+      case 'bg-green-500': return 'text-green-500'
       default: return 'text-orange'
     }
   }
@@ -239,7 +384,7 @@ export default function ProductShowcase() {
               return (
                 <button
                   key={product.id}
-                  onClick={() => setActiveProductIdx(idx)}
+                  onClick={() => handleProductChange(idx)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     idx === activeProductIdx
                       ? `${product.color} text-white shadow-md`
@@ -317,11 +462,53 @@ export default function ProductShowcase() {
             {/* Right: Screenshot */}
             <div className="order-1 lg:order-2 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white">
-                <img
-                  src={activeProduct.image}
-                  alt={activeProduct.title}
-                  className="w-full h-auto"
-                />
+                {activeProduct.id === 'podcast' ? (
+                  <div className="relative">
+                    <img
+                      src={activeProduct.image}
+                      alt={activeProduct.title}
+                      className="w-full h-auto"
+                    />
+                    {/* Audio Player Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                      <audio
+                        ref={audioRef}
+                        src="/podcast_demo%20(1).mp3"
+                        onEnded={() => setIsPlaying(false)}
+                        className="hidden"
+                      />
+                      <div className="flex items-center gap-4 pointer-events-auto">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            toggleAudio()
+                          }}
+                          className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors cursor-pointer z-10"
+                        >
+                          {isPlaying ? (
+                            <Pause className="w-5 h-5 text-white pointer-events-none" />
+                          ) : (
+                            <Play className="w-5 h-5 text-white ml-0.5 pointer-events-none" />
+                          )}
+                        </button>
+                        <div className="flex-1">
+                          <p className="text-white font-medium text-sm">课堂播客示例</p>
+                          <p className="text-white/60 text-xs">点击播放试听</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="px-2 py-1 bg-white/20 rounded text-white text-xs">已生成</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <img
+                    src={activeProduct.image}
+                    alt={activeProduct.title}
+                    className="w-full h-auto"
+                  />
+                )}
               </div>
 
               {/* Navigation Arrows - Desktop */}
@@ -355,7 +542,7 @@ export default function ProductShowcase() {
             {activeCategory.products.map((product, idx) => (
               <button
                 key={idx}
-                onClick={() => setActiveProductIdx(idx)}
+                onClick={() => handleProductChange(idx)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   idx === activeProductIdx ? `w-8 ${product.color}` : 'w-2 bg-gray-300 hover:bg-gray-400'
                 }`}

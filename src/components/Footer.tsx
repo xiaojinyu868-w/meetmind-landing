@@ -87,7 +87,7 @@ export default function Footer() {
               aria-label="点击放大查看二维码"
             >
               <img 
-                src="/vx.jpg" 
+                src="/images/qrcode.jpg" 
                 alt="微信扫码加入家长体验群" 
                 className="w-28 h-28 object-contain"
               />
@@ -120,7 +120,7 @@ export default function Footer() {
                 <X className="w-5 h-5 text-gray-600" aria-hidden="true" />
               </button>
               <img 
-                src="/vx.jpg" 
+                src="/images/qrcode.jpg" 
                 alt="微信扫码加入家长体验群" 
                 className="w-full h-auto rounded-lg"
               />

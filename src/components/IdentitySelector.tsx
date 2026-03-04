@@ -4,7 +4,7 @@ import { Users, GraduationCap, BookOpen, Briefcase, ChevronRight, ChevronLeft, S
 type PrimaryIdentity = 'parent' | 'student' | 'educator' | 'partner' | null
 type SecondaryIdentity = 
   | 'parent-primary' | 'parent-middle' | 'parent-high'
-  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'student-middle' | 'student-high' | 'student-uni' | 'student-grad'
   | 'educator-teacher' | 'educator-admin'
   | 'partner-investor' | 'partner-channel'
   | null
@@ -55,6 +55,7 @@ const secondaryOptions: Record<string, Array<{id: SecondaryIdentity; title: stri
     { id: 'parent-high', title: '高中家长', subtitle: '高考冲刺，精准提分', Icon: User },
   ],
   student: [
+    { id: 'student-middle', title: '初中生', subtitle: '打好基础，养成习惯', Icon: GraduationCap },
     { id: 'student-high', title: '高中生', subtitle: '高考备战，自主学习', Icon: GraduationCap },
     { id: 'student-uni', title: '大学生', subtitle: '专业课业，效率提升', Icon: BookOpen },
     { id: 'student-grad', title: '研究生', subtitle: '深度研究，知识管理', Icon: Building2 },

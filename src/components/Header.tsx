@@ -3,7 +3,7 @@ import { Menu, X, HelpCircle, Users, RefreshCw } from 'lucide-react'
 
 type SecondaryIdentity = 
   | 'parent-primary' | 'parent-middle' | 'parent-high'
-  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'student-middle' | 'student-high' | 'student-uni' | 'student-grad'
   | 'educator-teacher' | 'educator-admin'
   | 'partner-investor' | 'partner-channel'
   | null
@@ -30,6 +30,7 @@ const getIdentityLabel = (secondaryIdentity: SecondaryIdentity) => {
     'parent-primary': '小学家长',
     'parent-middle': '初中家长',
     'parent-high': '高中家长',
+    'student-middle': '初中生',
     'student-high': '高中生',
     'student-uni': '大学生',
     'student-grad': '研究生',

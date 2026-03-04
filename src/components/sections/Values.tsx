@@ -2,7 +2,7 @@ import { Zap, Trophy, Clock, Smile, TrendingUp, BookOpen, Heart, Award, Users, B
 
 type SecondaryIdentity = 
   | 'parent-primary' | 'parent-middle' | 'parent-high'
-  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'student-middle' | 'student-high' | 'student-uni' | 'student-grad'
   | 'educator-teacher' | 'educator-admin'
   | 'partner-investor' | 'partner-channel'
   | null
@@ -203,10 +203,23 @@ const sectionContent: Record<string, {
       { icon: Clock, value: '-30%', label: '无效刷题', color: 'mint' },
     ],
   },
-  'student-high': {
-    badge: '学生的真实感受',
+  'student-middle': {
+    badge: '初中生的真实感受',
     badgeIcon: Smile,
-    title: '为什么学生会',
+    title: '为什么初中生会',
+    highlight: '爱上 MeetMind？',
+    subtitle: '不是逼你学，而是帮你"打好基础"',
+    promiseTitle: '我们的承诺',
+    promiseText: '不是让你"更累"，而是帮你养成高效学习习惯，为高中打好基础。',
+    stats: [
+      { icon: Clock, value: '-25%', label: '作业时间', color: 'sunny' },
+      { icon: TrendingUp, value: '+15', label: '学习效率', color: 'mint' },
+    ],
+  },
+  'student-high': {
+    badge: '高中生的真实感受',
+    badgeIcon: Smile,
+    title: '为什么高中生会',
     highlight: '爱上 MeetMind？',
     subtitle: '不是逼你学，而是帮你"学得轻松"',
     promiseTitle: '我们的承诺',

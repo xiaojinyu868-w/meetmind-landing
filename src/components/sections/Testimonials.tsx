@@ -3,7 +3,7 @@ import { Shield, Lock, UserCheck, CheckCircle, Users, TrendingUp, DollarSign, Ch
 
 type SecondaryIdentity = 
   | 'parent-primary' | 'parent-middle' | 'parent-high'
-  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'student-middle' | 'student-high' | 'student-uni' | 'student-grad'
   | 'educator-teacher' | 'educator-admin'
   | 'partner-investor' | 'partner-channel'
   | null
@@ -119,7 +119,11 @@ export default function Testimonials({ secondaryIdentity = null }: TestimonialsP
         <div className="text-center max-w-4xl mx-auto mb-10">
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-sunny/20 text-navy font-medium rounded-full text-sm mb-6">
             <span className="w-1.5 h-1.5 bg-sunny rounded-full" />
-            {secondaryIdentity?.startsWith('educator') ? '教师的真实反馈' : 
+            {secondaryIdentity === 'student-middle' ? '初中生的真实反馈' :
+             secondaryIdentity === 'student-high' ? '高中生的真实反馈' :
+             secondaryIdentity?.startsWith('student-uni') ? '大学生的真实反馈' :
+             secondaryIdentity?.startsWith('student-grad') ? '研究生的真实反馈' :
+             secondaryIdentity?.startsWith('educator') ? '教师的真实反馈' : 
              secondaryIdentity?.startsWith('student') ? '学生的真实反馈' :
              secondaryIdentity?.startsWith('parent') ? '家长的真实反馈' :
              '为什么选择 MeetMind'}

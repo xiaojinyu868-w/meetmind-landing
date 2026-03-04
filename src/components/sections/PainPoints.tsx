@@ -2,7 +2,7 @@ import { HelpCircle, Bomb, RefreshCw, Target, Sparkles, Clock, MessageSquare, Ba
 
 type SecondaryIdentity = 
   | 'parent-primary' | 'parent-middle' | 'parent-high'
-  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'student-middle' | 'student-high' | 'student-uni' | 'student-grad'
   | 'educator-teacher' | 'educator-admin'
   | 'partner-investor' | 'partner-channel'
   | null
@@ -204,7 +204,8 @@ const sectionTitles: Record<string, { badge: string; title: string; subtitle: st
   'parent-primary': { badge: '家长的真实困扰', title: '这些场景，你一定不陌生', subtitle: '不是孩子不努力，是学习链路断了', cta: 'MeetMind：把漏掉的5%，变成进步的100%' },
   'parent-middle': { badge: '家长的真实困扰', title: '这些场景，你一定不陌生', subtitle: '不是孩子不努力，是学习链路断了', cta: 'MeetMind：把漏掉的5%，变成进步的100%' },
   'parent-high': { badge: '高考家长的焦虑', title: '高三这一年，最难的是家长', subtitle: '想帮忙帮不上，只能干着急', cta: 'MeetMind：让家长的关心，变成孩子的助力' },
-  'student-high': { badge: '学生的学习痛点', title: '这些困境，你是否也在经历', subtitle: '不是不够努力，是方法不对', cta: 'MeetMind：用更少的时间，获得更高的效果' },
+  'student-middle': { badge: '初中生的学习痛点', title: '这些困境，你是否也在经历', subtitle: '不是不够努力，是方法不对', cta: 'MeetMind：打好基础，养成好习惯' },
+  'student-high': { badge: '高中生的学习痛点', title: '这些困境，你是否也在经历', subtitle: '不是不够努力，是方法不对', cta: 'MeetMind：用更少的时间，获得更高的效果' },
   'student-uni': { badge: '大学生的学习痛点', title: '这些困境，你是否也在经历', subtitle: '大学不是终点，是新的起点', cta: 'MeetMind：让专业课学习更轻松' },
   'student-grad': { badge: '研究生的效率痛点', title: '研究时间宝贵，不该浪费在笔记上', subtitle: '把更多时间花在创新上', cta: 'MeetMind：提升学术研究效率' },
   'educator-teacher': { badge: '教师的真实负担', title: '这些困扰，每天都在发生', subtitle: '不是不想教好，是精力有限', cta: 'MeetMind：让教师回归教学本质' },

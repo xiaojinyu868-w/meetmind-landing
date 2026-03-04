@@ -17,7 +17,7 @@ import IdentitySelector from './components/IdentitySelector'
 type PrimaryIdentity = 'parent' | 'student' | 'educator' | 'partner' | null
 type SecondaryIdentity = 
   | 'parent-primary' | 'parent-middle' | 'parent-high'
-  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'student-middle' | 'student-high' | 'student-uni' | 'student-grad'
   | 'educator-teacher' | 'educator-admin'
   | 'partner-investor' | 'partner-channel'
   | null

@@ -3,7 +3,7 @@ import { ArrowRight, Sparkles, Gift, Lightbulb } from 'lucide-react'
 type PrimaryIdentity = 'parent' | 'student' | 'educator' | 'partner' | null
 type SecondaryIdentity = 
   | 'parent-primary' | 'parent-middle' | 'parent-high'
-  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'student-middle' | 'student-high' | 'student-uni' | 'student-grad'
   | 'educator-teacher' | 'educator-admin'
   | 'partner-investor' | 'partner-channel'
   | null
@@ -43,6 +43,13 @@ const heroContent: Record<string, {
     cta: '免费试用 MeetMind',
   },
   // 学生细分 - 核心：高效学习 + 学霸同桌 + 少花时间多提分
+  'student-middle': {
+    badge: '初中生专属',
+    title: ['给自己找个', '"清华学霸"做同桌'],
+    subtitle: '打好基础，养成高效学习习惯',
+    description: '初中知识点开始变难，上课走神容易跟不上？MeetMind 记得老师讲的每一句话。课后 AI 同桌用老师原话帮你复盘，不懂就问直到搞懂。从现在开始养成高效学习习惯，为高中打好基础。',
+    cta: '立即体验',
+  },
   'student-high': {
     badge: '高中生专属',
     title: ['给自己找个', '"清华学霸"做同桌'],

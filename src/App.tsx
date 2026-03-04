@@ -12,11 +12,21 @@ import QAList from './pages/QAList'
 import QADetail from './pages/QADetail'
 import TeamSection from './pages/TeamSection'
 import AINativeSection from './pages/AINativeSection'
+import IdentitySelector from './components/IdentitySelector'
 
-type PageState = 'home' | 'qa-list' | 'qa-detail' | 'team' | 'ai-native';
+type PrimaryIdentity = 'parent' | 'student' | 'educator' | 'partner' | null
+type SecondaryIdentity = 
+  | 'parent-primary' | 'parent-middle' | 'parent-high'
+  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'educator-teacher' | 'educator-admin'
+  | 'partner-investor' | 'partner-channel'
+  | null
+type PageState = 'home' | 'qa-list' | 'qa-detail' | 'team' | 'ai-native' | 'identity-select';
 
 function App() {
-  const [pageState, setPageState] = useState<PageState>('home')
+  const [pageState, setPageState] = useState<PageState>('identity-select')
+  const [primaryIdentity, setPrimaryIdentity] = useState<PrimaryIdentity>(null)
+  const [secondaryIdentity, setSecondaryIdentity] = useState<SecondaryIdentity>(null)
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null)
 
@@ -35,6 +45,19 @@ function App() {
     return () => window.removeEventListener('showInvestor', handleShowInvestor)
   }, [])
 
+  const handleSelectIdentity = (primary: PrimaryIdentity, secondary: SecondaryIdentity, goToQA?: boolean) => {
+    setPrimaryIdentity(primary)
+    setSecondaryIdentity(secondary)
+    
+    // 投资人和渠道商直接跳转到 Q&A
+    if (goToQA) {
+      setPageState('qa-list')
+    } else {
+      setPageState('home')
+    }
+    window.scrollTo(0, 0)
+  }
+
   const handleSelectQA = (categoryId: string, questionId: string) => {
     setSelectedCategory(categoryId)
     setSelectedQuestion(questionId)
@@ -52,6 +75,18 @@ function App() {
     setSelectedCategory(null)
     setSelectedQuestion(null)
     window.scrollTo(0, 0)
+  }
+
+  const handleBackToIdentitySelect = () => {
+    setPageState('identity-select')
+    setPrimaryIdentity(null)
+    setSecondaryIdentity(null)
+    window.scrollTo(0, 0)
+  }
+
+  // Identity Selection Page
+  if (pageState === 'identity-select') {
+    return <IdentitySelector onSelectIdentity={handleSelectIdentity} />
   }
 
   if (pageState === 'qa-list') {
@@ -81,15 +116,15 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <Header secondaryIdentity={secondaryIdentity} onSwitchIdentity={handleBackToIdentitySelect} />
       <main>
-        <Hero />
-        <PainPoints />
+        <Hero primaryIdentity={primaryIdentity} secondaryIdentity={secondaryIdentity} />
+        <PainPoints secondaryIdentity={secondaryIdentity} />
         <Workflow />
-        <ProductShowcase />
-        <Values />
-        <TeamCredibility />
-        <Testimonials />
+        <ProductShowcase secondaryIdentity={secondaryIdentity} />
+        <Values secondaryIdentity={secondaryIdentity} />
+        <TeamCredibility secondaryIdentity={secondaryIdentity} />
+        <Testimonials secondaryIdentity={secondaryIdentity} />
       </main>
       <Footer />
     </div>

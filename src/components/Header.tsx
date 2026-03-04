@@ -1,5 +1,17 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, HelpCircle } from 'lucide-react'
+import { Menu, X, HelpCircle, Users, RefreshCw } from 'lucide-react'
+
+type SecondaryIdentity = 
+  | 'parent-primary' | 'parent-middle' | 'parent-high'
+  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'educator-teacher' | 'educator-admin'
+  | 'partner-investor' | 'partner-channel'
+  | null
+
+interface HeaderProps {
+  secondaryIdentity?: SecondaryIdentity
+  onSwitchIdentity?: () => void
+}
 
 const navLinks = [
   { name: '首页', href: '#home' },
@@ -10,9 +22,39 @@ const navLinks = [
   { name: '用户故事', href: '#testimonials' },
 ]
 
-export default function Header() {
+// 获取身份标签
+const getIdentityLabel = (secondaryIdentity: SecondaryIdentity) => {
+  if (!secondaryIdentity) return null
+  
+  const labels: Record<string, string> = {
+    'parent-primary': '小学家长',
+    'parent-middle': '初中家长',
+    'parent-high': '高中家长',
+    'student-high': '高中生',
+    'student-uni': '大学生',
+    'student-grad': '研究生',
+    'educator-teacher': '教师',
+    'educator-admin': '教育主管',
+    'partner-investor': '投资人',
+    'partner-channel': '渠道商',
+  }
+  
+  return labels[secondaryIdentity] || null
+}
+
+// 获取CTA按钮文字
+const getCTAText = (secondaryIdentity: SecondaryIdentity) => {
+  if (!secondaryIdentity) return '免费试用'
+  if (secondaryIdentity.startsWith('parent')) return '免费试用'
+  if (secondaryIdentity.startsWith('student')) return '立即体验'
+  if (secondaryIdentity.startsWith('educator')) return '申请试用'
+  return '了解详情'
+}
+
+export default function Header({ secondaryIdentity = null, onSwitchIdentity }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const identityLabel = getIdentityLabel(secondaryIdentity)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,6 +95,19 @@ export default function Header() {
 
           {/* Right Actions */}
           <div className="hidden md:flex items-center gap-4">
+            {/* 身份标签 + 切换按钮 */}
+            {identityLabel && onSwitchIdentity && (
+              <button
+                onClick={onSwitchIdentity}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full text-sm transition-colors"
+                title="点击切换身份"
+              >
+                <Users className="w-3.5 h-3.5" />
+                <span>{identityLabel}</span>
+                <RefreshCw className="w-3 h-3 ml-1" />
+              </button>
+            )}
+            
             <a
               href="#qa"
               onClick={(e) => {
@@ -70,7 +125,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="inline-block px-6 py-2.5 bg-sunny hover:bg-sunny-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 text-navy font-semibold rounded-full transition-[background-color,box-shadow] duration-300 shadow-sm hover:shadow-md cursor-pointer"
             >
-              免费试用
+              {getCTAText(secondaryIdentity)}
             </a>
             <a
               href="https://hk.meetmind.online"

@@ -1,5 +1,12 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Mic, Brain, Users, GraduationCap, ChevronLeft, ChevronRight, Sparkles, Clock, MessageCircle, BarChart3, Zap, FileText, Lightbulb, Image, Headphones, Layers, HelpCircle, GitBranch, Play, Pause, Target } from 'lucide-react'
+
+type SecondaryIdentity = 
+  | 'parent-primary' | 'parent-middle' | 'parent-high'
+  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'educator-teacher' | 'educator-admin'
+  | 'partner-investor' | 'partner-channel'
+  | null
 
 type ProductItem = {
   id: string
@@ -248,14 +255,33 @@ const categories: Category[] = [
   },
 ]
 
-export default function ProductShowcase() {
-  const [activeCategoryIdx, setActiveCategoryIdx] = useState(0)
+interface ProductShowcaseProps {
+  secondaryIdentity?: SecondaryIdentity
+}
+
+export default function ProductShowcase({ secondaryIdentity = null }: ProductShowcaseProps) {
+  // 根据身份设置默认分类
+  const getDefaultCategoryIndex = () => {
+    if (!secondaryIdentity) return 0 // 默认学生端
+    if (secondaryIdentity.startsWith('parent')) return 1 // 家长端
+    if (secondaryIdentity.startsWith('student')) return 0 // 学生端
+    if (secondaryIdentity.startsWith('educator')) return 2 // 教师端
+    return 0
+  }
+
+  const [activeCategoryIdx, setActiveCategoryIdx] = useState(getDefaultCategoryIndex())
   const [activeProductIdx, setActiveProductIdx] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
   
   const activeCategory = categories[activeCategoryIdx]
   const activeProduct = activeCategory.products[activeProductIdx]
+
+  // 当身份变化时更新默认分类
+  useEffect(() => {
+    setActiveCategoryIdx(getDefaultCategoryIndex())
+    setActiveProductIdx(0)
+  }, [secondaryIdentity])
 
   const toggleAudio = async () => {
     if (!audioRef.current) return
@@ -337,6 +363,45 @@ export default function ProductShowcase() {
     }
   }
 
+  // 根据身份设置标题
+  const getSectionTitle = () => {
+    if (!secondaryIdentity) {
+      return {
+        badge: '产品功能展示',
+        title: ['多端协同，', '全面覆盖'],
+        subtitle: '学生、家长、教师各有专属界面，学习数据实时同步'
+      }
+    }
+    if (secondaryIdentity.startsWith('parent')) {
+      return {
+        badge: '家长端功能',
+        title: ['学情透明，', '辅导有据'],
+        subtitle: '第一次真正知道"孩子今天学了什么"'
+      }
+    }
+    if (secondaryIdentity.startsWith('student')) {
+      return {
+        badge: '学生端功能',
+        title: ['AI同桌，', '随叫随到'],
+        subtitle: '用老师原话帮你复盘，不懂就问直到搞懂'
+      }
+    }
+    if (secondaryIdentity.startsWith('educator')) {
+      return {
+        badge: '教师端功能',
+        title: ['一键掌握，', '全班学情'],
+        subtitle: 'AI助教减负，让教学更精准高效'
+      }
+    }
+    return {
+      badge: '产品功能展示',
+      title: ['多端协同，', '全面覆盖'],
+      subtitle: '学生、家长、教师各有专属界面，学习数据实时同步'
+    }
+  }
+
+  const sectionTitle = getSectionTitle()
+
   return (
     <section id="product" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -344,14 +409,14 @@ export default function ProductShowcase() {
         <div className="text-center max-w-4xl mx-auto mb-12">
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange/10 text-navy font-medium rounded-full text-sm mb-6">
             <span className="w-1.5 h-1.5 bg-orange rounded-full" />
-            产品功能展示
+            {sectionTitle.badge}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6 leading-tight">
-            多端协同，
-            <span className="text-orange">全面覆盖</span>
+            {sectionTitle.title[0]}
+            <span className="text-orange">{sectionTitle.title[1]}</span>
           </h2>
           <p className="text-lg text-gray-600">
-            学生、家长、教师各有专属界面，学习数据实时同步
+            {sectionTitle.subtitle}
           </p>
         </div>
 

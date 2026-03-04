@@ -80,7 +80,7 @@ export default function Footer() {
 
           {/* QR Code */}
           <div>
-            <h4 className="font-semibold text-white mb-4">加入家长体验群</h4>
+            <h4 className="font-semibold text-white mb-4">加入体验群</h4>
             <button
               onClick={() => setIsModalOpen(true)}
               className="group bg-white p-2 rounded-lg inline-block hover:shadow-lg transition-shadow duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunny focus-visible:ring-offset-2 relative"
@@ -88,7 +88,7 @@ export default function Footer() {
             >
               <img 
                 src="/images/qrcode.jpg" 
-                alt="微信扫码加入家长体验群" 
+                alt="微信扫码加入体验群"
                 className="w-28 h-28 object-contain"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg flex items-center justify-center">

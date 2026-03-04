@@ -1,5 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Shield, Lock, UserCheck, CheckCircle, Users, TrendingUp, DollarSign, ChevronLeft, ChevronRight, GraduationCap, User, Heart, Lightbulb, Clock, BarChart3, AlertCircle, BookOpen, Frown, Smile, Brain, MessageCircle, Sparkles, BarChart } from 'lucide-react'
+
+type SecondaryIdentity = 
+  | 'parent-primary' | 'parent-middle' | 'parent-high'
+  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'educator-teacher' | 'educator-admin'
+  | 'partner-investor' | 'partner-channel'
+  | null
+
+interface TestimonialsProps {
+  secondaryIdentity?: SecondaryIdentity
+}
 
 // 三个角色的数据
 const roles = [
@@ -80,9 +91,23 @@ const roles = [
   },
 ]
 
-export default function Testimonials() {
-  const [activeIndex, setActiveIndex] = useState(1) // 默认显示家长
+export default function Testimonials({ secondaryIdentity = null }: TestimonialsProps) {
+  // 根据身份设置默认角色索引
+  const getDefaultRoleIndex = () => {
+    if (!secondaryIdentity) return 1 // 默认家长
+    if (secondaryIdentity.startsWith('parent')) return 1 // 家长
+    if (secondaryIdentity.startsWith('student')) return 0 // 学生
+    if (secondaryIdentity.startsWith('educator')) return 2 // 教师
+    return 1
+  }
+
+  const [activeIndex, setActiveIndex] = useState(getDefaultRoleIndex())
   const activeRole = roles[activeIndex]
+
+  // 当身份变化时更新默认角色
+  useEffect(() => {
+    setActiveIndex(getDefaultRoleIndex())
+  }, [secondaryIdentity])
 
   const nextRole = () => setActiveIndex((prev) => (prev + 1) % roles.length)
   const prevRole = () => setActiveIndex((prev) => (prev - 1 + roles.length) % roles.length)
@@ -94,11 +119,19 @@ export default function Testimonials() {
         <div className="text-center max-w-4xl mx-auto mb-10">
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-sunny/20 text-navy font-medium rounded-full text-sm mb-6">
             <span className="w-1.5 h-1.5 bg-sunny rounded-full" />
-            为什么选择 MeetMind
+            {secondaryIdentity?.startsWith('educator') ? '教师的真实反馈' : 
+             secondaryIdentity?.startsWith('student') ? '学生的真实反馈' :
+             secondaryIdentity?.startsWith('parent') ? '家长的真实反馈' :
+             '为什么选择 MeetMind'}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-4 leading-tight">
-            学生、家长、教师
-            <span className="text-orange"> 都受益</span>
+            {secondaryIdentity?.startsWith('educator') ? '教师减负，教学提效' :
+             secondaryIdentity?.startsWith('student') ? '高效学习，成绩提升' :
+             secondaryIdentity?.startsWith('parent') ? '省心辅导，亲子关系' :
+             '学生、家长、教师'}
+            <span className="text-orange">
+              {secondaryIdentity?.startsWith('educator') || secondaryIdentity?.startsWith('student') || secondaryIdentity?.startsWith('parent') ? ' 都认可' : ' 都受益'}
+            </span>
           </h2>
         </div>
 
@@ -246,10 +279,18 @@ export default function Testimonials() {
                 <div className="w-10 h-10 bg-sunny rounded-xl flex items-center justify-center">
                   <Shield className="w-5 h-5 text-navy" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">隐私承诺</h3>
+                <h3 className="text-2xl font-bold text-white">
+                  {secondaryIdentity?.startsWith('student') ? '数据安全' : '隐私承诺'}
+                </h3>
               </div>
               <p className="text-white/80 leading-relaxed">
-                数据最小化，只为学习服务；不采集学生影像；家长完全控制。
+                {secondaryIdentity?.startsWith('student-high') 
+                  ? '数据最小化，只为学习服务；不采集影像；学生自主控制，家长仅查看学习报告。'
+                  : secondaryIdentity?.startsWith('student-uni') || secondaryIdentity?.startsWith('student-grad')
+                  ? '数据最小化，只为学习服务；不采集影像；用户完全自主控制，随时导出或删除。'
+                  : secondaryIdentity?.startsWith('educator')
+                  ? '数据最小化，只为教学服务；符合教育数据合规要求；学校/教师自主管理。'
+                  : '数据最小化，只为学习服务；不采集学生影像；家长完全控制。'}
               </p>
             </div>
 
@@ -261,8 +302,22 @@ export default function Testimonials() {
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 text-center">
                 <UserCheck className="w-6 h-6 text-sunny mx-auto mb-2" />
-                <p className="text-sunny font-bold">家长控制</p>
-                <p className="text-white/60 text-sm">随时删除</p>
+                <p className="text-sunny font-bold">
+                  {secondaryIdentity?.startsWith('student-uni') || secondaryIdentity?.startsWith('student-grad')
+                    ? '自主控制'
+                    : secondaryIdentity?.startsWith('student-high')
+                    ? '学生自主'
+                    : secondaryIdentity?.startsWith('educator')
+                    ? '学校管理'
+                    : '家长控制'}
+                </p>
+                <p className="text-white/60 text-sm">
+                  {secondaryIdentity?.startsWith('student') 
+                    ? '随时删除' 
+                    : secondaryIdentity?.startsWith('educator')
+                    ? '合规管理'
+                    : '随时删除'}
+                </p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 text-center">
                 <CheckCircle className="w-6 h-6 text-sunny mx-auto mb-2" />

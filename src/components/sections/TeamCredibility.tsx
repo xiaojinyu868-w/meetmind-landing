@@ -1,5 +1,16 @@
 import { useState } from 'react'
-import { GraduationCap, Mic, Brain, Bot, ChevronLeft, ChevronRight, Cpu, BookOpen, Clock, User, Link2, Target, Scale } from 'lucide-react'
+import { GraduationCap, Mic, Brain, Bot, ChevronLeft, ChevronRight, Cpu, BookOpen, Clock, User, Link2, Target, Scale, FileText, ArrowRight } from 'lucide-react'
+
+type SecondaryIdentity = 
+  | 'parent-primary' | 'parent-middle' | 'parent-high'
+  | 'student-high' | 'student-uni' | 'student-grad'
+  | 'educator-teacher' | 'educator-admin'
+  | 'partner-investor' | 'partner-channel'
+  | null
+
+interface TeamCredibilityProps {
+  secondaryIdentity?: SecondaryIdentity
+}
 
 // 三层技术架构
 const techLayers = [
@@ -106,7 +117,7 @@ const memoryFeatures = [
   },
 ]
 
-export default function TeamCredibility() {
+export default function TeamCredibility({ secondaryIdentity = null }: TeamCredibilityProps) {
   const [activeLayer, setActiveLayer] = useState(1) // 默认显示记忆模型
   const [activeMemoryCard, setActiveMemoryCard] = useState(0)
 
@@ -114,6 +125,9 @@ export default function TeamCredibility() {
   const prevLayer = () => setActiveLayer((prev) => (prev - 1 + techLayers.length) % techLayers.length)
 
   const current = techLayers[activeLayer]
+
+  // 是否为投资人/渠道商
+  const isPartner = secondaryIdentity?.startsWith('partner')
 
   return (
     <section className="py-20 lg:py-28 bg-gradient-to-b from-white via-cream/30 to-white overflow-hidden">
@@ -339,6 +353,23 @@ export default function TeamCredibility() {
             ))}
           </div>
         </div>
+
+        {/* 投资人专属：查看详细 Q&A 入口 */}
+        {isPartner && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('showInvestor'))}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-navy to-navy/80 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+            >
+              <FileText className="w-5 h-5" />
+              <span>查看投资人 Q&A</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-gray-500 text-sm mt-3">
+              深入了解商业模式、壁垒分析、市场机会
+            </p>
+          </div>
+        )}
       </div>
     </section>
   )

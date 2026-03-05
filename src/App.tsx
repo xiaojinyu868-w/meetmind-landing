@@ -8,6 +8,7 @@ import ProductShowcase from './components/sections/ProductShowcase'
 import Values from './components/sections/Values'
 import Testimonials from './components/sections/Testimonials'
 import TeamCredibility from './components/sections/TeamCredibility'
+import VisionSection from './components/sections/VisionSection'
 import QAList from './pages/QAList'
 import QADetail from './pages/QADetail'
 import TeamSection from './pages/TeamSection'
@@ -124,6 +125,7 @@ function App() {
         <ProductShowcase secondaryIdentity={secondaryIdentity} />
         <Values secondaryIdentity={secondaryIdentity} />
         <TeamCredibility secondaryIdentity={secondaryIdentity} />
+        <VisionSection secondaryIdentity={secondaryIdentity} />
         <Testimonials secondaryIdentity={secondaryIdentity} />
       </main>
       <Footer />

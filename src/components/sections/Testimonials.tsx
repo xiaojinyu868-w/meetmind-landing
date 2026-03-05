@@ -288,7 +288,9 @@ export default function Testimonials({ secondaryIdentity = null }: TestimonialsP
                 </h3>
               </div>
               <p className="text-white/80 leading-relaxed">
-                {secondaryIdentity?.startsWith('student-high') 
+                {secondaryIdentity === 'student-middle'
+                  ? '数据最小化，只为学习服务；不采集影像；学习数据学生自主管理，家长仅了解学习情况。'
+                  : secondaryIdentity?.startsWith('student-high') 
                   ? '数据最小化，只为学习服务；不采集影像；学生自主控制，家长仅查看学习报告。'
                   : secondaryIdentity?.startsWith('student-uni') || secondaryIdentity?.startsWith('student-grad')
                   ? '数据最小化，只为学习服务；不采集影像；用户完全自主控制，随时导出或删除。'
@@ -309,7 +311,7 @@ export default function Testimonials({ secondaryIdentity = null }: TestimonialsP
                 <p className="text-sunny font-bold">
                   {secondaryIdentity?.startsWith('student-uni') || secondaryIdentity?.startsWith('student-grad')
                     ? '自主控制'
-                    : secondaryIdentity?.startsWith('student-high')
+                    : secondaryIdentity === 'student-middle' || secondaryIdentity?.startsWith('student-high')
                     ? '学生自主'
                     : secondaryIdentity?.startsWith('educator')
                     ? '学校管理'

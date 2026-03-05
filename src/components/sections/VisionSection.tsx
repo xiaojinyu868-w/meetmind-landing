@@ -144,7 +144,7 @@ export default function VisionSection({ secondaryIdentity = null }: VisionSectio
         <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-navy rounded-full text-white">
             <Sparkles className="w-5 h-5 text-sunny" />
-            <span className="font-medium">投资逻辑：不是投一个工具，是投下一代学习基础设施</span>
+            <span className="font-medium">投资逻辑：做个性化学习的「安卓系统」</span>
           </div>
         </div>
       </div>
